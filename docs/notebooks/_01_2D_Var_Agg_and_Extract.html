@@ -1,0 +1,378 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2D Variable Aggregation and Extraction &mdash; CoKLIMAx 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=822aaed9" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script type="application/vnd.jupyter.widget-state+json">{"state": {"a579f782031242c1bac7035cdc2e37dc": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "15a2470169954c07be8ad92f9f25b7de": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "2d30ab4247604d99a4deffaabdf74eb6": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DropdownModel", "_options_labels": ["ta_2m*_xy", "tsurf*_xy", "wspeed_10m*_xy", "bio_pet*_xy", "bio_utci*_xy"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "DropdownView", "description": "Select test variable:", "description_allow_html": false, "disabled": false, "index": 0, "layout": "IPY_MODEL_a579f782031242c1bac7035cdc2e37dc", "style": "IPY_MODEL_15a2470169954c07be8ad92f9f25b7de", "tabbable": null, "tooltip": null}}}, "version_major": 2, "version_minor": 0}</script>
+      <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3D Variable Surface Extraction" href="_02_3D_to_2d_Surface_Var_Extract.html" />
+    <link rel="prev" title="CoKLIMAx I" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            CoKLIMAx
+              <img src="../_static/coklimax_logo_new.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Data Preparation:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2D Variable Aggregation and Extraction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#import-dependencies">1. Import Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#load-simulation-data">2. Load Simulation Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#variable-selection">3. Variable Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#aggregation-logic">4. Aggregation Logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#save-aggregated-data">5. Save Aggregated Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_02_3D_to_2d_Surface_Var_Extract.html">3D Variable Surface Extraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_03_2D_Surface_Var_Agg_and_Extract.html">3D Variable Extraction and Aggregation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Preminimary:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="01_Obs_vs_Sim.html">Comparison of Observed vs Simulation Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_Distance_of_AOI_vs_t-test.html">Distance of AOI vs t-test</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Variable: Temperature:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="03_Air_Temp_Analysis_BS_vs_S1.html">2D Air Temperature Analysis: Baseline vs. Scenario</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_Air_Temp_Analysis_Heatmaps.html">2D Air Temperature Analysis: Heatmaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_Air_Temp_with_Agg.html">2D Air Temperature Aggregation Tool</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Variables: Biometeorology:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="06_Bio_Var_Analysis_BS_vs_S1.html">2D Biometeorological Variable Analysis: Baseline vs. Scenario</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_Bio_Var_Analysis_BS_vs_S1.html">Biological Variable Analysis</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CoKLIMAx</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">2D Variable Aggregation and Extraction</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks/_01_2D_Var_Agg_and_Extract.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="d-variable-aggregation-and-extraction">
+<h1>2D Variable Aggregation and Extraction<a class="headerlink" href="#d-variable-aggregation-and-extraction" title="Link to this heading"></a></h1>
+<p>This notebook provides a tool to extract specific 2D variables from PALM (Potsdam Atmospheric Large-Eddy Simulation Model) NetCDF output files and optionally perform temporal aggregation. The aggregated data is then saved into new NetCDF files, facilitating further analysis and visualization without needing to process large raw simulation outputs repeatedly.</p>
+<section id="import-dependencies">
+<h2>1. Import Dependencies<a class="headerlink" href="#import-dependencies" title="Link to this heading"></a></h2>
+<p>This section imports all necessary libraries for numerical operations, NetCDF file handling, interactive widgets for user input, and operating system interactions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">netCDF4</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nc</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">netCDF4</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">palm_variables</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-simulation-data">
+<h2>2. Load Simulation Data<a class="headerlink" href="#load-simulation-data" title="Link to this heading"></a></h2>
+<p>This section defines the absolute paths to the PALM simulation output files (xy-averaged and static driver) and loads them into NetCDF dataset objects. These datasets provide access to the raw simulation variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Absolute URLs (paths) of simulation output files and the static driver file</span>
+<span class="n">file_xy_1</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;./Data/_simulation_outputs_3/konstanz_4096x4096_v9_Baseline-48hr/OUTPUT/konstanz_4096x4096_v9_Baseline_av_xy_N03.000.nc&quot;</span>
+<span class="n">file_xy_2</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;./Data/_simulation_outputs_3/konstanz_4096x4096_v9_Scenario_1-48hr/OUTPUT/konstanz_4096x4096_v9_Scenario_1_av_xy_N03.000.nc&quot;</span>
+<span class="n">file_static</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;./Data/_simulation_outputs_3/konstanz_4096x4096_v9_Scenario_1-48hr/INPUT/konstanz_4096x4096_v9_Scenario_1_static_N03&quot;</span>
+
+<span class="c1"># Read NetCDF files into Dataset objects in read mode (&#39;r&#39;)</span>
+<span class="n">dataset_1</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">file_xy_1</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">dataset_2</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">file_xy_2</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">dataset_3</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">file_static</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
+<span class="c1"># Store datasets in a list for easier iteration</span>
+<span class="n">dataset_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">dataset_1</span><span class="p">,</span> <span class="n">dataset_2</span><span class="p">]</span>
+<span class="n">file_xy_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">file_xy_1</span><span class="p">,</span> <span class="n">file_xy_2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="variable-selection">
+<h2>3. Variable Selection<a class="headerlink" href="#variable-selection" title="Link to this heading"></a></h2>
+<p>This section allows the user to interactively select a 2D variable from the loaded NetCDF datasets. A dropdown widget is used for selection, and the corresponding variable’s description and unit are displayed for user convenience, fetched from the palm_variables module.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract variable names from the first dataset that have more than 2 dimensions (typically 3D or 4D variables)</span>
+<span class="c1"># These usually represent spatial or spatio-temporal data (e.g., time, z, y, x or time, y, x)</span>
+<span class="n">var_names_palm</span> <span class="o">=</span> <span class="p">[</span><span class="n">var</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">dataset_1</span><span class="o">.</span><span class="n">variables</span> <span class="k">if</span> <span class="n">dataset_1</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="c1"># Initialize the test_variable with the first variable in the list</span>
+<span class="n">test_variable</span> <span class="o">=</span> <span class="n">var_names_palm</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Create a dropdown widget for selecting the test variable</span>
+<span class="n">drop_down</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+    <span class="n">options</span><span class="o">=</span><span class="n">var_names_palm</span><span class="p">,</span>         <span class="c1"># Populate dropdown with variable names</span>
+    <span class="n">value</span><span class="o">=</span><span class="n">var_names_palm</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>        <span class="c1"># Set initial selected value</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Select test variable:&#39;</span> <span class="c1"># Label for the dropdown</span>
+<span class="p">)</span>
+
+<span class="c1"># Define a handler function to update the global test_variable when a new option is selected</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">dropdown_handler</span><span class="p">(</span><span class="n">change</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">test_variable</span>
+    <span class="n">test_variable</span> <span class="o">=</span> <span class="n">change</span><span class="o">.</span><span class="n">new</span> <span class="c1"># Update the global variable with the new selection</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selected variable: </span><span class="si">{</span><span class="n">test_variable</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># Print the newly selected variable</span>
+
+<span class="c1"># Attach the dropdown_handler function to observe changes in the &#39;value&#39; property of the dropdown</span>
+<span class="n">drop_down</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">dropdown_handler</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+
+<span class="c1"># Display the dropdown widget to the user</span>
+<span class="n">display</span><span class="p">(</span><span class="n">drop_down</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "2d30ab4247604d99a4deffaabdf74eb6"}</script></div>
+</div>
+</section>
+<section id="aggregation-logic">
+<h2>4. Aggregation Logic<a class="headerlink" href="#aggregation-logic" title="Link to this heading"></a></h2>
+<p>This section defines the core logic for temporal aggregation. The get_aggregate_time_list function creates a list of time step ranges based on a specified aggregation window. This allows for calculating moving averages over the simulation data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_aggregate_time_list</span><span class="p">(</span><span class="n">total_time_steps</span><span class="p">,</span> <span class="n">aggregate_time_steps</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generates a list of time step indices for temporal aggregation.</span>
+<span class="sd">    Each sub-list represents a window for calculating a moving average.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        total_time_steps (int): The total number of time steps in the simulation.</span>
+<span class="sd">        aggregate_time_steps (int): The number of time steps to include in each aggregation window.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: A list of lists, where each inner list contains time indices</span>
+<span class="sd">              for a specific aggregation window.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">time_lists</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_time_steps</span><span class="p">):</span>
+        <span class="c1"># Case 1: No aggregation (single time step per window)</span>
+        <span class="k">if</span> <span class="n">aggregate_time_steps</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">time_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="c1"># Case 2: Aggregation with a window (moving average)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Calculate the half-window size</span>
+            <span class="n">half_window</span> <span class="o">=</span> <span class="n">aggregate_time_steps</span> <span class="o">//</span> <span class="mi">2</span>
+            <span class="c1"># Determine the start and end indices of the window based on even/odd aggregation steps</span>
+            <span class="k">if</span> <span class="n">aggregate_time_steps</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c1"># For even `aggregate_time_steps`, the window is centered such that `i` is towards the end of the first half.</span>
+                <span class="c1"># Example: for aggregate_time_steps=6, half_window=3. Window for `i` is [i-3, i-2, i-1, i, i+1, i+2]</span>
+                <span class="n">time_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">half_window</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">half_window</span><span class="p">)]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># For odd `aggregate_time_steps`, the window is perfectly centered around `i`.</span>
+                <span class="c1"># Example: for aggregate_time_steps=5, half_window=2. Window for `i` is [i-2, i-1, i, i+1, i+2]</span>
+                <span class="n">time_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">half_window</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">half_window</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
+        
+        <span class="c1"># Filter out time indices that are outside the total simulation time steps</span>
+        <span class="n">valid_time_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">time_list</span> <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">total_time_steps</span><span class="p">]</span>
+        <span class="n">time_lists</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">valid_time_list</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">time_lists</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract filename (without extension) for dataset_1</span>
+<span class="n">filename_xy_1</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">file_xy_1</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1"># Extract filename (without extension) for dataset_2 (corrected from dataset_1 to dataset_2)</span>
+<span class="n">filename_xy_2</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">file_xy_2</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Load the actual variable data for the selected &#39;test_variable&#39; from both datasets</span>
+<span class="n">variable_data_1</span> <span class="o">=</span> <span class="n">dataset_1</span><span class="p">[</span><span class="n">test_variable</span><span class="p">]</span>
+<span class="n">variable_data_2</span> <span class="o">=</span> <span class="n">dataset_2</span><span class="p">[</span><span class="n">test_variable</span><span class="p">]</span>
+
+<span class="c1"># Get the shape of the variable data to determine total time steps</span>
+<span class="n">variable_data_shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">dataset_1</span><span class="p">[</span><span class="n">test_variable</span><span class="p">])</span>
+<span class="n">total_time_steps</span> <span class="o">=</span> <span class="n">variable_data_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Define the aggregation window size (e.g., 1 for no aggregation, 6 for 1-hour average)</span>
+<span class="c1"># This can be changed to perform different levels of temporal aggregation</span>
+<span class="n">aggregate_time_steps</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># Default to no aggregation (individual time steps)</span>
+
+<span class="c1"># Generate the list of time step ranges for aggregation based on the defined window</span>
+<span class="n">time_lists</span> <span class="o">=</span> <span class="n">get_aggregate_time_list</span><span class="p">(</span><span class="n">total_time_steps</span><span class="p">,</span> <span class="n">aggregate_time_steps</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="save-aggregated-data">
+<h2>5. Save Aggregated Data<a class="headerlink" href="#save-aggregated-data" title="Link to this heading"></a></h2>
+<p>This section iterates through the loaded datasets, aggregates the selected variable data based on the defined time windows, and saves the aggregated results into new NetCDF files. Each aggregated file will contain the averaged values for the chosen variable, reflecting the specified aggregation period.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Iterate through each dataset in the dataset_list (e.g., Baseline and Scenario 1)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">dataset_n</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dataset_list</span><span class="p">):</span>
+    <span class="c1"># Extract the variable data for the currently selected test_variable from the current dataset</span>
+    <span class="n">variable_data</span> <span class="o">=</span> <span class="n">dataset_n</span><span class="p">[</span><span class="n">test_variable</span><span class="p">]</span>
+    
+    <span class="c1"># Get the total number of time steps for the current variable data</span>
+    <span class="n">total_time_steps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">variable_data</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="c1"># Regenerate time_lists in case `total_time_steps` is different for different datasets,</span>
+    <span class="c1"># or if `aggregate_time_steps` has been changed interactively.</span>
+    <span class="n">time_lists</span> <span class="o">=</span> <span class="n">get_aggregate_time_list</span><span class="p">(</span><span class="n">total_time_steps</span><span class="p">,</span> <span class="n">aggregate_time_steps</span><span class="p">)</span>
+    
+    <span class="c1"># Initialize a list to store the aggregated data for all time steps</span>
+    <span class="n">variable_data_agg</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="c1"># Loop through each generated time window (time_list)</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">time_list</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">time_lists</span><span class="p">):</span>
+        <span class="n">values_temp_list</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        <span class="c1"># For each time window, extract the 2D variable data slices</span>
+        <span class="k">for</span> <span class="n">time_index</span> <span class="ow">in</span> <span class="n">time_list</span><span class="p">:</span>
+            <span class="c1"># Extract data at the current time_index, assuming it&#39;s a 4D variable (time, z, y, x)</span>
+            <span class="c1"># and we&#39;re interested in the first z-layer (index 0)</span>
+            <span class="n">values_temp</span> <span class="o">=</span> <span class="n">variable_data</span><span class="p">[</span><span class="n">time_index</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
+            <span class="n">values_temp_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">values_temp</span><span class="p">)</span>
+            
+        <span class="c1"># Compute the mean of the collected data slices along the time axis (axis=0)</span>
+        <span class="n">variable_data_agg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">values_temp_list</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+        
+    <span class="c1"># Determine the base filename for the output NetCDF file</span>
+    <span class="c1"># Uses the original filename (e.g., &#39;konstanz_4096x4096_v9_Baseline_av_xy_N03&#39;)</span>
+    <span class="n">source_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">file_xy_list</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="c1"># Construct the output filename, replacing &#39;*&#39; in test_variable if present</span>
+    <span class="c1"># Appends the variable name to the source filename for clarity</span>
+    <span class="n">output_filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">source_filename</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">test_variable</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+    
+    <span class="c1"># Create the output directory if it does not exist</span>
+    <span class="n">output_dir</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;./output/_01_agg_</span><span class="si">{</span><span class="n">aggregate_time_steps</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="c1"># Save the aggregated data to a new NetCDF file</span>
+    <span class="k">with</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_filename</span><span class="si">}</span><span class="s2">.nc&quot;</span><span class="p">),</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;NETCDF4_CLASSIC&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">dataset</span><span class="p">:</span>
+        <span class="c1"># Define dimensions for the new NetCDF file</span>
+        <span class="n">num_time</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">variable_data_agg</span><span class="p">)</span>
+        <span class="n">num_z_index</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># We&#39;ve flattened the z-dimension by selecting index 0</span>
+        <span class="n">num_rows</span> <span class="o">=</span> <span class="n">variable_data_agg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># Y-dimension</span>
+        <span class="n">num_cols</span> <span class="o">=</span> <span class="n">variable_data_agg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># X-dimension</span>
+        
+        <span class="n">dataset</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">num_time</span><span class="p">)</span>
+        <span class="n">dataset</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="n">num_z_index</span><span class="p">)</span>
+        <span class="n">dataset</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">num_cols</span><span class="p">)</span> <span class="c1"># Corrected to match convention (x is usually columns)</span>
+        <span class="n">dataset</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">num_rows</span><span class="p">)</span> <span class="c1"># Corrected to match convention (y is usually rows)</span>
+        
+        <span class="c1"># Create the variable in the new NetCDF file</span>
+        <span class="c1"># The dimensions are (time, z, y, x)</span>
+        <span class="n">data_var</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">test_variable</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">fill_value</span><span class="o">=-</span><span class="mf">9999.0</span><span class="p">)</span>
+        
+        <span class="c1"># Fill the newly created variable with the aggregated data</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">array</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">variable_data_agg</span><span class="p">):</span>
+            <span class="n">data_var</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">array</span> <span class="c1"># Assign each aggregated 2D array to its time step and z-layer</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Aggregated data for </span><span class="si">{</span><span class="n">test_variable</span><span class="si">}</span><span class="s2"> saved to </span><span class="si">{</span><span class="n">output_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">output_filename</span><span class="si">}</span><span class="s2">.nc&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Aggregated data for ta_2m*_xy saved to ./output/_01_agg_1/konstanz_4096x4096_v9_Baseline_av_xy_N03_ta_2m_xy.nc
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Aggregated data for ta_2m*_xy saved to ./output/_01_agg_1/konstanz_4096x4096_v9_Scenario_1_av_xy_N03_ta_2m_xy.nc
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="CoKLIMAx I" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="_02_3D_to_2d_Surface_Var_Extract.html" class="btn btn-neutral float-right" title="3D Variable Surface Extraction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, str.ucture GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

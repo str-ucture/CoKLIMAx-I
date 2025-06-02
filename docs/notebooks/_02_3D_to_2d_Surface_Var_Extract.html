@@ -1,0 +1,581 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D Variable Surface Extraction &mdash; CoKLIMAx 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=822aaed9" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3D Variable Extraction and Aggregation" href="_03_2D_Surface_Var_Agg_and_Extract.html" />
+    <link rel="prev" title="2D Variable Aggregation and Extraction" href="_01_2D_Var_Agg_and_Extract.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            CoKLIMAx
+              <img src="../_static/coklimax_logo_new.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Data Preparation:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="_01_2D_Var_Agg_and_Extract.html">2D Variable Aggregation and Extraction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3D Variable Surface Extraction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#import-dependencies">1. Import Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#load-3d-simulation-data">2. Load 3D Simulation Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#define-time-sequences">3. Define Time Sequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#define-variable-groups-and-helper-functions">4. Define Variable Groups and Helper Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-extraction-logic-2d-surface-slices">5. Data Extraction Logic (2D Surface Slices)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#select-dataset-and-variable-group-for-export">6. Select Dataset and Variable Group for Export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#perform-extraction-and-save-data">7. Perform Extraction and Save Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_03_2D_Surface_Var_Agg_and_Extract.html">3D Variable Extraction and Aggregation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Preminimary:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="01_Obs_vs_Sim.html">Comparison of Observed vs Simulation Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_Distance_of_AOI_vs_t-test.html">Distance of AOI vs t-test</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Variable: Temperature:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="03_Air_Temp_Analysis_BS_vs_S1.html">2D Air Temperature Analysis: Baseline vs. Scenario</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_Air_Temp_Analysis_Heatmaps.html">2D Air Temperature Analysis: Heatmaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_Air_Temp_with_Agg.html">2D Air Temperature Aggregation Tool</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Variables: Biometeorology:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="06_Bio_Var_Analysis_BS_vs_S1.html">2D Biometeorological Variable Analysis: Baseline vs. Scenario</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_Bio_Var_Analysis_BS_vs_S1.html">Biological Variable Analysis</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CoKLIMAx</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">3D Variable Surface Extraction</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks/_02_3D_to_2d_Surface_Var_Extract.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="d-variable-surface-extraction">
+<h1>3D Variable Surface Extraction<a class="headerlink" href="#d-variable-surface-extraction" title="Link to this heading"></a></h1>
+<p>This notebook provides a specialized tool for extracting 2D “surface” data from 3D PALM (Potsdam Atmospheric Large-Eddy Simulation Model) NetCDF output files. Specifically, it extracts data from the lowest non-zero atmospheric layer and the layer immediately above it for predefined groups of 3D variables (e.g., wind components). The extracted 2D data is then saved into new, smaller NetCDF files,</p>
+<section id="import-dependencies">
+<h2>1. Import Dependencies<a class="headerlink" href="#import-dependencies" title="Link to this heading"></a></h2>
+<p>This section imports all necessary Python libraries for numerical operations, NetCDF file handling, plotting (though not directly used for output here, good practice), and basic operating system interactions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">netCDF4</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nc</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-3d-simulation-data">
+<h2>2. Load 3D Simulation Data<a class="headerlink" href="#load-3d-simulation-data" title="Link to this heading"></a></h2>
+<p>This section defines the file paths for the 3D simulation output NetCDF files (for a baseline and a scenario run) and the static driver file. These files are then loaded into netCDF4 Dataset objects, providing access to the raw simulation data. The buildings_2d data from the static driver is also extracted, which might be useful for masking or contextualizing the extracted surface data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Absolute URLs (paths) of 3D simulation output files</span>
+<span class="n">file_3d_1</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;./Data/_simulation_outputs_3/konstanz_4096x4096_v9_Baseline-48hr/OUTPUT/konstanz_4096x4096_v9_Baseline_av_3d_N03.000.nc&quot;</span>
+<span class="n">file_3d_2</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;./Data/_simulation_outputs_3/konstanz_4096x4096_v9_Scenario_1-48hr/OUTPUT/konstanz_4096x4096_v9_Scenario_1_av_3d_N03.000.nc&quot;</span>
+<span class="n">file_static</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;./Data/_simulation_outputs_3/konstanz_4096x4096_v9_Scenario_1-48hr/INPUT/konstanz_4096x4096_v9_Scenario_1_static_N03&quot;</span>
+
+<span class="c1"># Read NetCDF files into Dataset objects in read mode (&#39;r&#39;)</span>
+<span class="n">dataset_1</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">file_3d_1</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">dataset_2</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">file_3d_2</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">dataset_3</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">file_static</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
+<span class="c1"># Store the 3D dataset objects in a list for easy iteration during processing.</span>
+<span class="n">file_xy_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">file_3d_1</span><span class="p">,</span> <span class="n">file_3d_2</span><span class="p">]</span>
+<span class="n">dataset_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">dataset_1</span><span class="p">,</span> <span class="n">dataset_2</span><span class="p">]</span>
+
+<span class="c1"># Extract 2D building data from the static driver.</span>
+<span class="c1"># This data might be used for masking non-atmospheric grid cells in the extracted surface data.</span>
+<span class="n">buildings_2d</span> <span class="o">=</span> <span class="n">dataset_3</span><span class="p">[</span><span class="s1">&#39;buildings_2d&#39;</span><span class="p">]</span>
+<span class="n">buildings_2d_data</span> <span class="o">=</span> <span class="n">buildings_2d</span><span class="p">[:,:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="define-time-sequences">
+<h2>3. Define Time Sequences<a class="headerlink" href="#define-time-sequences" title="Link to this heading"></a></h2>
+<p>This section dynamically extracts the total number of time steps from the loaded dataset. It then defines parameters for time step intervals and calculates time_sequence and time_sequence_all, which are used to control which time steps are processed and included in the output.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dynamically get the total number of time steps from the &#39;time&#39; dimension of the first dataset.</span>
+<span class="n">total_time_steps</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset_1</span><span class="o">.</span><span class="n">dimensions</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">])</span>
+
+<span class="c1"># Define `time_step_interval`: This controls how frequently data points are sampled from the full time series.</span>
+<span class="c1"># For example, if original data is every 10 min:</span>
+<span class="c1">#   - `time_step_interval = 1`: Exports every 10 min data point.</span>
+<span class="c1">#   - `time_step_interval = 6`: Exports every 6th data point, representing hourly data.</span>
+<span class="n">time_step_interval</span> <span class="o">=</span> <span class="mi">6</span>
+
+<span class="c1"># Define `second_step`: This offset ensures that `time_sequence` starts at a meaningful interval if `time_step_interval` &gt; 1.</span>
+<span class="c1"># - For `time_step_interval = 6` (hourly data), `second_step = 5` means it selects time steps corresponding to 10, 20, ..., 50, 60 minutes.</span>
+<span class="c1">#   Since time steps are 0-indexed and represent 10-minute intervals, step 5 corresponds to 0:50, step 11 to 1:50, etc.</span>
+<span class="c1">#   If the intention is to grab the hour mark (e.g., 0:00, 1:00, 2:00), adjust `second_step` based on how `time_sequence` is generated.</span>
+<span class="k">if</span> <span class="n">time_step_interval</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="n">second_step</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="k">elif</span> <span class="n">time_step_interval</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+    <span class="n">second_step</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="k">elif</span> <span class="n">time_step_interval</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">second_step</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># Start from the first time step (index 0)</span>
+
+<span class="c1"># `time_sequence`: A list of selected time step indices, starting at `0` and extending by `time_step_interval`.</span>
+<span class="c1"># This is typically used to extract a subset of the full time series.</span>
+<span class="n">time_sequence</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">time_sequence</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">second_step</span><span class="p">,</span> <span class="n">total_time_steps</span><span class="p">,</span> <span class="n">time_step_interval</span><span class="p">))</span>
+
+<span class="c1"># `time_sequence_all`: A list containing all available time step indices (from 0 to `total_time_steps - 1`).</span>
+<span class="c1"># This can be used if all time steps need to be processed/exported.</span>
+<span class="n">time_sequence_all</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_time_steps</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="define-variable-groups-and-helper-functions">
+<h2>4. Define Variable Groups and Helper Functions<a class="headerlink" href="#define-variable-groups-and-helper-functions" title="Link to this heading"></a></h2>
+<p>This section identifies all 3D variables in the dataset and categorizes them into predefined groups. It also includes helper functions to filter these groups for available variables and to extract unique dimensions for each group, which is crucial for structuring the output NetCDF files.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get all variable names available in the first dataset.</span>
+<span class="n">variable_names</span> <span class="o">=</span> <span class="n">dataset_1</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="c1"># Filter `variable_names` to include only those with more than 2 dimensions (typically 3D or 4D variables in PALM).</span>
+<span class="n">variable_names_palm</span> <span class="o">=</span> <span class="p">[</span><span class="n">var</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">variable_names</span> <span class="k">if</span> <span class="n">dataset_1</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Available 3D variables in dataset: </span><span class="si">{</span><span class="n">variable_names_palm</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Define predefined groups of variables. This allows for exporting related variables together.</span>
+<span class="c1"># `variable_group_1`: Typically contains wind speed and direction.</span>
+<span class="n">variable_group_1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;wdir&#39;</span><span class="p">,</span> <span class="s1">&#39;wspeed&#39;</span><span class="p">]</span>
+<span class="c1"># `variable_group_2`: Typically contains Cartesian wind components.</span>
+<span class="n">variable_group_2</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">]</span>
+
+<span class="c1"># Filter each predefined variable group to ensure only variables actually present in the dataset are included.</span>
+<span class="c1"># This prevents errors if a variable in the group is not in the loaded NetCDF file.</span>
+<span class="k">for</span> <span class="n">variable_group</span> <span class="ow">in</span> <span class="p">(</span><span class="n">variable_group_1</span><span class="p">,</span> <span class="n">variable_group_2</span><span class="p">):</span>
+    <span class="n">updated_variable_group</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">variable_group</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">variable_names_palm</span><span class="p">:</span> <span class="c1"># Check if the variable exists in the dataset&#39;s 3D variables.</span>
+            <span class="n">updated_variable_group</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">variable</span><span class="p">)</span>
+    <span class="n">variable_group</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>  <span class="c1"># Clear the original list.</span>
+    <span class="n">variable_group</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">updated_variable_group</span><span class="p">)</span>  <span class="c1"># Update the list with the filtered variables.</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_unique_dimensions</span><span class="p">(</span><span class="n">variable_group</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieves the unique dimensions (e.g., &#39;time&#39;, &#39;z&#39;, &#39;y&#39;, &#39;x&#39;) present across all</span>
+<span class="sd">    variables within a specified group. This helps in defining the structure of</span>
+<span class="sd">    the output NetCDF file for that group.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        variable_group (list): A list of variable names (strings).</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: A list of unique dimension names (strings) for the variables in the group.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">unique_dimensions</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span> <span class="c1"># Use a set to automatically handle unique dimensions.</span>
+    <span class="k">for</span> <span class="n">variable_name_export</span> <span class="ow">in</span> <span class="n">variable_group</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Get the dimensions tuple for the current variable.</span>
+            <span class="n">variable_dimensions</span> <span class="o">=</span> <span class="n">dataset_1</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="n">variable_name_export</span><span class="p">]</span><span class="o">.</span><span class="n">dimensions</span>
+            <span class="n">unique_dimensions</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">variable_dimensions</span><span class="p">)</span> <span class="c1"># Add dimensions to the set.</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Warning: Variable &#39;</span><span class="si">{</span><span class="n">variable_name_export</span><span class="si">}</span><span class="s2">&#39; not found in dataset. Skipping.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">unique_dimensions</span><span class="p">)</span> <span class="c1"># Convert the set back to a list.</span>
+
+<span class="c1"># Print the filtered variable groups and their unique dimensions for confirmation.</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">variable_group</span> <span class="ow">in</span> <span class="p">(</span><span class="n">variable_group_1</span><span class="p">,</span> <span class="n">variable_group_2</span><span class="p">):</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span> 
+    <span class="n">unique_dimensions_group</span> <span class="o">=</span> <span class="n">get_unique_dimensions</span><span class="p">(</span><span class="n">variable_group</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">variable_group</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Unique dimensions: </span><span class="si">{</span><span class="n">unique_dimensions_group</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Available 3D variables in dataset: [&#39;ta&#39;, &#39;u&#39;, &#39;v&#39;, &#39;w&#39;, &#39;wspeed&#39;, &#39;wdir&#39;]
+
+1. [&#39;wdir&#39;, &#39;wspeed&#39;]
+   Unique dimensions: [&#39;zu_3d&#39;, &#39;time&#39;, &#39;y&#39;, &#39;x&#39;]
+
+2. [&#39;u&#39;, &#39;v&#39;, &#39;w&#39;]
+   Unique dimensions: [&#39;time&#39;, &#39;zw_3d&#39;, &#39;y&#39;, &#39;zu_3d&#39;, &#39;yv&#39;, &#39;xu&#39;, &#39;x&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="data-extraction-logic-2d-surface-slices">
+<h2>5. Data Extraction Logic (2D Surface Slices)<a class="headerlink" href="#data-extraction-logic-2d-surface-slices" title="Link to this heading"></a></h2>
+<p>The subset_data function is the core of this notebook’s extraction capability. It takes a 3D variable’s data for a specific time step and extracts two 2D “surface” slices:</p>
+<ol class="arabic simple">
+<li><p>The value at the lowest non-zero atmospheric level (often representing ground-adjacent values).</p></li>
+<li><p>The value at the next atmospheric level above the lowest non-zero level.</p></li>
+</ol>
+<p>This is particularly useful for analyzing conditions just above the ground and at a slightly higher elevation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">subset_data</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">,</span> <span class="n">time_index</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Extracts 2D &quot;surface&quot; data from a 3D variable for a given time step.</span>
+<span class="sd">    It returns two subsets:</span>
+<span class="sd">    - The value at the lowest non-zero atmospheric level.</span>
+<span class="sd">    - The value at the next atmospheric level above the lowest non-zero level.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        dataset (netCDF4.Dataset): The NetCDF dataset containing the variable.</span>
+<span class="sd">        variable_name (str): The name of the 3D variable to subset (e.g., &#39;wspeed&#39;).</span>
+<span class="sd">        time_index (int): The specific time step index to extract data for.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: A tuple containing two NumPy arrays, each of shape (1, 1, y_range, x_range),</span>
+<span class="sd">               representing the extracted 2D surface slices.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Get the variable data object from the dataset.</span>
+    <span class="n">var_data</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">variable_name</span><span class="p">]</span>
+    
+    <span class="c1"># Determine the dimensions (levels, y_range, x_range) from the variable&#39;s shape,</span>
+    <span class="c1"># skipping the time dimension (index 0).</span>
+    <span class="n">levels</span><span class="p">,</span> <span class="n">y_range</span><span class="p">,</span> <span class="n">x_range</span> <span class="o">=</span> <span class="n">var_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">var_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">var_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+
+    <span class="c1"># Initialize NumPy arrays to store the two 2D subsets.</span>
+    <span class="c1"># Shape (1, 1, y_range, x_range) maintains compatibility with NetCDF variable dimensions.</span>
+    <span class="n">subset_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y_range</span><span class="p">,</span> <span class="n">x_range</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="c1"># For the lowest non-zero level</span>
+    <span class="n">subset_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y_range</span><span class="p">,</span> <span class="n">x_range</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="c1"># For the next level</span>
+
+    <span class="c1"># Reshape the 3D data for the current time step into a 2D array (levels x total_spatial_points).</span>
+    <span class="c1"># This allows for efficient vectorized operations along the level axis.</span>
+    <span class="n">flat_data</span> <span class="o">=</span> <span class="n">var_data</span><span class="p">[</span><span class="n">time_index</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:,</span> <span class="p">:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">levels</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Find the index of the first non-zero level along the vertical (level) axis for each spatial point.</span>
+    <span class="c1"># `np.argmax(flat_data != 0, axis=0)` returns the first index where the condition is true.</span>
+    <span class="c1"># If a column is all zeros, argmax returns 0, so additional handling is needed.</span>
+    <span class="n">non_zero_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">flat_data</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    
+    <span class="c1"># Extract values at the `non_zero_indices`.</span>
+    <span class="n">non_zero_values</span> <span class="o">=</span> <span class="n">flat_data</span><span class="p">[</span><span class="n">non_zero_indices</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">flat_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+
+    <span class="c1"># Important correction: If a spatial column (all levels at a specific y,x) is entirely zero (e.g., outside domain),</span>
+    <span class="c1"># `np.argmax` might still return 0, leading to incorrect non-zero values.</span>
+    <span class="c1"># We set these values to zero where the very first level of data is also zero.</span>
+    <span class="c1"># This ensures that points with no atmospheric data remain zero.</span>
+    <span class="n">non_zero_values</span><span class="p">[</span><span class="n">flat_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># Reshape `non_zero_values` back to the original 2D spatial dimensions (y_range, x_range)</span>
+    <span class="c1"># and assign it to `subset_0`.</span>
+    <span class="n">subset_0</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">non_zero_values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y_range</span><span class="p">,</span> <span class="n">x_range</span><span class="p">)</span>
+
+    <span class="c1"># Calculate the indices for the &#39;next level&#39; (one level above `non_zero_indices`).</span>
+    <span class="c1"># `np.clip` ensures these indices do not exceed the `levels` boundary.</span>
+    <span class="n">next_level_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">non_zero_indices</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">levels</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    
+    <span class="c1"># Extract values at `next_level_indices`.</span>
+    <span class="n">next_level_values</span> <span class="o">=</span> <span class="n">flat_data</span><span class="p">[</span><span class="n">next_level_indices</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">flat_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+    
+    <span class="c1"># Apply the same zero-masking for `next_level_values` to handle all-zero columns correctly.</span>
+    <span class="n">next_level_values</span><span class="p">[</span><span class="n">flat_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># Reshape `next_level_values` and assign it to `subset_1`.</span>
+    <span class="n">subset_1</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">next_level_values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y_range</span><span class="p">,</span> <span class="n">x_range</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">subset_0</span><span class="p">,</span> <span class="n">subset_1</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="select-dataset-and-variable-group-for-export">
+<h2>6. Select Dataset and Variable Group for Export<a class="headerlink" href="#select-dataset-and-variable-group-for-export" title="Link to this heading"></a></h2>
+<p>This section defines which simulation dataset (dataset_1 or dataset_2) and which predefined variable group (variable_group_1 or variable_group_2) will be processed for surface data extraction. It also prepares the output filename prefix and suffix based on these selections.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># `ds_index`: Selects which dataset to process.</span>
+<span class="c1">#   - `1` corresponds to `dataset_1` (Baseline).</span>
+<span class="c1">#   - `2` corresponds to `dataset_2` (Scenario 1).</span>
+<span class="n">ds_index</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># `var_group_index`: Selects which variable group to extract.</span>
+<span class="c1">#   - `1` corresponds to `variable_group_1` (e.g., &#39;wdir&#39;, &#39;wspeed&#39;).</span>
+<span class="c1">#   - `2` corresponds to `variable_group_2` (e.g., &#39;u&#39;, &#39;v&#39;, &#39;w&#39;).</span>
+<span class="n">var_group_index</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_dataset_and_filename_prefix</span><span class="p">(</span><span class="n">dataset_index</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieves the selected dataset object and constructs a filename prefix</span>
+<span class="sd">    based on the original NetCDF file&#39;s name.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        dataset_index (int): Index indicating which dataset to select (1 for dataset_1, 2 for dataset_2).</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: A tuple containing the selected netCDF4 Dataset object and its filename prefix.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">dataset_index</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">selected_dataset</span> <span class="o">=</span> <span class="n">dataset_1</span>
+        <span class="c1"># Extract filename (e.g., &#39;konstanz_4096x4096_v9_Baseline_av_3d_N03.000&#39;)</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">file_3d_1</span><span class="p">)</span>
+        <span class="c1"># Extract filename prefix (e.g., &#39;konstanz_4096x4096_v9_Baseline_av_3d_N03.000&#39;)</span>
+        <span class="n">filename_prefix</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.nc&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">dataset_index</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">selected_dataset</span> <span class="o">=</span> <span class="n">dataset_2</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">file_3d_2</span><span class="p">)</span>
+        <span class="n">filename_prefix</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.nc&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid dataset_index. Please choose 1 or 2.&quot;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">selected_dataset</span><span class="p">,</span> <span class="n">filename_prefix</span>
+
+<span class="c1"># Assign the chosen variable group and construct a filename suffix for the output.</span>
+<span class="k">if</span> <span class="n">var_group_index</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">variable_group</span> <span class="o">=</span> <span class="n">variable_group_1</span>
+    <span class="n">filename_suffix</span> <span class="o">=</span> <span class="s2">&quot;-wdir-wspeed&quot;</span>
+<span class="k">elif</span> <span class="n">var_group_index</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="n">variable_group</span> <span class="o">=</span> <span class="n">variable_group_2</span>
+    <span class="n">filename_suffix</span> <span class="o">=</span> <span class="s2">&quot;-u-v-w&quot;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid var_group_index. Please choose 1 or 2.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Get the selected dataset and its corresponding filename prefix.</span>
+<span class="n">dataset</span><span class="p">,</span> <span class="n">filename_prefix</span> <span class="o">=</span> <span class="n">get_dataset_and_filename_prefix</span><span class="p">(</span><span class="n">dataset_index</span><span class="o">=</span><span class="n">ds_index</span><span class="p">)</span>
+
+<span class="c1"># Get the unique dimensions for the selected variable group.</span>
+<span class="n">unique_dimensions_group</span> <span class="o">=</span> <span class="n">get_unique_dimensions</span><span class="p">(</span><span class="n">variable_group</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the title of the selected dataset.</span>
+<span class="c1"># The title typically contains simulation run information.</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dataset Title (Part): </span><span class="si">{</span><span class="n">dataset</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">4</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># Example: Extracts a specific part of the title string.</span>
+
+<span class="c1"># Print the constructed filename prefix and suffix for the output NetCDF file.</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Output Filename Prefix: </span><span class="si">{</span><span class="n">filename_prefix</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Output Filename Suffix: </span><span class="si">{</span><span class="n">filename_suffix</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Print the list of variables included in the selected group.</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Variables selected for export: </span><span class="si">{</span><span class="n">variable_group</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Print the unique dimensions identified for the selected variable group.</span>
+<span class="c1"># This confirms the dimensional structure that will be used for the output NetCDF file.</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unique dimensions for selected variables: </span><span class="si">{</span><span class="n">unique_dimensions_group</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dataset Title (Part): konstanz_4096x4096_v9_Baseline.00
+Output Filename Prefix: konstanz_4096x4096_v9_Baseline_av_3d_N03.000
+Output Filename Suffix: -wdir-wspeed
+Variables selected for export: [&#39;wdir&#39;, &#39;wspeed&#39;]
+Unique dimensions for selected variables: [&#39;zu_3d&#39;, &#39;time&#39;, &#39;y&#39;, &#39;x&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="perform-extraction-and-save-data">
+<h2>7. Perform Extraction and Save Data<a class="headerlink" href="#perform-extraction-and-save-data" title="Link to this heading"></a></h2>
+<p>This final and crucial section performs the actual extraction of surface-level 2D data from the 3D variables. It iterates through the selected time steps, extracts the lowest non-zero atmospheric layer and the layer above it for each variable using the subset_data function, and then writes this processed 2D data into a new NetCDF file. This allows for focused analysis on atmospheric conditions near the ground.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set the time sequence to process all available time steps.</span>
+<span class="c1"># This ensures that surface data is extracted for every time point in the simulation.</span>
+<span class="n">time_sequence</span> <span class="o">=</span> <span class="n">time_sequence_all</span>
+
+<span class="c1"># Define the output directory path.</span>
+<span class="n">output_directory</span> <span class="o">=</span> <span class="s2">&quot;./output/_02_2D_surface_from_3D/&quot;</span>
+
+<span class="c1"># Create the output directory if it does not already exist.</span>
+<span class="c1"># `os.makedirs` creates all intermediate directories. `exist_ok=True` prevents an error if the directory exists.</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">output_directory</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Construct the full output file path.</span>
+<span class="c1"># Combines the directory, filename prefix, and filename suffix.</span>
+<span class="n">output_filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_directory</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">filename_prefix</span><span class="si">}{</span><span class="n">filename_suffix</span><span class="si">}</span><span class="s2">.nc&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- Added check to skip export if file already exists ---</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">output_filepath</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Skipping export: File already exists at </span><span class="si">{</span><span class="n">output_filepath</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Create a new NetCDF file in write mode (&quot;w&quot;).</span>
+    <span class="c1"># `nc.Dataset` is used for creating and writing to NetCDF files.</span>
+    <span class="k">with</span> <span class="n">nc</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">output_filepath</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;NETCDF4_CLASSIC&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out_file</span><span class="p">:</span>
+        <span class="c1"># --- Copy Global Attributes ---</span>
+        <span class="c1"># Iterate through all global attributes of the input dataset.</span>
+        <span class="k">for</span> <span class="n">attr_name</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">ncattrs</span><span class="p">():</span>
+            <span class="c1"># Exclude &quot;VAR_LIST&quot; from direct copying as it will be reconstructed.</span>
+            <span class="k">if</span> <span class="n">attr_name</span> <span class="o">!=</span> <span class="s2">&quot;VAR_LIST&quot;</span><span class="p">:</span>
+                <span class="c1"># Copy each attribute&#39;s value to the output file.</span>
+                <span class="n">out_file</span><span class="o">.</span><span class="n">setncattr</span><span class="p">(</span><span class="n">attr_name</span><span class="p">,</span> <span class="n">dataset</span><span class="o">.</span><span class="n">getncattr</span><span class="p">(</span><span class="n">attr_name</span><span class="p">))</span>
+        
+        <span class="c1"># Reconstruct and set the &quot;VAR_LIST&quot; attribute for the output file.</span>
+        <span class="c1"># This attribute lists the variables contained within the new file, formatted as &#39;;var1;var2;&#39;.</span>
+        <span class="n">var_list_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;;</span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">variable_group</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;;&quot;</span>
+        <span class="n">out_file</span><span class="o">.</span><span class="n">setncattr</span><span class="p">(</span><span class="s1">&#39;VAR_LIST&#39;</span><span class="p">,</span> <span class="n">var_list_str</span><span class="p">)</span>
+        
+        <span class="c1"># --- Create Dimensions ---</span>
+        <span class="c1"># Iterate through the unique dimensions required by the `variable_group`.</span>
+        <span class="k">for</span> <span class="n">dim_name</span> <span class="ow">in</span> <span class="n">unique_dimensions_group</span><span class="p">:</span>
+            <span class="c1"># Handling for &#39;time&#39; dimension:</span>
+            <span class="k">if</span> <span class="n">dim_name</span> <span class="o">==</span> <span class="s1">&#39;time&#39;</span><span class="p">:</span>
+                <span class="c1"># Create &#39;time&#39; dimension in the output file with the length of the processed time sequence.</span>
+                <span class="n">out_file</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="n">dim_name</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">time_sequence</span><span class="p">))</span>
+                <span class="c1"># Create a variable for &#39;time&#39; and copy its data from the original dataset,</span>
+                <span class="c1"># but only for the `time_sequence` (if `time_sequence` is a subset of `time_sequence_all`).</span>
+                <span class="c1"># In this notebook, `time_sequence = time_sequence_all`, so all original times are copied.</span>
+                <span class="n">out_variable_dim</span> <span class="o">=</span> <span class="n">out_file</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="n">dim_name</span><span class="p">,</span> <span class="n">dataset</span><span class="p">[</span><span class="n">dim_name</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="p">(</span><span class="n">dim_name</span><span class="p">,))</span>
+                <span class="n">out_variable_dim</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">dim_name</span><span class="p">][:]</span>
+            
+            <span class="c1"># Handling for &#39;z&#39; (vertical) dimension:</span>
+            <span class="k">elif</span> <span class="n">dim_name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">):</span>
+                <span class="c1"># For surface extraction, the &#39;z&#39; dimension is reduced to a size of 1.</span>
+                <span class="c1"># This represents the chosen surface layer.</span>
+                <span class="n">dim_size</span> <span class="o">=</span> <span class="mi">1</span> 
+                <span class="n">out_file</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="n">dim_name</span><span class="p">,</span> <span class="n">dim_size</span><span class="p">)</span>
+                <span class="c1"># Create a variable for &#39;z&#39; and copy only the first level&#39;s value (as we take slices from 3D).</span>
+                <span class="n">out_variable_dim</span> <span class="o">=</span> <span class="n">out_file</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="n">dim_name</span><span class="p">,</span> <span class="n">dataset</span><span class="p">[</span><span class="n">dim_name</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="p">(</span><span class="n">dim_name</span><span class="p">,))</span>
+                <span class="n">out_variable_dim</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">dim_name</span><span class="p">][:</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># Copy only the first z-level&#39;s coordinate.</span>
+
+            <span class="c1"># Handling for &#39;x&#39; and &#39;y&#39; (horizontal) dimensions:</span>
+            <span class="k">elif</span> <span class="n">dim_name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">dim_name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">):</span>
+                <span class="c1"># These dimensions retain their original sizes.</span>
+                <span class="n">out_file</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="n">dim_name</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">dimensions</span><span class="p">[</span><span class="n">dim_name</span><span class="p">]))</span>
+                <span class="n">out_variable_dim</span> <span class="o">=</span> <span class="n">out_file</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="n">dim_name</span><span class="p">,</span> <span class="n">dataset</span><span class="p">[</span><span class="n">dim_name</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="p">(</span><span class="n">dim_name</span><span class="p">,))</span>
+                <span class="n">out_variable_dim</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">dim_name</span><span class="p">][:]</span>
+                
+            <span class="c1"># Handling for &#39;lon&#39; and &#39;lat&#39; (geographic coordinates) dimensions:</span>
+            <span class="k">elif</span> <span class="n">dim_name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;lon&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">dim_name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;lat&#39;</span><span class="p">):</span>
+                <span class="c1"># These dimensions retain their original sizes.</span>
+                <span class="n">out_file</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="n">dim_name</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">dimensions</span><span class="p">[</span><span class="n">dim_name</span><span class="p">]))</span>
+                <span class="n">out_variable_dim</span> <span class="o">=</span> <span class="n">out_file</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="n">dim_name</span><span class="p">,</span> <span class="n">dataset</span><span class="p">[</span><span class="n">dim_name</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="p">(</span><span class="n">dim_name</span><span class="p">,))</span>
+                <span class="n">out_variable_dim</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">dim_name</span><span class="p">][:]</span>
+            
+        <span class="c1"># --- Write Variable Values ---</span>
+        <span class="c1"># Iterate through each variable name in the selected `variable_group`.</span>
+        <span class="k">for</span> <span class="n">variable_name</span> <span class="ow">in</span> <span class="n">variable_group</span><span class="p">:</span>
+            <span class="c1"># Check if the variable exists in the input dataset.</span>
+            <span class="k">if</span> <span class="n">variable_name</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">variables</span><span class="p">:</span>
+                <span class="c1"># Create the variable in the output NetCDF file.</span>
+                <span class="c1"># The dimensions are copied from the original variable, but the `z` dimension&#39;s size will effectively be 1.</span>
+                <span class="c1"># Note: `dataset[variable_name].dimensions` will include &#39;z&#39;, which is handled by its dimension size of 1.</span>
+                <span class="n">out_variable</span> <span class="o">=</span> <span class="n">out_file</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="n">variable_name</span><span class="p">,</span>
+                                                       <span class="n">dataset</span><span class="p">[</span><span class="n">variable_name</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> 
+                                                       <span class="n">dataset</span><span class="p">[</span><span class="n">variable_name</span><span class="p">]</span><span class="o">.</span><span class="n">dimensions</span><span class="p">,</span> <span class="c1"># Use original dimensions for consistency</span>
+                                                       <span class="n">fill_value</span><span class="o">=</span><span class="n">dataset</span><span class="p">[</span><span class="n">variable_name</span><span class="p">]</span><span class="o">.</span><span class="n">_FillValue</span> <span class="k">if</span> <span class="s1">&#39;_FillValue&#39;</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">[</span><span class="n">variable_name</span><span class="p">]</span><span class="o">.</span><span class="n">ncattrs</span><span class="p">()</span> <span class="k">else</span> <span class="o">-</span><span class="mf">9999.0</span><span class="p">)</span> <span class="c1"># Copy fill value</span>
+
+                <span class="c1"># Loop through each time index in the `time_sequence`.</span>
+                <span class="k">for</span> <span class="n">t_idx</span><span class="p">,</span> <span class="n">time_step_idx</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">time_sequence</span><span class="p">):</span>
+                    <span class="c1"># Use `subset_data` to extract the two 2D surface slices for the current time step.</span>
+                    <span class="c1"># `data_0` (lowest non-zero layer) and `data_1` (next layer).</span>
+                    <span class="n">data_0</span><span class="p">,</span> <span class="n">data_1</span> <span class="o">=</span> <span class="n">subset_data</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">,</span> <span class="n">time_step_idx</span><span class="p">)</span>
+                    
+                    <span class="c1"># Write `data_1` (the next atmospheric layer above the lowest non-zero) to the output file.</span>
+                    <span class="c1"># `[t_idx, 0, :, :]` specifies writing to the `t_idx`-th time step, 0-th z-layer, and all y, x dimensions.</span>
+                    <span class="c1"># To save `data_0` instead, change `data_1` to `data_0`.</span>
+                    <span class="n">out_variable</span><span class="p">[</span><span class="n">t_idx</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">data_1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Warning: Variable &#39;</span><span class="si">{</span><span class="n">variable_name</span><span class="si">}</span><span class="s2">&#39; not found in the dataset. Skipping export for this variable.&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Successfully extracted and saved surface data to: </span><span class="si">{</span><span class="n">output_filepath</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Skipping export: File already exists at ./output/_02_2D_surface_from_3D/konstanz_4096x4096_v9_Baseline_av_3d_N03.000-wdir-wspeed.nc
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="_01_2D_Var_Agg_and_Extract.html" class="btn btn-neutral float-left" title="2D Variable Aggregation and Extraction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="_03_2D_Surface_Var_Agg_and_Extract.html" class="btn btn-neutral float-right" title="3D Variable Extraction and Aggregation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, str.ucture GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

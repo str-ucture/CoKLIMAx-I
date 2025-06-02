@@ -1,0 +1,1143 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2D Air Temperature Analysis: Baseline vs. Scenario &mdash; CoKLIMAx 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=822aaed9" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script type="application/vnd.jupyter.widget-state+json">{"state": {"5acbd6e3ad2946ebbb88cc543801adfd": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "92db255457394f9bb6d96d4db649a268": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "a299fe9a27964bf8bd1047b06b814da1": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DropdownModel", "_options_labels": ["ta_2m*_xy", "tsurf*_xy", "wspeed_10m*_xy", "bio_pet*_xy", "bio_utci*_xy"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "DropdownView", "description": "Select test variable:", "description_allow_html": false, "disabled": false, "index": 0, "layout": "IPY_MODEL_5acbd6e3ad2946ebbb88cc543801adfd", "style": "IPY_MODEL_92db255457394f9bb6d96d4db649a268", "tabbable": null, "tooltip": null}}}, "version_major": 2, "version_minor": 0}</script>
+      <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2D Air Temperature Analysis: Heatmaps" href="04_Air_Temp_Analysis_Heatmaps.html" />
+    <link rel="prev" title="Distance of AOI vs t-test" href="02_Distance_of_AOI_vs_t-test.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            CoKLIMAx
+              <img src="../_static/coklimax_logo_new.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Data Preparation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_01_2D_Var_Agg_and_Extract.html">2D Variable Aggregation and Extraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_02_3D_to_2d_Surface_Var_Extract.html">3D Variable Surface Extraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_03_2D_Surface_Var_Agg_and_Extract.html">3D Variable Extraction and Aggregation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Preminimary:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="01_Obs_vs_Sim.html">Comparison of Observed vs Simulation Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_Distance_of_AOI_vs_t-test.html">Distance of AOI vs t-test</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Variable: Temperature:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2D Air Temperature Analysis: Baseline vs. Scenario</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#import-dependencies">1. Import dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#import-data">2. Import data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#variable-selection">3. Variable Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#define-time-sequences-and-equivalents">4. Define Time Sequences and Equivalents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#helper-functions-for-spatial-operations-and-plotting">5. Helper Functions for Spatial Operations and Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extract-variable-data-and-define-areas-of-interest-aois">6. Extract Variable Data and Define Areas of Interest (AOIs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#define-aggregation-logic">7. Define Aggregation Logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#perform-statistical-analysis-and-create-dataframes">8. Perform Statistical Analysis and Create DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#prepare-data-for-plotting">9. Prepare Data for Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#visualize-mean-temperature-trends">10. Visualize Mean Temperature Trends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#summarize-statistical-results">11. Summarize Statistical Results</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="04_Air_Temp_Analysis_Heatmaps.html">2D Air Temperature Analysis: Heatmaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_Air_Temp_with_Agg.html">2D Air Temperature Aggregation Tool</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Variables: Biometeorology:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="06_Bio_Var_Analysis_BS_vs_S1.html">2D Biometeorological Variable Analysis: Baseline vs. Scenario</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_Bio_Var_Analysis_BS_vs_S1.html">Biological Variable Analysis</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CoKLIMAx</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">2D Air Temperature Analysis: Baseline vs. Scenario</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks/03_Air_Temp_Analysis_BS_vs_S1.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="d-air-temperature-analysis-baseline-vs-scenario">
+<h1>2D Air Temperature Analysis: Baseline vs. Scenario<a class="headerlink" href="#d-air-temperature-analysis-baseline-vs-scenario" title="Link to this heading"></a></h1>
+<p>This notebook provides a comprehensive analysis of 2-meter air temperature (<code class="docutils literal notranslate"><span class="pre">ta_2m</span></code>) from PALM (Potsdam Atmospheric Large-Eddy Simulation Model) 2D output files. It compares a Baseline simulation scenario against a modified Scenario 1, focusing on:</p>
+<ul class="simple">
+<li><p><strong>Data Loading and Preprocessing:</strong> Importing 2D <code class="docutils literal notranslate"><span class="pre">av_xy_N03.000.nc</span></code> files and static driver data.</p></li>
+<li><p><strong>Variable Selection:</strong> Allowing interactive selection of the 2D variable for analysis.</p></li>
+<li><p><strong>Time Series Analysis:</strong> Defining time sequences and equivalents for temporal aggregation and plotting.</p></li>
+<li><p><strong>Statistical Comparison:</strong> Performing independent t-tests between the two simulation scenarios across various Areas of Interest (AOIs) and buffer distances.</p></li>
+<li><p><strong>Visualization:</strong> Generating line plots to show temperature trends over time for different AOIs and a bar graph to summarize t-test results.</p></li>
+<li><p><strong>Data Summarization:</strong> Presenting key statistics (min/max temperatures) for both scenarios and t-test outcomes.</p></li>
+</ul>
+<p>The goal is to assess the impact of changes introduced in Scenario 1 on air temperature by comparing it against the Baseline, quantifying statistical differences, and visualizing trends.</p>
+<section id="import-dependencies">
+<h2>1. Import dependencies<a class="headerlink" href="#import-dependencies" title="Link to this heading"></a></h2>
+<p>This section imports all necessary libraries for data manipulation, NetCDF file handling, geographical data processing, statistical analysis, interactive widgets, and advanced plotting capabilities.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">netCDF4</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nc</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.ticker</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ticker</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.patches</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">patches</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.ticker</span><span class="w"> </span><span class="kn">import</span> <span class="n">FixedLocator</span><span class="p">,</span> <span class="n">MultipleLocator</span> <span class="c1"># Ensure MultipleLocator is imported here</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.patches</span><span class="w"> </span><span class="kn">import</span> <span class="n">Patch</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">palm_variables</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="import-data">
+<h2>2. Import data<a class="headerlink" href="#import-data" title="Link to this heading"></a></h2>
+<p>This section defines the file paths for the 2D simulation output NetCDF files (for baseline and scenario 1) and the static driver file. These files are then loaded into netCDF4 Dataset objects, making their contents accessible for processing. The buildings_2d data from the static driver is also extracted, which is used for masking non-atmospheric grid cells during data extraction.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Absolute URLs (paths) of 2D xy-averaged simulation output files and the static driver file.</span>
+<span class="n">file_xy_1</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;./Data/_simulation_outputs_3/konstanz_4096x4096_v9_Baseline-48hr/OUTPUT/konstanz_4096x4096_v9_Baseline_av_xy_N03.000.nc&quot;</span>
+<span class="n">file_xy_2</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;./Data/_simulation_outputs_3/konstanz_4096x4096_v9_Scenario_1-48hr/OUTPUT/konstanz_4096x4096_v9_Scenario_1_av_xy_N03.000.nc&quot;</span>
+<span class="n">file_static</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;./Data/_simulation_outputs_3/konstanz_4096x4096_v9_Scenario_1-48hr/INPUT/konstanz_4096x4096_v9_Scenario_1_static_N03&quot;</span>
+
+<span class="c1"># Read NetCDF files into Dataset objects in read mode (&#39;r&#39;).</span>
+<span class="n">dataset_1</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">file_xy_1</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">dataset_2</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">file_xy_2</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">dataset_3</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">file_static</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
+<span class="c1"># Store the Dataset objects and their corresponding file paths in lists for easy iteration.</span>
+<span class="n">file_xy_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">file_xy_1</span><span class="p">,</span> <span class="n">file_xy_2</span><span class="p">]</span>
+<span class="n">dataset_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">dataset_1</span><span class="p">,</span> <span class="n">dataset_2</span><span class="p">]</span>
+
+<span class="c1"># Extract 2D buildings data from the static dataset.</span>
+<span class="c1"># This data is crucial for masking out non-atmospheric grid cells (e.g., inside buildings)</span>
+<span class="c1"># when performing spatial averages or statistical tests.</span>
+<span class="n">buildings_2d</span> <span class="o">=</span> <span class="n">dataset_3</span><span class="p">[</span><span class="s1">&#39;buildings_2d&#39;</span><span class="p">]</span>
+<span class="n">buildings_2d_data</span> <span class="o">=</span> <span class="n">buildings_2d</span><span class="p">[:,</span> <span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="variable-selection">
+<h2>3. Variable Selection<a class="headerlink" href="#variable-selection" title="Link to this heading"></a></h2>
+<p>This section allows the user to interactively select a 2D variable from the loaded NetCDF datasets. A dropdown widget is provided for selection, and the chosen variable’s description and unit (retrieved from the palm_variables module) are displayed for clear identification.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract variable names from the first dataset where the number of dimensions is greater than 2.</span>
+<span class="c1"># In PALM xy-averaged output files, these typically represent 2D spatial data over time (time, y, x).</span>
+<span class="n">var_names_palm</span> <span class="o">=</span> <span class="p">[</span><span class="n">var</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">dataset_1</span><span class="o">.</span><span class="n">variables</span> <span class="k">if</span> <span class="n">dataset_1</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="c1"># Initialize `test_variable` with the first variable in the list (`var_names_palm[0]`),</span>
+<span class="c1"># which is commonly &#39;ta_2m*_xy&#39; for 2-m air temperature.</span>
+<span class="n">test_variable</span> <span class="o">=</span> <span class="n">var_names_palm</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Create a dropdown widget to allow the user to select the desired 2D variable.</span>
+<span class="n">drop_down</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+    <span class="n">options</span><span class="o">=</span><span class="n">var_names_palm</span><span class="p">,</span>         <span class="c1"># Populate the dropdown with the extracted 2D variable names.</span>
+    <span class="n">value</span><span class="o">=</span><span class="n">var_names_palm</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>        <span class="c1"># Set the initial selected value in the dropdown.</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Select test variable:&#39;</span> <span class="c1"># Label displayed next to the dropdown.</span>
+<span class="p">)</span>
+
+<span class="c1"># Define a handler function that will be called whenever the dropdown&#39;s value changes.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">dropdown_handler</span><span class="p">(</span><span class="n">change</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">test_variable</span>  <span class="c1"># Declare `test_variable` as global to modify it.</span>
+    <span class="n">test_variable</span> <span class="o">=</span> <span class="n">change</span><span class="o">.</span><span class="n">new</span>     <span class="c1"># Update the global `test_variable` with the newly selected value.</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selected variable: </span><span class="si">{</span><span class="n">test_variable</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># Print the newly selected variable to the console.</span>
+
+<span class="c1"># Attach the `dropdown_handler` function to observe changes in the &#39;value&#39; property of the dropdown.</span>
+<span class="n">drop_down</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">dropdown_handler</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+
+<span class="c1"># Display the dropdown widget in the notebook output.</span>
+<span class="n">display</span><span class="p">(</span><span class="n">drop_down</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "a299fe9a27964bf8bd1047b06b814da1"}</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if the selected `test_variable` string contains a wildcard character &#39;*&#39;.</span>
+<span class="c1"># This is common for PALM variables indicating an xy-averaged or general 2D field.</span>
+<span class="k">if</span> <span class="s2">&quot;*&quot;</span> <span class="ow">in</span> <span class="n">test_variable</span><span class="p">:</span>
+    <span class="c1"># If a wildcard is present, extract the base part of the variable name (e.g., &#39;ta_2m&#39; from &#39;ta_2m*_xy&#39;)</span>
+    <span class="c1"># and re-append &#39;*&#39; to match the keys in `palm_variables.variables_dict`.</span>
+    <span class="n">var_initial</span> <span class="o">=</span> <span class="n">test_variable</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;*&quot;</span>
+    <span class="c1"># Retrieve the dictionary of information for `var_initial` from the `palm_variables` module.</span>
+    <span class="n">variable_info</span> <span class="o">=</span> <span class="n">palm_variables</span><span class="o">.</span><span class="n">variables_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">var_initial</span><span class="p">,</span> <span class="p">{})</span>
+    <span class="c1"># Extract the &#39;unit&#39; from `variable_info`, defaulting to &#39;No unit available&#39; if the key is missing.</span>
+    <span class="n">unit</span> <span class="o">=</span> <span class="n">variable_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;unit&#39;</span><span class="p">,</span> <span class="s1">&#39;No unit available&#39;</span><span class="p">)</span>
+    <span class="c1"># Extract the &#39;description&#39; from `variable_info`, defaulting to &#39;No description available&#39; if the key is missing.</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">variable_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;No description available&#39;</span><span class="p">)</span>
+    <span class="c1"># Print the capitalized description and its unit.</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">description</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2-m air temperature, °C
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="define-time-sequences-and-equivalents">
+<h2>4. Define Time Sequences and Equivalents<a class="headerlink" href="#define-time-sequences-and-equivalents" title="Link to this heading"></a></h2>
+<p>This section dynamically extracts the total number of time steps from the loaded dataset. It then defines parameters for time step intervals and calculates sequences and human-readable time equivalents (HH:MM format) for both hourly and all time steps. These sequences are crucial for temporal aggregation and plotting.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract `variable_data_1` for the `test_variable` from the first dataset.</span>
+<span class="n">variable_data_1</span> <span class="o">=</span> <span class="n">dataset_1</span><span class="p">[</span><span class="n">test_variable</span><span class="p">]</span>
+
+<span class="c1"># Get the shape of `variable_data_1` to determine the total number of time steps.</span>
+<span class="n">variable_data_shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">variable_data_1</span><span class="p">)</span>
+<span class="n">total_time_steps</span> <span class="o">=</span> <span class="n">variable_data_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># The first dimension is usually time.</span>
+
+<span class="c1"># Display the total number of time steps.</span>
+<span class="n">total_time_steps</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>288
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define `time_step_interval`: This controls how frequently data points are sampled or aggregated.</span>
+<span class="c1"># In PALM, each time step typically represents 10 minutes.</span>
+<span class="c1">#   - `time_step_interval = 1`: Corresponds to every 10-minute interval.</span>
+<span class="c1">#   - `time_step_interval = 6`: Corresponds to hourly intervals (6 * 10 minutes = 60 minutes).</span>
+<span class="n">time_step_interval</span> <span class="o">=</span> <span class="mi">6</span>
+
+<span class="c1"># Define `second_step`: This offset helps align `time_sequence_hourly` with actual hour marks.</span>
+<span class="c1"># If time steps are 0-indexed and represent 10-minute intervals:</span>
+<span class="c1">#   - `second_step = 0`: Corresponds to 0:00, 0:10, 0:20...</span>
+<span class="c1">#   - `second_step = 5`: Corresponds to 0:50, 1:50, 2:50... (often used for hourly averages centered at the hour)</span>
+<span class="n">second_step</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="c1"># `time_sequence_hourly`: A list of time step indices for hourly intervals.</span>
+<span class="c1"># It starts at `0` and extends by `time_step_interval` from `second_step`.</span>
+<span class="n">time_sequence_hourly</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">time_sequence_hourly</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">second_step</span><span class="p">,</span> <span class="n">total_time_steps</span><span class="p">,</span> <span class="n">time_step_interval</span><span class="p">))</span>
+
+<span class="c1"># `time_sequence_all`: A list containing all available time step indices (from 0 to `total_time_steps - 1`).</span>
+<span class="n">time_sequence_all</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_time_steps</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_time_equivalent</span><span class="p">(</span><span class="n">time_sequence</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a sequence of time steps (each representing 10 minutes) into</span>
+<span class="sd">    human-readable HH:MM format.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        time_sequence (list or array): A list of time step indices.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: A tuple containing:</span>
+<span class="sd">            - time_equivalent (list): List of time strings in HH:MM format (can exceed 24 hours).</span>
+<span class="sd">            - time_equivalent_24hr (list): List of time strings in 24-hour HH:MM format (resets after 23:50).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">time_equivalent</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">time_equivalent_24hr</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">time_step</span> <span class="ow">in</span> <span class="n">time_sequence</span><span class="p">:</span>
+        <span class="c1"># Calculate total minutes from the start of the simulation (each step is 10 minutes).</span>
+        <span class="n">total_minutes</span> <span class="o">=</span> <span class="p">(</span><span class="n">time_step</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span> 
+        <span class="n">hours</span><span class="p">,</span> <span class="n">minutes</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">total_minutes</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span> <span class="c1"># Convert total minutes to hours and remaining minutes.</span>
+        
+        <span class="c1"># Append time equivalent in HH:MM format (hours can exceed 24, e.g., 25:00 for the next day).</span>
+        <span class="n">time_equivalent</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">hours</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">minutes</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="c1"># Calculate hours in a 24-hour cycle for `time_equivalent_24hr`.</span>
+        <span class="n">hours_24hr</span> <span class="o">=</span> <span class="n">hours</span> <span class="o">%</span> <span class="mi">24</span> 
+        <span class="n">time_equivalent_24hr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">hours_24hr</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">minutes</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">time_equivalent</span><span class="p">,</span> <span class="n">time_equivalent_24hr</span>
+
+<span class="c1"># Generate time equivalents for hourly and all time steps.</span>
+<span class="n">time_equivalent_hourly</span><span class="p">,</span> <span class="n">time_equivalent_hourly_24hr</span> <span class="o">=</span> <span class="n">get_time_equivalent</span><span class="p">(</span><span class="n">time_sequence_hourly</span><span class="p">)</span>
+<span class="n">time_equivalent_all</span><span class="p">,</span> <span class="n">time_equivalent_all_24hr</span> <span class="o">=</span> <span class="n">get_time_equivalent</span><span class="p">(</span><span class="n">time_sequence_all</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="helper-functions-for-spatial-operations-and-plotting">
+<h2>5. Helper Functions for Spatial Operations and Plotting<a class="headerlink" href="#helper-functions-for-spatial-operations-and-plotting" title="Link to this heading"></a></h2>
+<p>This section defines several helper functions crucial for spatial data manipulation and plot customization. These include functions for calculating grid coordinates, adjusting plot ticks, determining the date based on time index, and adding north arrows and scale bars to plots.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define grid spacing (dx, dy) from the first dataset.</span>
+<span class="c1"># Assuming dx and dy are constant and can be derived from the first two x/y coordinates.</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="n">dataset_1</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">dataset_1</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">dy</span> <span class="o">=</span> <span class="n">dataset_1</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">dataset_1</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Define number of cells in x and y dimensions.</span>
+<span class="c1"># These are derived from the length of the &#39;x&#39; and &#39;y&#39; dimensions in the dataset.</span>
+<span class="n">nx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">dataset_1</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ny</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">dataset_1</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Coordinates of the origin in PALM (origin_x, origin_y, origin_z).</span>
+<span class="c1"># These represent the real-world (e.g., UTM) coordinates of the southwest corner of the simulation domain.</span>
+<span class="n">origin_x</span><span class="p">,</span> <span class="n">origin_y</span><span class="p">,</span> <span class="n">origin_z</span> <span class="o">=</span> <span class="n">dataset_1</span><span class="o">.</span><span class="n">origin_x</span><span class="p">,</span> <span class="n">dataset_1</span><span class="o">.</span><span class="n">origin_y</span><span class="p">,</span> <span class="n">dataset_1</span><span class="o">.</span><span class="n">origin_z</span>
+
+<span class="c1"># Vectors for coordinate at cell edges (x, y).</span>
+<span class="c1"># These arrays define the real-world coordinates of the grid cell boundaries.</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">dx</span> <span class="o">+</span> <span class="n">origin_x</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ny</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">dy</span> <span class="o">+</span> <span class="n">origin_y</span>
+
+<span class="c1"># Vectors for coordinates at cell centers (xc, yc).</span>
+<span class="c1"># These arrays define the real-world coordinates of the center of each grid cell.</span>
+<span class="n">xc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nx</span><span class="p">)</span> <span class="o">*</span> <span class="n">dx</span> <span class="o">+</span> <span class="n">origin_x</span> <span class="o">+</span> <span class="n">dx</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="n">yc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ny</span><span class="p">)</span> <span class="o">*</span> <span class="n">dy</span> <span class="o">+</span> <span class="n">origin_y</span> <span class="o">+</span> <span class="n">dy</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="c1"># `origin_time`: The base time for the simulation, typically a string.</span>
+<span class="n">origin_time</span> <span class="o">=</span> <span class="n">dataset_1</span><span class="o">.</span><span class="n">origin_time</span>
+<span class="c1"># `time_step`: The time interval between consecutive simulation output steps, in seconds.</span>
+<span class="n">time_step</span> <span class="o">=</span> <span class="mi">600</span>  <span class="c1"># Default PALM output time step (10 minutes).</span>
+<span class="c1"># `nt`: Total number of time steps in the dataset.</span>
+<span class="n">nt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">dataset_1</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">center_yticks</span><span class="p">(</span><span class="n">ax</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Adjusts the vertical alignment of y-axis tick labels to be centered.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ax (matplotlib.axes.Axes): The axes object of the plot.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Get the current y-tick positions and generate corresponding labels.</span>
+    <span class="n">tick_positions</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_yticks</span><span class="p">()</span>
+    <span class="n">tick_labels</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">pos</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="n">tick_positions</span><span class="p">]</span> <span class="c1"># Format to two decimal places.</span>
+    
+    <span class="c1"># Set the tick positions explicitly using `FixedLocator` to prevent Matplotlib from auto-adjusting.</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">FixedLocator</span><span class="p">(</span><span class="n">tick_positions</span><span class="p">))</span>
+    
+    <span class="c1"># Set the y-tick labels with centered vertical alignment, and specify rotation and font size.</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">tick_labels</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_date_day</span><span class="p">(</span><span class="n">time_index</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Determines the simulation day (14 or 15) based on the time index,</span>
+<span class="sd">    assuming 10-minute time steps where 144 steps represent 24 hours.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        time_index (int): The time step index (0-indexed).</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        int: The day number (14 for the first 24 hours, 15 for the next).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># 144 time steps = 144 * 10 minutes = 1440 minutes = 24 hours.</span>
+    <span class="k">if</span> <span class="n">time_index</span> <span class="o">&lt;</span> <span class="mi">144</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">14</span> <span class="c1"># First day (June 14th)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">15</span> <span class="c1"># Second day (June 15th)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_extents</span><span class="p">(</span><span class="n">gdf_combined</span><span class="p">,</span> <span class="n">location_id</span><span class="p">,</span> <span class="n">increased_distance</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates the array indices (extents) for a given geographical polygon (AOI)</span>
+<span class="sd">    with an optional buffer distance.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        gdf_combined (geopandas.GeoDataFrame): GeoDataFrame containing all AOI polygons.</span>
+<span class="sd">        location_id (int): Index of the specific AOI in gdf_combined.</span>
+<span class="sd">        increased_distance (int): The buffer distance in grid cells to expand the AOI.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: A tuple (x_low, y_low, x_high, y_high) representing the array indices</span>
+<span class="sd">               of the bounding box for the buffered AOI, clamped to the simulation domain boundaries.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Extract the polygon geometry for the given location ID.</span>
+    <span class="n">polygon_aug</span> <span class="o">=</span> <span class="n">gdf_combined</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">location_id</span><span class="p">]</span>
+    <span class="n">polygon</span> <span class="o">=</span> <span class="n">polygon_aug</span><span class="o">.</span><span class="n">geometry</span>
+    <span class="n">min_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">,</span> <span class="n">max_x</span><span class="p">,</span> <span class="n">max_y</span> <span class="o">=</span> <span class="n">polygon</span><span class="o">.</span><span class="n">bounds</span>
+
+    <span class="c1"># Convert geographic coordinates to array indices (assuming dx = dy).</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">min_x</span> <span class="o">-</span> <span class="n">origin_x</span><span class="p">)</span> <span class="o">/</span> <span class="n">dx</span><span class="p">)</span>
+    <span class="n">y1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">min_y</span> <span class="o">-</span> <span class="n">origin_y</span><span class="p">)</span> <span class="o">/</span> <span class="n">dy</span><span class="p">)</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">max_x</span> <span class="o">-</span> <span class="n">origin_x</span><span class="p">)</span> <span class="o">/</span> <span class="n">dx</span><span class="p">)</span>
+    <span class="n">y2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">max_y</span> <span class="o">-</span> <span class="n">origin_y</span><span class="p">)</span> <span class="o">/</span> <span class="n">dy</span><span class="p">)</span>
+
+    <span class="c1"># Calculate half-window for the increased distance.</span>
+    <span class="n">half_window</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">increased_distance</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># Apply the buffer to the extents.</span>
+    <span class="n">x_low</span><span class="p">,</span> <span class="n">x_high</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">-</span> <span class="n">half_window</span><span class="p">,</span> <span class="n">x2</span> <span class="o">+</span> <span class="n">half_window</span>
+    <span class="n">y_low</span><span class="p">,</span> <span class="n">y_high</span> <span class="o">=</span> <span class="n">y1</span> <span class="o">-</span> <span class="n">half_window</span><span class="p">,</span> <span class="n">y2</span> <span class="o">+</span> <span class="n">half_window</span>
+
+    <span class="c1"># Clamp the extents to the simulation domain boundaries (0 to nx/ny).</span>
+    <span class="c1"># Ensures that the extracted region does not go out of bounds of the simulation grid.</span>
+    <span class="n">x_low</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x_low</span><span class="p">)</span>
+    <span class="n">y_low</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y_low</span><span class="p">)</span>
+    <span class="n">x_high</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">x_high</span><span class="p">)</span> <span class="c1"># Use nx for x_high boundary.</span>
+    <span class="n">y_high</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">ny</span><span class="p">,</span> <span class="n">y_high</span><span class="p">)</span> <span class="c1"># Use ny for y_high boundary.</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">x_low</span><span class="p">,</span> <span class="n">y_low</span><span class="p">,</span> <span class="n">x_high</span><span class="p">,</span> <span class="n">y_high</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_north_arrow_and_scale_bar</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Adds a north arrow and a customizable scale bar to the current matplotlib axes.</span>
+<span class="sd">    The positions are hardcoded for the specific simulation domain of Konstanz.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Hardcoded top-right coordinates for the north arrow position (adjust as needed for different plots/domains).</span>
+    <span class="n">top_right_x</span> <span class="o">=</span> <span class="mi">513390</span>
+    <span class="n">top_right_y</span> <span class="o">=</span> <span class="mi">5278890</span>
+    
+    <span class="c1"># Create the north arrow as a FancyArrowPatch.</span>
+    <span class="n">arrow</span> <span class="o">=</span> <span class="n">patches</span><span class="o">.</span><span class="n">FancyArrowPatch</span><span class="p">((</span><span class="n">top_right_x</span><span class="p">,</span> <span class="n">top_right_y</span> <span class="o">-</span> <span class="mi">40</span><span class="p">),</span> <span class="p">(</span><span class="n">top_right_x</span><span class="p">,</span> <span class="n">top_right_y</span><span class="p">),</span>
+                                    <span class="n">arrowstyle</span><span class="o">=</span><span class="s1">&#39;simple&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">mutation_scale</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="c1"># Add &#39;N&#39; text near the arrow.</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">top_right_x</span><span class="p">,</span> <span class="n">top_right_y</span> <span class="o">-</span> <span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">arrow</span><span class="p">)</span>    
+
+    <span class="c1"># Hardcoded bottom-right coordinates for the scale bar position.</span>
+    <span class="n">scale_bar_x</span> <span class="o">=</span> <span class="mi">513250</span>
+    <span class="n">scale_bar_y</span> <span class="o">=</span> <span class="mi">5278410</span>
+    
+    <span class="n">scale_bar_length_meters</span> <span class="o">=</span> <span class="mi">150</span>  <span class="c1"># Total length of the scale bar.</span>
+    <span class="n">scale_bar_segment_length</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># Length of each alternating black/white segment.</span>
+    
+    <span class="c1"># Create the scale bar as a collection of alternating segments.</span>
+    <span class="n">num_segments</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">scale_bar_length_meters</span> <span class="o">/</span> <span class="n">scale_bar_segment_length</span><span class="p">)</span>
+    <span class="n">num_labels</span> <span class="o">=</span> <span class="n">num_segments</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1"># Number of labels (0m, 50m, 100m, 150m).</span>
+    <span class="n">segment_width</span> <span class="o">=</span> <span class="n">scale_bar_length_meters</span> <span class="o">/</span> <span class="n">num_segments</span> <span class="c1"># Width of each segment.</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_segments</span><span class="p">):</span>
+        <span class="c1"># Alternate colors for segments.</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">segment_color</span> <span class="o">=</span> <span class="s1">&#39;k&#39;</span>  <span class="c1"># Black for even segments.</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">segment_color</span> <span class="o">=</span> <span class="s1">&#39;w&#39;</span>  <span class="c1"># White for odd segments.</span>
+        
+        <span class="n">segment_x</span> <span class="o">=</span> <span class="n">scale_bar_x</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="n">segment_width</span> <span class="c1"># X-coordinate for the start of the segment.</span>
+        <span class="c1"># Create a rectangle patch for each segment.</span>
+        <span class="n">scale_bar_segment</span> <span class="o">=</span> <span class="n">patches</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="n">segment_x</span><span class="p">,</span> <span class="n">scale_bar_y</span><span class="p">),</span> <span class="n">segment_width</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">segment_color</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">scale_bar_segment</span><span class="p">)</span>
+    
+    <span class="c1"># Add labels (0m, 50m, 100m, etc.) to the scale bar.</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_labels</span><span class="p">):</span>
+        <span class="n">scale_bar_label</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="o">*</span><span class="n">scale_bar_segment_length</span><span class="si">}</span><span class="s1">m&#39;</span> <span class="c1"># Label text.</span>
+        <span class="n">text_x</span> <span class="o">=</span> <span class="n">scale_bar_x</span> <span class="o">+</span> <span class="n">scale_bar_segment_length</span> <span class="o">*</span> <span class="n">i</span> <span class="c1"># X-coordinate for label.</span>
+        <span class="n">text_y</span> <span class="o">=</span> <span class="n">scale_bar_y</span> <span class="o">+</span> <span class="mi">25</span> <span class="c1"># Y-coordinate for label (slightly above the bar).</span>
+        
+        <span class="c1"># Add text label with a white background bbox for visibility.</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">text_x</span><span class="p">,</span> <span class="n">text_y</span><span class="p">,</span> <span class="n">scale_bar_label</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span>
+                <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">boxstyle</span><span class="o">=</span><span class="s1">&#39;round, pad=0.1&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="extract-variable-data-and-define-areas-of-interest-aois">
+<h2>6. Extract Variable Data and Define Areas of Interest (AOIs)<a class="headerlink" href="#extract-variable-data-and-define-areas-of-interest-aois" title="Link to this heading"></a></h2>
+<p>This section loads the selected variable data from both simulation scenarios and reads shapefiles defining specific Areas of Interest (AOIs). These AOIs will be used to extract relevant data subsets for statistical analysis and comparison. Predefined lists for scenario names and AOI labels are also set up.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load `variable_data_1` and `variable_data_2` for the `test_variable` from the respective datasets.</span>
+<span class="n">variable_data_1</span> <span class="o">=</span> <span class="n">dataset_1</span><span class="p">[</span><span class="n">test_variable</span><span class="p">]</span>
+<span class="n">variable_data_2</span> <span class="o">=</span> <span class="n">dataset_2</span><span class="p">[</span><span class="n">test_variable</span><span class="p">]</span>
+<span class="c1"># Store them in a list for easy iteration.</span>
+<span class="n">variable_datas</span> <span class="o">=</span> <span class="p">[</span><span class="n">variable_data_1</span><span class="p">,</span> <span class="n">variable_data_2</span><span class="p">]</span>
+
+<span class="c1"># Define names for the simulation scenarios, to be used in labels and legends.</span>
+<span class="n">sim_scenarions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Baseline (BS)&#39;</span><span class="p">,</span> <span class="s1">&#39;Scenario 1 (S1)&#39;</span><span class="p">]</span>
+<span class="n">sim_scene</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;BS&#39;</span><span class="p">,</span> <span class="s1">&#39;S1&#39;</span><span class="p">]</span>
+
+<span class="c1"># Define paths to shapefiles containing AOI definitions.</span>
+<span class="c1"># `shapefile_path_child_ii`: For &quot;Child II&quot; AOIs.</span>
+<span class="n">shapefile_path_child_ii</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;./Data/shapefiles/03_AOI_Child_II.shp&quot;</span>
+<span class="c1"># `shapefile_path_uhi_study`: For Urban Heat Island (UHI) study AOIs.</span>
+<span class="n">shapefile_path_uhi_study</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;./Data/shapefiles/UHI_aoi_study_fitted.shp&quot;</span>
+
+<span class="c1"># Read the shapefiles into GeoDataFrames.</span>
+<span class="n">gdf_child</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">shapefile_path_child_ii</span><span class="p">)</span>
+<span class="n">gdf_uhi</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">shapefile_path_uhi_study</span><span class="p">)</span>
+
+<span class="c1"># Combine the GeoDataFrames into a single GeoDataFrame for unified indexing of all AOIs.</span>
+<span class="n">gdf_combined</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">gdf_child</span><span class="p">,</span> <span class="n">gdf_uhi</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Define lists of location names and AOI names, corresponding to the combined GeoDataFrame.</span>
+<span class="c1"># These will be used for labeling plots and tables.</span>
+<span class="n">location_name_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Overall&#39;</span><span class="p">,</span> <span class="s1">&#39;Stephansplatz&#39;</span><span class="p">,</span> <span class="s1">&#39;Markstaette&#39;</span><span class="p">,</span> <span class="s1">&#39;Augustinerplatz&#39;</span><span class="p">]</span>
+<span class="n">aoi_name_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Overall&#39;</span><span class="p">,</span> <span class="s1">&#39;AOI1&#39;</span><span class="p">,</span> <span class="s1">&#39;AOI2&#39;</span><span class="p">,</span> <span class="s1">&#39;AOI3&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="define-aggregation-logic">
+<h2>7. Define Aggregation Logic<a class="headerlink" href="#define-aggregation-logic" title="Link to this heading"></a></h2>
+<p>This section defines the get_aggregate_time_list function, which creates lists of time steps for temporal aggregation. This function is designed to generate moving windows of time steps, enabling the calculation of aggregated values (e.g., averages) over specified durations, which can then be used in statistical analyses.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_aggregate_time_list</span><span class="p">(</span><span class="n">total_time_steps</span><span class="p">,</span> <span class="n">aggregate_time_steps</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generates a list of time step ranges for temporal aggregation, creating a moving window.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        total_time_steps (int): Total number of time steps in the simulation.</span>
+<span class="sd">        aggregate_time_steps (int): The size of the aggregation window (number of time steps).</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: A list where each element is a sub-list of time step indices</span>
+<span class="sd">              representing an aggregation window.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">time_lists</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_time_steps</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">aggregate_time_steps</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">time_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="c1"># No aggregation: window is just the current time step.</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">half_window</span> <span class="o">=</span> <span class="n">aggregate_time_steps</span> <span class="o">//</span> <span class="mi">2</span> <span class="c1"># Calculate half-window size.</span>
+            
+            <span class="c1"># Determine the start and end indices of the window based on even/odd `aggregate_time_steps`.</span>
+            <span class="k">if</span> <span class="n">aggregate_time_steps</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c1"># For even window, it&#39;s centered such that `i` is towards the end of the first half.</span>
+                <span class="c1"># Example: for aggregate_time_steps=6, half_window=3. For `i=10`, range is [7, 13) -&gt; [7, 8, 9, 10, 11, 12].</span>
+                <span class="n">time_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">half_window</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">half_window</span><span class="p">)]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># For odd window, it&#39;s perfectly centered around `i`.</span>
+                <span class="c1"># Example: for aggregate_time_steps=5, half_window=2. For `i=10`, range is [8, 13) -&gt; [8, 9, 10, 11, 12].</span>
+                <span class="n">time_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">half_window</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">half_window</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
+        
+        <span class="c1"># Filter out time indices that are outside the total simulation time steps.</span>
+        <span class="n">valid_time_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">time_list</span> <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">total_time_steps</span><span class="p">]</span>
+        <span class="n">time_lists</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">valid_time_list</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">time_lists</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize global variables to store the overall maximum and minimum values.</span>
+<span class="c1"># `value_maximum` is set to 0, `value_minimum` is set to a very large number to ensure any real value updates it.</span>
+<span class="k">global</span> <span class="n">value_maximum</span><span class="p">,</span> <span class="n">value_minimum</span>
+<span class="n">value_maximum</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">value_minimum</span> <span class="o">=</span> <span class="mi">999999</span>
+
+<span class="c1"># Iterate through all available time steps.</span>
+<span class="k">for</span> <span class="n">time_index_test</span> <span class="ow">in</span> <span class="n">time_sequence_all</span><span class="p">:</span>
+    <span class="c1"># Extract data for the current time step from `variable_data_1` (Baseline).</span>
+    <span class="c1"># Assuming `variable_data_1` has dimensions (time, z, y, x) or (time, y, x).</span>
+    <span class="c1"># If 4D, `[time_index_test, 0, :, :]` extracts the 2D slice at z=0. If 3D, `[time_index_test, :, :]`.</span>
+    <span class="n">value_test_1</span> <span class="o">=</span> <span class="n">variable_data_1</span><span class="p">[</span><span class="n">time_index_test</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span> 
+    <span class="c1"># Apply the 2D building mask to exclude values within buildings.</span>
+    <span class="n">value_test_1</span><span class="o">.</span><span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">buildings_2d_data</span><span class="o">.</span><span class="n">mask</span>
+
+    <span class="c1"># Extract data for the current time step from `variable_data_2` (Scenario 1).</span>
+    <span class="n">value_test_2</span> <span class="o">=</span> <span class="n">variable_data_2</span><span class="p">[</span><span class="n">time_index_test</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
+    <span class="n">value_test_2</span><span class="o">.</span><span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">buildings_2d_data</span><span class="o">.</span><span class="n">mask</span>
+
+    <span class="c1"># Find the maximum and minimum non-masked values for the current time step across both scenarios.</span>
+    <span class="n">max_value_test</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">value_test_1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">value_test_2</span><span class="p">))</span>
+    <span class="n">min_value_test</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">value_test_1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">value_test_2</span><span class="p">))</span>
+
+    <span class="c1"># Update the global `value_maximum` if the current `max_value_test` is greater.</span>
+    <span class="k">if</span> <span class="n">value_maximum</span> <span class="o">&lt;=</span> <span class="n">max_value_test</span><span class="p">:</span>
+        <span class="n">value_maximum</span> <span class="o">=</span> <span class="n">max_value_test</span>
+    <span class="c1"># Update the global `value_minimum` if the current `min_value_test` is smaller.</span>
+    <span class="k">if</span> <span class="n">value_minimum</span> <span class="o">&gt;=</span> <span class="n">min_value_test</span><span class="p">:</span>
+        <span class="n">value_minimum</span> <span class="o">=</span> <span class="n">min_value_test</span>
+
+<span class="c1"># Print the final global maximum and minimum values found.</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Overall Maximum Temperature: </span><span class="si">{</span><span class="n">value_maximum</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Overall Minimum Temperature: </span><span class="si">{</span><span class="n">value_minimum</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Overall Maximum Temperature: 35.47
+Overall Minimum Temperature: 13.54
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="perform-statistical-analysis-and-create-dataframes">
+<h2>8. Perform Statistical Analysis and Create DataFrames<a class="headerlink" href="#perform-statistical-analysis-and-create-dataframes" title="Link to this heading"></a></h2>
+<p>This section defines create_aggregated_dataframe, a key function that extracts variable data for specified AOIs and buffer distances, computes mean and median values, and performs independent t-tests between the two simulation scenarios (variable_data_1 and variable_data_2). It then organizes these results into a pandas DataFrame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">create_aggregated_dataframe</span><span class="p">(</span><span class="n">loc_id</span><span class="p">,</span> <span class="n">inc_dist</span><span class="p">,</span> <span class="n">time_lists</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Extracts variable data for a specified Area of Interest (AOI) and buffer distance,</span>
+<span class="sd">    computes mean and median values, and performs independent t-tests between two</span>
+<span class="sd">    simulation scenarios. Results are returned in a pandas DataFrame.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        loc_id (int): The index of the AOI in `gdf_combined`.</span>
+<span class="sd">        inc_dist (int): The increased buffer distance (in grid cells) around the AOI.</span>
+<span class="sd">        time_lists (list): A list of time step ranges for temporal aggregation.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pandas.DataFrame: A DataFrame containing aggregated means, medians, t-statistics,</span>
+<span class="sd">                          p-values, and t-test results (&#39;Reject null&#39; or &#39;Failed to reject null&#39;)</span>
+<span class="sd">                          for each time step.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Define spatial extents (x_low, y_low, x_high, y_high) for the AOI with the given buffer distance.</span>
+    <span class="n">x_low</span><span class="p">,</span> <span class="n">y_low</span><span class="p">,</span> <span class="n">x_high</span><span class="p">,</span> <span class="n">y_high</span> <span class="o">=</span> <span class="n">get_extents</span><span class="p">(</span><span class="n">gdf_combined</span><span class="p">,</span> <span class="n">loc_id</span><span class="p">,</span> <span class="n">inc_dist</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Extents for AOI </span><span class="si">{</span><span class="n">loc_id</span><span class="si">}</span><span class="s2"> (x_low, y_low, x_high, y_high): </span><span class="si">{</span><span class="n">x_low</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">y_low</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">x_high</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">y_high</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Define the significance level (alpha) for the t-test.</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
+    
+    <span class="c1"># Initialize lists to store computed statistics for each time window.</span>
+    <span class="n">mean1</span><span class="p">,</span> <span class="n">mean2</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>       <span class="c1"># Mean values for Baseline and Scenario 1.</span>
+    <span class="n">median1</span><span class="p">,</span> <span class="n">median2</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>   <span class="c1"># Median values for Baseline and Scenario 1.</span>
+    <span class="n">t_statistics</span> <span class="o">=</span> <span class="p">[]</span>           <span class="c1"># t-statistic from the independent t-test.</span>
+    <span class="n">p_values_ttest</span> <span class="o">=</span> <span class="p">[]</span>         <span class="c1"># p-value from the independent t-test.</span>
+    <span class="n">t_test_results</span> <span class="o">=</span> <span class="p">[]</span>         <span class="c1"># Categorical result of the t-test (&#39;Reject null&#39; or &#39;Failed to reject null&#39;).</span>
+
+    <span class="c1"># Iterate through each time window defined in `time_lists`.</span>
+    <span class="k">for</span> <span class="n">time_list</span> <span class="ow">in</span> <span class="n">time_lists</span><span class="p">:</span>
+        <span class="n">values_real_1</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># Store real (unmasked) data for Baseline.</span>
+        <span class="n">values_real_2</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># Store real (unmasked) data for Scenario 1.</span>
+
+        <span class="c1"># For each time index within the current time window:</span>
+        <span class="k">for</span> <span class="n">time_index</span> <span class="ow">in</span> <span class="n">time_list</span><span class="p">:</span>
+            <span class="c1"># Extract 2D data slices for the current time step and spatial extent from both scenarios.</span>
+            <span class="c1"># `variable_data_1` and `variable_data_2` are assumed to be (time, z, y, x) or (time, y, x).</span>
+            <span class="c1"># `[time_index, 0, y_low:y_high, x_low:x_high]` extracts the 2D slice at z=0 within the AOI.</span>
+            <span class="n">values_time_index_1</span> <span class="o">=</span> <span class="n">variable_data_1</span><span class="p">[</span><span class="n">time_index</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y_low</span><span class="p">:</span><span class="n">y_high</span><span class="p">,</span> <span class="n">x_low</span><span class="p">:</span><span class="n">x_high</span><span class="p">]</span>
+            <span class="n">values_time_index_2</span> <span class="o">=</span> <span class="n">variable_data_2</span><span class="p">[</span><span class="n">time_index</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y_low</span><span class="p">:</span><span class="n">y_high</span><span class="p">,</span> <span class="n">x_low</span><span class="p">:</span><span class="n">x_high</span><span class="p">]</span>
+            
+            <span class="c1"># Apply the 2D building mask to exclude values within buildings from the analysis.</span>
+            <span class="c1"># `~buildings_2d_data.mask` inverts the mask, so True for unmasked (valid) data.</span>
+            <span class="n">values_time_index_1</span><span class="o">.</span><span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">buildings_2d_data</span><span class="o">.</span><span class="n">mask</span>
+            <span class="n">values_time_index_2</span><span class="o">.</span><span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">buildings_2d_data</span><span class="o">.</span><span class="n">mask</span>
+
+            <span class="c1"># Get the compressed (unmasked) values as flat arrays.</span>
+            <span class="n">values_time_index_real_1</span> <span class="o">=</span> <span class="n">values_time_index_1</span><span class="o">.</span><span class="n">compressed</span><span class="p">()</span>
+            <span class="n">values_time_index_real_2</span> <span class="o">=</span> <span class="n">values_time_index_2</span><span class="o">.</span><span class="n">compressed</span><span class="p">()</span>
+
+            <span class="c1"># Extend the real values to the lists for the current time window.</span>
+            <span class="n">values_real_1</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">values_time_index_real_1</span><span class="p">)</span>
+            <span class="n">values_real_2</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">values_time_index_real_2</span><span class="p">)</span>
+
+        <span class="c1"># Compute the mean for the aggregated data in the current time window.</span>
+        <span class="n">mean1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">values_real_1</span><span class="p">))</span>
+        <span class="n">mean2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">values_real_2</span><span class="p">))</span>
+
+        <span class="c1"># Compute the median for the aggregated data in the current time window.</span>
+        <span class="n">median1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">values_real_1</span><span class="p">))</span> <span class="c1"># Using np.ma.median for masked arrays.</span>
+        <span class="n">median2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">values_real_2</span><span class="p">))</span>
+
+        <span class="c1"># Perform the independent t-test between the two sets of real values.</span>
+        <span class="n">t_statistic</span><span class="p">,</span> <span class="n">p_value_ttest</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">values_real_1</span><span class="p">,</span> <span class="n">values_real_2</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># Assuming unequal variances.</span>
+
+        <span class="c1"># Append t-statistic and p-value to their respective lists.</span>
+        <span class="n">t_statistics</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t_statistic</span><span class="p">)</span>
+        <span class="n">p_values_ttest</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p_value_ttest</span><span class="p">)</span>
+
+        <span class="c1"># Determine the t-test result based on the p-value and alpha.</span>
+        <span class="k">if</span> <span class="n">p_value_ttest</span> <span class="o">&lt;</span> <span class="n">alpha</span><span class="p">:</span>
+            <span class="n">t_test_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Reject null&quot;</span><span class="p">)</span> <span class="c1"># Significant difference.</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">t_test_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Failed to reject null&quot;</span><span class="p">)</span> <span class="c1"># No significant difference.</span>
+
+    <span class="c1"># Combine all collected results into a dictionary for DataFrame creation.</span>
+    <span class="n">df_data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;Time step&#39;</span><span class="p">:</span> <span class="n">time_sequence_all</span><span class="p">,</span>         <span class="c1"># All time step indices.</span>
+        <span class="s1">&#39;Time (hr)&#39;</span><span class="p">:</span> <span class="n">time_equivalent_all</span><span class="p">,</span>       <span class="c1"># Human-readable time equivalents.</span>
+        <span class="s1">&#39;Mean (BS)&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">m</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">mean1</span><span class="p">],</span>     <span class="c1"># Formatted mean values for Baseline.</span>
+        <span class="s1">&#39;Mean (S1)&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">m</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">mean2</span><span class="p">],</span>     <span class="c1"># Formatted mean values for Scenario 1.</span>
+        <span class="s1">&#39;Median (BS)&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">m</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">median1</span><span class="p">],</span> <span class="c1"># Formatted median values for Baseline.</span>
+        <span class="s1">&#39;Median (S1)&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">m</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">median2</span><span class="p">],</span> <span class="c1"># Formatted median values for Scenario 1.</span>
+        <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">alpha</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>                <span class="c1"># Significance level.</span>
+        <span class="s1">&#39;t_stat&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">t</span><span class="si">:</span><span class="s2">.3e</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">t_statistics</span><span class="p">],</span> <span class="c1"># Formatted t-statistics (scientific notation).</span>
+        <span class="s1">&#39;p-value&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="si">:</span><span class="s2">.3e</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">p_values_ttest</span><span class="p">],</span> <span class="c1"># Formatted p-values (scientific notation).</span>
+        <span class="s1">&#39;t-test&#39;</span><span class="p">:</span> <span class="n">t_test_results</span><span class="p">,</span>               <span class="c1"># Categorical t-test results.</span>
+    <span class="p">}</span>
+    
+    <span class="c1"># Create and return the pandas DataFrame.</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df_data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># `inc_dist`: Increased buffer distance (in grid cells) around the AOI.</span>
+<span class="n">inc_dist</span> <span class="o">=</span> <span class="mi">10</span> 
+
+<span class="c1"># `aggregate_time_steps`: Number of time steps to aggregate (e.g., 1 for no aggregation, 6 for hourly average).</span>
+<span class="n">aggregate_time_steps</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Default to no aggregation (individual time steps)</span>
+
+<span class="c1"># Generate the list of aggregated time step windows.</span>
+<span class="n">time_lists</span> <span class="o">=</span> <span class="n">get_aggregate_time_list</span><span class="p">(</span><span class="n">total_time_steps</span><span class="p">,</span> <span class="n">aggregate_time_steps</span><span class="p">)</span>
+
+<span class="c1"># Output folder and base filename pattern</span>
+<span class="n">output_dir</span> <span class="o">=</span> <span class="s2">&quot;./output/03_csv&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">base_filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;03_agg_</span><span class="si">{</span><span class="n">aggregate_time_steps</span><span class="si">}</span><span class="s2">_inc_dist_</span><span class="si">{</span><span class="n">inc_dist</span><span class="si">}</span><span class="s2">_df_&quot;</span>
+
+<span class="c1"># Function to load or create and save DataFrame</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_or_create_df</span><span class="p">(</span><span class="n">location_id</span><span class="p">):</span>
+    <span class="n">csv_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_filename</span><span class="si">}{</span><span class="n">location_id</span><span class="si">}</span><span class="s2">.csv&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">csv_path</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loading existing DataFrame for location_id=</span><span class="si">{</span><span class="n">location_id</span><span class="si">}</span><span class="s2"> from </span><span class="si">{</span><span class="n">csv_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">csv_path</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Creating new DataFrame for location_id=</span><span class="si">{</span><span class="n">location_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">create_aggregated_dataframe</span><span class="p">(</span><span class="n">location_id</span><span class="p">,</span> <span class="n">inc_dist</span><span class="p">,</span> <span class="n">time_lists</span><span class="p">)</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">csv_path</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saved DataFrame to </span><span class="si">{</span><span class="n">csv_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="c1"># Get or create DataFrames for each location ID</span>
+<span class="n">df_0</span> <span class="o">=</span> <span class="n">get_or_create_df</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Overall domain</span>
+<span class="n">df_1</span> <span class="o">=</span> <span class="n">get_or_create_df</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># AOI1 (Stephansplatz)</span>
+<span class="n">df_2</span> <span class="o">=</span> <span class="n">get_or_create_df</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># AOI2 (Markstaette)</span>
+<span class="n">df_3</span> <span class="o">=</span> <span class="n">get_or_create_df</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># AOI3 (Augustinerplatz)</span>
+
+<span class="c1"># Store all generated DataFrames in a list for easier access and iteration</span>
+<span class="n">df_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">df_0</span><span class="p">,</span> <span class="n">df_1</span><span class="p">,</span> <span class="n">df_2</span><span class="p">,</span> <span class="n">df_3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading existing DataFrame for location_id=0 from ./output/03_csv\03_agg_1_inc_dist_10_df_0.csv
+Loading existing DataFrame for location_id=1 from ./output/03_csv\03_agg_1_inc_dist_10_df_1.csv
+Loading existing DataFrame for location_id=2 from ./output/03_csv\03_agg_1_inc_dist_10_df_2.csv
+Loading existing DataFrame for location_id=3 from ./output/03_csv\03_agg_1_inc_dist_10_df_3.csv
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="prepare-data-for-plotting">
+<h2>9. Prepare Data for Plotting<a class="headerlink" href="#prepare-data-for-plotting" title="Link to this heading"></a></h2>
+<p>This section prepares the DataFrames for plotting by filtering them to include only hourly data if specified. This creates df_plot_list, which is used in the plotting functions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># `hourly`: A boolean flag to determine if only hourly data points should be used for plotting.</span>
+<span class="c1"># If `True`, only data at hourly `time_sequence_hourly` indices will be plotted.</span>
+<span class="c1"># If `False`, all data points (`time_sequence_all`) will be plotted.</span>
+<span class="n">hourly</span> <span class="o">=</span> <span class="kc">True</span> 
+
+<span class="c1"># Conditional DataFrame selection for plotting based on the `hourly` flag.</span>
+<span class="k">if</span> <span class="n">hourly</span><span class="p">:</span>
+    <span class="c1"># Select rows corresponding to hourly time steps using .iloc for integer-location based indexing.</span>
+    <span class="c1"># Note: `df_0` etc. originally contain `Time step` as a column. If `Time step` was set as index, `.loc` would be used.</span>
+    <span class="c1"># Assuming `df_0` has default integer index and `time_sequence_hourly` provides the row indices to select.</span>
+    <span class="n">df_0_plot</span> <span class="o">=</span> <span class="n">df_0</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">time_sequence_hourly</span><span class="p">]</span>
+    <span class="n">df_1_plot</span> <span class="o">=</span> <span class="n">df_1</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">time_sequence_hourly</span><span class="p">]</span>
+    <span class="n">df_2_plot</span> <span class="o">=</span> <span class="n">df_2</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">time_sequence_hourly</span><span class="p">]</span>
+    <span class="n">df_3_plot</span> <span class="o">=</span> <span class="n">df_3</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">time_sequence_hourly</span><span class="p">]</span>
+    <span class="n">df_plot_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">df_0_plot</span><span class="p">,</span> <span class="n">df_1_plot</span><span class="p">,</span> <span class="n">df_2_plot</span><span class="p">,</span> <span class="n">df_3_plot</span><span class="p">]</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># If `hourly` is False, use the full DataFrames for plotting.</span>
+    <span class="n">df_0_plot</span> <span class="o">=</span> <span class="n">df_0</span>
+    <span class="n">df_1_plot</span> <span class="o">=</span> <span class="n">df_1</span>
+    <span class="n">df_2_plot</span> <span class="o">=</span> <span class="n">df_2</span>
+    <span class="n">df_3_plot</span> <span class="o">=</span> <span class="n">df_3</span>
+    <span class="n">df_plot_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">df_0_plot</span><span class="p">,</span> <span class="n">df_1_plot</span><span class="p">,</span> <span class="n">df_2_plot</span><span class="p">,</span> <span class="n">df_3_plot</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualize-mean-temperature-trends">
+<h2>10. Visualize Mean Temperature Trends<a class="headerlink" href="#visualize-mean-temperature-trends" title="Link to this heading"></a></h2>
+<p>This section generates a line plot to visualize the mean temperature trends for both Baseline and Scenario 1 across different AOIs. The plot includes various aesthetic enhancements such as grid lines, custom axis labels, sun cycle spans, and a comprehensive legend to aid interpretation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a figure and an axes object for the plot.</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>
+
+<span class="c1"># Set the main title of the plot, including the variable description and unit.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;2-m Lufttemperatur in </span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
+<span class="c1"># Adjust subplot parameters for a tight layout, leaving space for title and legend.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">top</span><span class="o">=</span><span class="mf">0.94</span><span class="p">)</span>
+
+<span class="c1"># Configure major grid lines for better readability.</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s2">&quot;major&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#00000050&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+<span class="c1"># Enable minor ticks for more detailed axis marking.</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">minorticks_on</span><span class="p">()</span>
+<span class="c1"># Customize tick parameters for x and y axes (font size, rotation, line width).</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+
+<span class="c1"># Format y-axis labels to two decimal places.</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">ticker</span><span class="o">.</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">y_val</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">y_val</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+<span class="c1"># Set x-axis label.</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Zeit (h)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
+<span class="c1"># Adjust x-axis label position.</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_label_coords</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="c1"># Set y-axis label, including the temperature unit.</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Temperatur </span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
+
+<span class="c1"># Set margins for the plot data area.</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">margins</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+
+<span class="c1"># Set primary x-axis ticks using `time_sequence_hourly` indices for plotting.</span>
+<span class="c1"># The corresponding labels are set using `time_equivalent_hourly`.</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">ticker</span><span class="o">.</span><span class="n">FixedLocator</span><span class="p">(</span><span class="n">time_sequence_hourly</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">ticker</span><span class="o">.</span><span class="n">FixedFormatter</span><span class="p">(</span><span class="n">time_equivalent_hourly</span><span class="p">))</span>
+
+<span class="c1"># Hide every other x-tick label to prevent overcrowding.</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">label</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Set a secondary x-axis to display date labels for the two days.</span>
+<span class="n">sec_xaxis_pos</span> <span class="o">=</span> <span class="mf">0.015</span> <span class="c1"># Position of the secondary x-axis relative to the main axis.</span>
+<span class="n">sec</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">secondary_xaxis</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="n">sec_xaxis_pos</span><span class="p">)</span>
+<span class="c1"># Set specific ticks and labels for the dates.</span>
+<span class="c1"># 72 time steps = 12 hours (72 * 10 min = 720 min = 12 hours).</span>
+<span class="c1"># 144 time steps = 24 hours.</span>
+<span class="n">sec</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">72</span><span class="p">,</span> <span class="mi">72</span> <span class="o">+</span> <span class="mi">144</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">(2023-06-14 +01)&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">(2023-06-15 +01)&quot;</span><span class="p">])</span>
+<span class="c1"># Customize secondary x-axis tick parameters.</span>
+<span class="n">sec</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">sec</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;bottom&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># Hide the secondary x-axis spine.</span>
+
+<span class="c1"># Set y-axis limits and major ticks.</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">16</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="c1"># Center y-axis tick labels.</span>
+<span class="n">center_yticks</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="c1"># Draw `axvspan` (vertical spans) to represent different sun cycle periods (Night, Dawn/Dusk, Day).</span>
+<span class="c1"># These are calculated based on specific time equivalents from `time_sequence_all`.</span>
+<span class="c1"># Night (Dark Blue): Before 05:20 and after 21:20 (for Day 1), and similar for Day 2.</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">time_sequence_all</span><span class="p">[</span><span class="n">time_equivalent_all</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;05:20&#39;</span><span class="p">)],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#000080&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">time_sequence_all</span><span class="p">[</span><span class="n">time_equivalent_all</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;21:20&#39;</span><span class="p">)],</span> <span class="n">time_sequence_all</span><span class="p">[</span><span class="n">time_equivalent_all</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;24:00&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#000080&#39;</span><span class="p">)</span> <span class="c1"># 24:00 is end of Day 1</span>
+
+<span class="c1"># Morning/Evening Twilight (Light Orange): 05:20 to 09:00, and 18:00 to 21:20 (for Day 1), and similar for Day 2.</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">time_sequence_all</span><span class="p">[</span><span class="n">time_equivalent_all</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;05:20&#39;</span><span class="p">)],</span> <span class="n">time_sequence_all</span><span class="p">[</span><span class="n">time_equivalent_all</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;09:00&#39;</span><span class="p">)],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#ffe4b5&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">time_sequence_all</span><span class="p">[</span><span class="n">time_equivalent_all</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;18:00&#39;</span><span class="p">)],</span> <span class="n">time_sequence_all</span><span class="p">[</span><span class="n">time_equivalent_all</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;21:20&#39;</span><span class="p">)],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#ffe4b5&#39;</span><span class="p">)</span>
+
+<span class="c1"># Day (Yellow): 09:00 to 18:00 (for Day 1), and similar for Day 2.</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">time_sequence_all</span><span class="p">[</span><span class="n">time_equivalent_all</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;09:00&#39;</span><span class="p">)],</span> <span class="n">time_sequence_all</span><span class="p">[</span><span class="n">time_equivalent_all</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;18:00&#39;</span><span class="p">)],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#ebd700&#39;</span><span class="p">)</span>
+
+<span class="c1"># Extend sun cycle spans to the second day (assuming 144 steps = 24 hours).</span>
+<span class="c1"># Day 2 Night (starting from time step 144 + index of 21:20)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">time_sequence_all</span><span class="p">[</span><span class="n">time_equivalent_all</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;24:00&#39;</span><span class="p">)],</span> <span class="n">time_sequence_all</span><span class="p">[</span><span class="n">time_equivalent_all</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;29:20&#39;</span><span class="p">)],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#000080&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">time_sequence_all</span><span class="p">[</span><span class="n">time_equivalent_all</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;45:20&#39;</span><span class="p">)],</span> <span class="n">time_sequence_all</span><span class="p">[</span><span class="n">total_time_steps</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#000080&#39;</span><span class="p">)</span>
+
+<span class="c1"># Day 2 Twilight</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">time_sequence_all</span><span class="p">[</span><span class="n">time_equivalent_all</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;29:20&#39;</span><span class="p">)],</span> <span class="n">time_sequence_all</span><span class="p">[</span><span class="n">time_equivalent_all</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;33:00&#39;</span><span class="p">)],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#ffe4b5&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">time_sequence_all</span><span class="p">[</span><span class="n">time_equivalent_all</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;42:00&#39;</span><span class="p">)],</span> <span class="n">time_sequence_all</span><span class="p">[</span><span class="n">time_equivalent_all</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;45:20&#39;</span><span class="p">)],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#ffe4b5&#39;</span><span class="p">)</span>
+
+<span class="c1"># Day 2 Day</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">time_sequence_all</span><span class="p">[</span><span class="n">time_equivalent_all</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;33:00&#39;</span><span class="p">)],</span> <span class="n">time_sequence_all</span><span class="p">[</span><span class="n">time_equivalent_all</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;42:00&#39;</span><span class="p">)],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#ebd700&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># Plot mean temperature data for Baseline (dashed lines).</span>
+<span class="c1"># `shift` is used to slightly offset lines if needed for clarity.</span>
+<span class="n">shift</span> <span class="o">=</span> <span class="mi">0</span> 
+<span class="p">(</span><span class="n">line1</span><span class="p">,)</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_0_plot</span><span class="p">[</span><span class="s2">&quot;Time step&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">shift</span><span class="p">,</span> <span class="n">df_0_plot</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Mean (BS)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span>
+                   <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Mittel (BS): Parent&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#ff0000&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,)</span>
+<span class="p">(</span><span class="n">line2</span><span class="p">,)</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_1_plot</span><span class="p">[</span><span class="s2">&quot;Time step&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">shift</span><span class="p">,</span> <span class="n">df_1_plot</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Mean (BS)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span>
+                   <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Mittel (BS): AOI1&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#b82a90&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,)</span>
+<span class="p">(</span><span class="n">line3</span><span class="p">,)</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_2_plot</span><span class="p">[</span><span class="s2">&quot;Time step&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">shift</span><span class="p">,</span> <span class="n">df_2_plot</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Mean (BS)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span>
+                   <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Mittel (BS): AOI2&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#18a315&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,)</span>
+<span class="p">(</span><span class="n">line4</span><span class="p">,)</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_3_plot</span><span class="p">[</span><span class="s2">&quot;Time step&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">shift</span><span class="p">,</span> <span class="n">df_3_plot</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Mean (BS)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span>
+                   <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Mittel (BS): AOI3&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#0000ff&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,)</span>
+
+<span class="c1"># Plot mean temperature data for Scenario 1 (dotted lines).</span>
+<span class="p">(</span><span class="n">line5</span><span class="p">,)</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_0_plot</span><span class="p">[</span><span class="s2">&quot;Time step&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">shift</span><span class="p">,</span> <span class="n">df_0_plot</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Mean (S1)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span>
+                   <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Mittel (S1): Parent&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#ff458c&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,)</span>
+<span class="p">(</span><span class="n">line6</span><span class="p">,)</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_1_plot</span><span class="p">[</span><span class="s2">&quot;Time step&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">shift</span><span class="p">,</span> <span class="n">df_1_plot</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Mean (S1)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span>
+                   <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Mittel (S1): AOI1&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#ff6ed6&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,)</span>
+<span class="p">(</span><span class="n">line7</span><span class="p">,)</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_2_plot</span><span class="p">[</span><span class="s2">&quot;Time step&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">shift</span><span class="p">,</span> <span class="n">df_2_plot</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Mean (S1)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span>
+                   <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Mittel (S1): AOI2&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#4ed64b&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,)</span>
+<span class="p">(</span><span class="n">line8</span><span class="p">,)</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_3_plot</span><span class="p">[</span><span class="s2">&quot;Time step&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">shift</span><span class="p">,</span> <span class="n">df_3_plot</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Mean (S1)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span>
+                   <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Mittel (S1): AOI3&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#5ebfff&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,)</span>
+
+<span class="c1"># Create custom legend handles for the sun cycle spans.</span>
+<span class="n">legend_handles</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Patch</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;#000080&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Nacht (Night)&#39;</span><span class="p">),</span>
+    <span class="n">Patch</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;#ffe4b5&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Morgen-/Abenddämmerung (Dawn/Dusk)&#39;</span><span class="p">),</span>
+    <span class="n">Patch</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;#ebd700&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Tag (Day)&#39;</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="c1"># Combine the automatically generated line handles/labels with custom sun cycle handles.</span>
+<span class="n">handles</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+<span class="n">handles</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">legend_handles</span><span class="p">)</span>
+
+<span class="c1"># Display the legend.</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="n">handles</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;2-m Lufttemperatur in </span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+          <span class="n">title_fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+          <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+          <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;center left&quot;</span><span class="p">,</span>
+          <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span> <span class="c1"># Position the legend outside the plot area.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/55e013b175d53d8c0c735f51850ecbcb515f358dba01e315ee0eec3390e5069a.png" src="../_images/55e013b175d53d8c0c735f51850ecbcb515f358dba01e315ee0eec3390e5069a.png" />
+</div>
+</div>
+</section>
+<section id="summarize-statistical-results">
+<h2>11. Summarize Statistical Results<a class="headerlink" href="#summarize-statistical-results" title="Link to this heading"></a></h2>
+<p>This section defines the print_df_summary function, which computes and prints various statistics from an aggregated DataFrame. This includes overall and daily minimum/maximum mean temperatures for both Baseline and Scenario 1, as well as counts of time instances where the t-test results indicated “Reject null” or “Failed to reject null” hypotheses.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">print_df_summary</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Computes and prints a summary of statistics for mean temperatures and t-test results</span>
+<span class="sd">    from a given DataFrame. This includes overall and daily min/max values for both</span>
+<span class="sd">    simulation scenarios, and counts of t-test outcomes.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df (pandas.DataFrame): The DataFrame containing aggregated mean temperatures</span>
+<span class="sd">                               and t-test results.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># --- Overall Statistics (Day 1 and Day 2 combined) ---</span>
+    <span class="c1"># Find the index of the maximum and minimum mean values for Baseline (BS).</span>
+    <span class="n">max_idx_BS</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mean (BS)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span> <span class="c1"># Convert to float for accurate max/min</span>
+    <span class="n">min_idx_BS</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mean (BS)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()</span>
+    <span class="c1"># Get the time (hr) corresponding to these max/min values.</span>
+    <span class="n">max_time_BS</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">max_idx_BS</span><span class="p">,</span> <span class="s1">&#39;Time (hr)&#39;</span><span class="p">]</span>
+    <span class="n">min_time_BS</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">min_idx_BS</span><span class="p">,</span> <span class="s1">&#39;Time (hr)&#39;</span><span class="p">]</span>
+    
+    <span class="c1"># Find the index of the maximum and minimum mean values for Scenario 1 (S1).</span>
+    <span class="n">max_idx_S1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mean (S1)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+    <span class="n">min_idx_S1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mean (S1)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()</span>
+    <span class="c1"># Get the time (hr) corresponding to these max/min values.</span>
+    <span class="n">max_time_S1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">max_idx_S1</span><span class="p">,</span> <span class="s1">&#39;Time (hr)&#39;</span><span class="p">]</span>
+    <span class="n">min_time_S1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">min_idx_S1</span><span class="p">,</span> <span class="s1">&#39;Time (hr)&#39;</span><span class="p">]</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Statistics of mean (Day 1 and Day 2 combined):&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--Baseline--&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Max: </span><span class="si">{</span><span class="n">max_time_BS</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mean (BS)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Min: </span><span class="si">{</span><span class="n">min_time_BS</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mean (BS)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--Scenario I--&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Max: </span><span class="si">{</span><span class="n">max_time_S1</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mean (S1)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Min: </span><span class="si">{</span><span class="n">min_time_S1</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mean (S1)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Statistics of mean (Day 1) ---&quot;</span><span class="p">)</span>
+    <span class="c1"># Day 1 covers the first 144 time steps (24 hours).</span>
+    <span class="n">df_day1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">144</span><span class="p">)</span>
+    <span class="n">max_idx_BS_day1</span> <span class="o">=</span> <span class="n">df_day1</span><span class="p">[</span><span class="s1">&#39;Mean (BS)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+    <span class="n">min_idx_BS_day1</span> <span class="o">=</span> <span class="n">df_day1</span><span class="p">[</span><span class="s1">&#39;Mean (BS)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()</span>
+    <span class="n">max_time_BS_day1</span> <span class="o">=</span> <span class="n">df_day1</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">max_idx_BS_day1</span><span class="p">,</span> <span class="s1">&#39;Time (hr)&#39;</span><span class="p">]</span>
+    <span class="n">min_time_BS_day1</span> <span class="o">=</span> <span class="n">df_day1</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">min_idx_BS_day1</span><span class="p">,</span> <span class="s1">&#39;Time (hr)&#39;</span><span class="p">]</span>
+    
+    <span class="n">max_idx_S1_day1</span> <span class="o">=</span> <span class="n">df_day1</span><span class="p">[</span><span class="s1">&#39;Mean (S1)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+    <span class="n">min_idx_S1_day1</span> <span class="o">=</span> <span class="n">df_day1</span><span class="p">[</span><span class="s1">&#39;Mean (S1)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()</span>
+    <span class="n">max_time_S1_day1</span> <span class="o">=</span> <span class="n">df_day1</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">max_idx_S1_day1</span><span class="p">,</span> <span class="s1">&#39;Time (hr)&#39;</span><span class="p">]</span>
+    <span class="n">min_time_S1_day1</span> <span class="o">=</span> <span class="n">df_day1</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">min_idx_S1_day1</span><span class="p">,</span> <span class="s1">&#39;Time (hr)&#39;</span><span class="p">]</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--Baseline--&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Max: </span><span class="si">{</span><span class="n">max_time_BS_day1</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">df_day1</span><span class="p">[</span><span class="s1">&#39;Mean (BS)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Min: </span><span class="si">{</span><span class="n">min_time_BS_day1</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">df_day1</span><span class="p">[</span><span class="s1">&#39;Mean (BS)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--Scenario I--&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Max: </span><span class="si">{</span><span class="n">max_time_S1_day1</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">df_day1</span><span class="p">[</span><span class="s1">&#39;Mean (S1)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Min: </span><span class="si">{</span><span class="n">min_time_S1_day1</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">df_day1</span><span class="p">[</span><span class="s1">&#39;Mean (S1)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Statistics of mean (Day 2) ---&quot;</span><span class="p">)</span>
+    <span class="c1"># Day 2 covers time steps from index 144 onwards.</span>
+    <span class="n">df_day2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">144</span><span class="p">:]</span>
+    <span class="n">max_idx_BS_day2</span> <span class="o">=</span> <span class="n">df_day2</span><span class="p">[</span><span class="s1">&#39;Mean (BS)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+    <span class="n">min_idx_BS_day2</span> <span class="o">=</span> <span class="n">df_day2</span><span class="p">[</span><span class="s1">&#39;Mean (BS)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()</span>
+    <span class="n">max_time_BS_day2</span> <span class="o">=</span> <span class="n">df_day2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">max_idx_BS_day2</span><span class="p">,</span> <span class="s1">&#39;Time (hr)&#39;</span><span class="p">]</span>
+    <span class="n">min_time_BS_day2</span> <span class="o">=</span> <span class="n">df_day2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">min_idx_BS_day2</span><span class="p">,</span> <span class="s1">&#39;Time (hr)&#39;</span><span class="p">]</span>
+    
+    <span class="n">max_idx_S1_day2</span> <span class="o">=</span> <span class="n">df_day2</span><span class="p">[</span><span class="s1">&#39;Mean (S1)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+    <span class="n">min_idx_S1_day2</span> <span class="o">=</span> <span class="n">df_day2</span><span class="p">[</span><span class="s1">&#39;Mean (S1)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()</span>
+    <span class="n">max_time_S1_day2</span> <span class="o">=</span> <span class="n">df_day2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">max_idx_S1_day2</span><span class="p">,</span> <span class="s1">&#39;Time (hr)&#39;</span><span class="p">]</span>
+    <span class="n">min_time_S1_day2</span> <span class="o">=</span> <span class="n">df_day2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">min_idx_S1_day2</span><span class="p">,</span> <span class="s1">&#39;Time (hr)&#39;</span><span class="p">]</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--Baseline--&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Max: </span><span class="si">{</span><span class="n">max_time_BS_day2</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">df_day2</span><span class="p">[</span><span class="s1">&#39;Mean (BS)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Min: </span><span class="si">{</span><span class="n">min_time_BS_day2</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">df_day2</span><span class="p">[</span><span class="s1">&#39;Mean (BS)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--Scenario I--&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Max: </span><span class="si">{</span><span class="n">max_time_S1_day2</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">df_day2</span><span class="p">[</span><span class="s1">&#39;Mean (S1)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Min: </span><span class="si">{</span><span class="n">min_time_S1_day2</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">df_day2</span><span class="p">[</span><span class="s1">&#39;Mean (S1)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- T-test Results Summary ---&quot;</span><span class="p">)</span>
+    <span class="c1"># Create lists of &quot;Time (hr)&quot; values where t-test result is &quot;Failed to reject null&quot; or &quot;Reject null&quot;.</span>
+    <span class="n">fail_to_reject_times</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;t-test&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Failed to reject null&#39;</span><span class="p">,</span> <span class="s1">&#39;Time (hr)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">reject_times</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;t-test&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Reject null&#39;</span><span class="p">,</span> <span class="s1">&#39;Time (hr)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+    <span class="c1"># Print the counts and lists of times for each t-test outcome.</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Time (hr) values where the t-test result is &#39;Failed to reject null&#39; at </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">fail_to_reject_times</span><span class="p">)</span><span class="si">}</span><span class="s2"> instances.&quot;</span><span class="p">)</span>
+    <span class="c1"># print(f&quot;Times: {&#39;, &#39;.join(fail_to_reject_times)}&quot;) # Uncomment to see the actual times</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Time (hr) values where the t-test result is &#39;Reject null&#39; at </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">reject_times</span><span class="p">)</span><span class="si">}</span><span class="s2"> instances.&quot;</span><span class="p">)</span>
+    <span class="c1"># print(f&quot;Times: {&#39;, &#39;.join(reject_times)}&quot;) # Uncomment to see the actual times</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Hypothesis Statements ---&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NULL Hypothesis (H0): There is no significant difference in the mean between the two simulations (p-value &gt;= alpha).&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Alternative Hypothesis (H1): There is a significant difference in the mean between the two simulations (p-value &lt; alpha).&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Call the `print_df_summary` function to display the statistical summary for the overall domain (df_0).</span>
+<span class="n">print_df_summary</span><span class="p">(</span><span class="n">df_0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Statistics of mean (Day 1 and Day 2 combined):
+--Baseline--
+Max: 38:10 (27.82)
+Min: 05:00 (16.86)
+--Scenario I--
+Max: 39:50 (27.82)
+Min: 05:10 (17.04)
+
+--- Statistics of mean (Day 1) ---
+--Baseline--
+Max: 15:10 (25.80)
+Min: 05:00 (16.86)
+--Scenario I--
+Max: 13:50 (26.01)
+Min: 05:10 (17.04)
+
+--- Statistics of mean (Day 2) ---
+--Baseline--
+Max: 38:10 (27.82)
+Min: 28:40 (17.51)
+--Scenario I--
+Max: 39:50 (27.82)
+Min: 29:00 (17.69)
+
+--- T-test Results Summary ---
+Time (hr) values where the t-test result is &#39;Failed to reject null&#39; at 24 instances.
+Time (hr) values where the t-test result is &#39;Reject null&#39; at 264 instances.
+
+--- Hypothesis Statements ---
+NULL Hypothesis (H0): There is no significant difference in the mean between the two simulations (p-value &gt;= alpha).
+Alternative Hypothesis (H1): There is a significant difference in the mean between the two simulations (p-value &lt; alpha).
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This code block is commented out, but if uncommented, it would save `df_2` (AOI2 - Marktstätte)</span>
+<span class="c1"># to a CSV file. This can be useful for external analysis or sharing.</span>
+<span class="c1"># df_2.to_csv(f&quot;./_other/markstaette_simulation_230614_agg{aggregate_time_steps}.csv&quot;, )</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="02_Distance_of_AOI_vs_t-test.html" class="btn btn-neutral float-left" title="Distance of AOI vs t-test" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="04_Air_Temp_Analysis_Heatmaps.html" class="btn btn-neutral float-right" title="2D Air Temperature Analysis: Heatmaps" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, str.ucture GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

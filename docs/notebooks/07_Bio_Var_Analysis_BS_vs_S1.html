@@ -1,0 +1,1012 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biological Variable Analysis &mdash; CoKLIMAx 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=822aaed9" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script type="application/vnd.jupyter.widget-state+json">{"state": {"64fccf730fae408898d37e4f82261a7d": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "e636d43e007b47a390b9563c4ee21d9a": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "3f9afb3a813e4408b4c07318ebeeb253": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DropdownModel", "_options_labels": ["ta_2m*_xy", "tsurf*_xy", "wspeed_10m*_xy", "bio_pet*_xy", "bio_utci*_xy"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "DropdownView", "description": "Select test variable:", "description_allow_html": false, "disabled": false, "index": 3, "layout": "IPY_MODEL_64fccf730fae408898d37e4f82261a7d", "style": "IPY_MODEL_e636d43e007b47a390b9563c4ee21d9a", "tabbable": null, "tooltip": null}}}, "version_major": 2, "version_minor": 0}</script>
+      <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="2D Biometeorological Variable Analysis: Baseline vs. Scenario" href="06_Bio_Var_Analysis_BS_vs_S1.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            CoKLIMAx
+              <img src="../_static/coklimax_logo_new.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Data Preparation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_01_2D_Var_Agg_and_Extract.html">2D Variable Aggregation and Extraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_02_3D_to_2d_Surface_Var_Extract.html">3D Variable Surface Extraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_03_2D_Surface_Var_Agg_and_Extract.html">3D Variable Extraction and Aggregation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Preminimary:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="01_Obs_vs_Sim.html">Comparison of Observed vs Simulation Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_Distance_of_AOI_vs_t-test.html">Distance of AOI vs t-test</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Variable: Temperature:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="03_Air_Temp_Analysis_BS_vs_S1.html">2D Air Temperature Analysis: Baseline vs. Scenario</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_Air_Temp_Analysis_Heatmaps.html">2D Air Temperature Analysis: Heatmaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_Air_Temp_with_Agg.html">2D Air Temperature Aggregation Tool</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Variables: Biometeorology:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="06_Bio_Var_Analysis_BS_vs_S1.html">2D Biometeorological Variable Analysis: Baseline vs. Scenario</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Biological Variable Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#import-dependencies">1. Import dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#import-data">2. Import data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#variable-selection">3. Variable Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#define-time-sequences-and-equivalents">4. Define Time Sequences and Equivalents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#useful-functions">Useful Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extract-variable-data-and-select-domain">Extract Variable Data and Select Domain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#define-time-steps-to-generate-aggregated-values">Define Time Steps to Generate Aggregated Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plot-statistics">Plot Statistics</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CoKLIMAx</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Biological Variable Analysis</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks/07_Bio_Var_Analysis_BS_vs_S1.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="biological-variable-analysis">
+<h1>Biological Variable Analysis<a class="headerlink" href="#biological-variable-analysis" title="Link to this heading"></a></h1>
+<p>This notebook performs a biological variable analysis using PALM (PALM is a large-eddy simulation model for atmospheric and oceanic flows) simulation outputs. It allows for the extraction, processing, and visualization of biometeorological variables like Physiologically Equivalent Temperature (PET) and Universal Thermal Climate Index (UTCI).</p>
+<p>Input Data
+This section defines the file paths for the simulation output and static driver files, then reads them into netCDF4 datasets.</p>
+<p>The buildings_2d data from the static driver is also extracted for later use, likely for masking or spatial analysis.</p>
+<section id="import-dependencies">
+<h2>1. Import dependencies<a class="headerlink" href="#import-dependencies" title="Link to this heading"></a></h2>
+<p>This section imports all necessary libraries for numerical operations, NetCDF file handling, geographical data processing, statistical analysis, interactive widgets, and advanced plotting capabilities.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">netCDF4</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nc</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.ticker</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ticker</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.ticker</span><span class="w"> </span><span class="kn">import</span> <span class="n">FixedLocator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.ticker</span><span class="w"> </span><span class="kn">import</span> <span class="n">MultipleLocator</span><span class="p">,</span> <span class="n">FuncFormatter</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.patches</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpatches</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.patches</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">patches</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.patheffects</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pe</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mpl_toolkits.axes_grid1</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_axes_locatable</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mcolors</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">BoundaryNorm</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">palm_variables</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="import-data">
+<h2>2. Import data<a class="headerlink" href="#import-data" title="Link to this heading"></a></h2>
+<p>This section defines the file paths for the 2D simulation output NetCDF files (for a baseline and a scenario run) and the static driver file. These files are then loaded into netCDF4 Dataset objects, making their contents accessible for processing. The buildings_2d data from the static driver is also extracted, which is used for masking non-atmospheric grid cells during data extraction</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Absolute URL of simulation output files and static driver</span>
+<span class="n">file_xy_1</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;./Data/_simulation_outputs_3/konstanz_4096x4096_v9_Baseline-48hr/OUTPUT/konstanz_4096x4096_v9_Baseline_av_xy_N03.000.nc&quot;</span>
+<span class="n">file_xy_2</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;./Data/_simulation_outputs_3/konstanz_4096x4096_v9_Scenario_1-48hr/OUTPUT/konstanz_4096x4096_v9_Scenario_1_av_xy_N03.000.nc&quot;</span>
+<span class="n">file_static</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;./Data/_simulation_outputs_3/konstanz_4096x4096_v9_Scenario_1-48hr/INPUT/konstanz_4096x4096_v9_Scenario_1_static_N03&quot;</span>
+
+<span class="c1"># Read netCDF files</span>
+<span class="n">dataset_1</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">file_xy_1</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">dataset_2</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">file_xy_2</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">dataset_3</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">file_static</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
+<span class="n">file_xy_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">file_xy_1</span><span class="p">,</span> <span class="n">file_xy_2</span><span class="p">]</span>
+<span class="n">dataset_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">dataset_1</span><span class="p">,</span> <span class="n">dataset_2</span><span class="p">]</span>
+
+<span class="c1"># Extract 2D buildings data from the static dataset</span>
+<span class="n">buildings_2d</span> <span class="o">=</span> <span class="n">dataset_3</span><span class="p">[</span><span class="s1">&#39;buildings_2d&#39;</span><span class="p">]</span>
+<span class="n">buildings_2d_data</span> <span class="o">=</span> <span class="n">buildings_2d</span><span class="p">[:,</span> <span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="variable-selection">
+<h2>3. Variable Selection<a class="headerlink" href="#variable-selection" title="Link to this heading"></a></h2>
+<p>This section allows the user to interactively select a 2D variable from the loaded NetCDF datasets. A dropdown widget is provided for selection, and the chosen variable’s description and unit (retrieved from the palm_variables module) are displayed for clear identification.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract variable names with dimensions greater than 2</span>
+<span class="n">var_names_palm</span> <span class="o">=</span> <span class="p">[</span><span class="n">var</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">dataset_1</span><span class="o">.</span><span class="n">variables</span> <span class="k">if</span> <span class="n">dataset_1</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="c1"># Extract variables and define test variable</span>
+<span class="n">test_variable</span> <span class="o">=</span> <span class="n">var_names_palm</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+
+<span class="n">drop_down</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+    <span class="n">options</span><span class="o">=</span><span class="n">var_names_palm</span><span class="p">,</span>
+    <span class="n">value</span><span class="o">=</span><span class="n">var_names_palm</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Select test variable:&#39;</span>
+<span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">dropdown_handler</span><span class="p">(</span><span class="n">change</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">test_variable</span>
+    <span class="n">test_variable</span> <span class="o">=</span> <span class="n">change</span><span class="o">.</span><span class="n">new</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">test_variable</span><span class="p">)</span>
+
+<span class="n">drop_down</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">dropdown_handler</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">drop_down</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "3f9afb3a813e4408b4c07318ebeeb253"}</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if &quot;*&quot; is in the test_variable and extract initial variable, unit, and description</span>
+<span class="k">if</span> <span class="s2">&quot;*&quot;</span> <span class="ow">in</span> <span class="n">test_variable</span><span class="p">:</span>
+    <span class="n">var_initial</span> <span class="o">=</span> <span class="n">test_variable</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;*&quot;</span>
+    <span class="n">variable_info</span> <span class="o">=</span> <span class="n">palm_variables</span><span class="o">.</span><span class="n">variables_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">var_initial</span><span class="p">,</span> <span class="p">{})</span>
+    <span class="n">unit</span> <span class="o">=</span> <span class="n">variable_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;unit&#39;</span><span class="p">,</span> <span class="s1">&#39;No unit available&#39;</span><span class="p">)</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">variable_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;No description available&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">description</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Physiologically equivalent temperature (pet), °C
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">variable_data_1</span> <span class="o">=</span> <span class="n">dataset_1</span><span class="p">[</span><span class="n">test_variable</span><span class="p">]</span>
+<span class="n">variable_data_shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">variable_data_1</span><span class="p">)</span>
+<span class="n">total_time_steps</span> <span class="o">=</span> <span class="n">variable_data_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">total_time_steps</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>288
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="define-time-sequences-and-equivalents">
+<h2>4. Define Time Sequences and Equivalents<a class="headerlink" href="#define-time-sequences-and-equivalents" title="Link to this heading"></a></h2>
+<p>This section dynamically extracts the total number of time steps from the loaded dataset. It then defines parameters for time step intervals and calculates sequences and human-readable time equivalents (HH:MM format) for both hourly and all time steps. These sequences are crucial for temporal aggregation and plotting.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract time sequence and time equivalent for TABLE/GRAPH</span>
+<span class="n">time_step_interval</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">second_step</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="n">time_sequence_hourly</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">time_sequence_hourly</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">second_step</span><span class="p">,</span><span class="n">total_time_steps</span><span class="p">,</span><span class="n">time_step_interval</span><span class="p">))</span>
+<span class="n">time_sequence_all</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_time_steps</span><span class="p">)</span>
+
+<span class="n">time_sequence_all_formatted</span> <span class="o">=</span> <span class="p">[[</span><span class="n">item</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">time_sequence_all</span><span class="p">]</span>
+<span class="n">time_sequence_hourly_formatted</span> <span class="o">=</span> <span class="p">[[</span><span class="n">item</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">time_sequence_hourly</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_time_equivalent</span><span class="p">(</span><span class="n">time_sequence</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a sequence of time steps into hours:minutes format.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        time_sequence (list): A list of time steps.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: A tuple containing two lists:</span>
+<span class="sd">               - time_equivalent: Formatted time in HH:MM (can exceed 24 hours).</span>
+<span class="sd">               - time_equivalent_24hr: Formatted time in HH:MM (24-hour format).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">time_equivalent</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">time_equivalent_24hr</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">time_step</span> <span class="ow">in</span> <span class="n">time_sequence</span><span class="p">:</span>
+        <span class="n">total_minutes</span> <span class="o">=</span> <span class="p">(</span><span class="n">time_step</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">10</span>
+        <span class="n">hours</span><span class="p">,</span> <span class="n">minutes</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">total_minutes</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+        
+        <span class="c1"># Append time equivalent in hours:minutes format</span>
+        <span class="k">if</span> <span class="n">hours</span> <span class="o">&lt;</span> <span class="mi">24</span><span class="p">:</span>
+            <span class="n">time_equivalent</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">hours</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">minutes</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">time_equivalent_24hr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">hours</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">minutes</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">time_equivalent</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">hours</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">minutes</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="c1"># Handle overflow of hours (e.g., for hours &gt; 24)</span>
+            <span class="n">hours</span> <span class="o">-=</span> <span class="mi">24</span>
+            <span class="n">time_equivalent_24hr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">hours</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">minutes</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">time_equivalent</span><span class="p">,</span> <span class="n">time_equivalent_24hr</span>
+
+<span class="n">time_equivalent_hourly</span><span class="p">,</span> <span class="n">time_equivalent_hourly_24hr</span> <span class="o">=</span> <span class="n">get_time_equivalent</span><span class="p">(</span><span class="n">time_sequence_hourly</span><span class="p">)</span>
+<span class="n">time_equivalent_all</span><span class="p">,</span> <span class="n">time_equivalent_all_24hr</span> <span class="o">=</span> <span class="n">get_time_equivalent</span><span class="p">(</span><span class="n">time_sequence_all</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define grid spacing</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="n">dataset_1</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">dataset_1</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">dy</span> <span class="o">=</span> <span class="n">dataset_1</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">dataset_1</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1"># Define number of cells</span>
+<span class="n">nx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">dataset_1</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ny</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">dataset_1</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Coordinates of origin in PALM</span>
+<span class="n">origin_x</span><span class="p">,</span> <span class="n">origin_y</span><span class="p">,</span> <span class="n">origin_z</span> <span class="o">=</span> <span class="n">dataset_1</span><span class="o">.</span><span class="n">origin_x</span><span class="p">,</span> <span class="n">dataset_1</span><span class="o">.</span><span class="n">origin_y</span><span class="p">,</span> <span class="n">dataset_1</span><span class="o">.</span><span class="n">origin_z</span>
+
+<span class="c1"># Vector for coordinate at cell edges</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nx</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">dx</span> <span class="o">+</span> <span class="n">origin_x</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nx</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">dy</span> <span class="o">+</span> <span class="n">origin_y</span>
+<span class="c1"># Vector for coordinates at cell centers</span>
+<span class="n">xc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nx</span><span class="p">)</span><span class="o">*</span><span class="n">dx</span> <span class="o">+</span> <span class="n">origin_x</span> <span class="o">+</span> <span class="n">dx</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">yc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nx</span><span class="p">)</span><span class="o">*</span><span class="n">dy</span> <span class="o">+</span> <span class="n">origin_y</span> <span class="o">+</span> <span class="n">dy</span><span class="o">/</span><span class="mi">2</span>
+
+<span class="c1"># Time</span>
+<span class="n">origin_time</span> <span class="o">=</span> <span class="n">dataset_1</span><span class="o">.</span><span class="n">origin_time</span>
+<span class="n">time_step</span> <span class="o">=</span> <span class="mi">600</span>  <span class="c1"># ds.time_step</span>
+<span class="n">nt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">dataset_1</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a custom color sequence</span>
+<span class="k">if</span> <span class="n">test_variable</span> <span class="o">==</span> <span class="s1">&#39;bio_pet*_xy&#39;</span><span class="p">:</span>
+    <span class="n">custom_colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#36b3d3&#39;</span><span class="p">,</span> <span class="s1">&#39;#9bcdfe&#39;</span><span class="p">,</span> <span class="s1">&#39;#afed00&#39;</span><span class="p">,</span> <span class="s1">&#39;#ffff01&#39;</span><span class="p">,</span> <span class="s1">&#39;#ffcb01&#39;</span><span class="p">,</span> <span class="s1">&#39;#fe9900&#39;</span><span class="p">,</span> <span class="s1">&#39;#fe0002&#39;</span><span class="p">]</span>
+    <span class="n">custom_colors_dark</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#1693b3&#39;</span><span class="p">,</span> <span class="s1">&#39;#7badde&#39;</span><span class="p">,</span> <span class="s1">&#39;#0fdd00&#39;</span><span class="p">,</span> <span class="s1">&#39;#d1d101&#39;</span><span class="p">,</span> <span class="s1">&#39;#df7b00&#39;</span><span class="p">,</span> <span class="s1">&#39;#de7100&#39;</span><span class="p">,</span> <span class="s1">&#39;#a10000&#39;</span><span class="p">]</span>
+    <span class="n">bin_edges</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mf">60.0</span><span class="p">]</span>
+    <span class="n">tick_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&lt;13&#39;</span><span class="p">,</span> <span class="s1">&#39;13&#39;</span><span class="p">,</span> <span class="s1">&#39;18&#39;</span><span class="p">,</span> <span class="s1">&#39;23&#39;</span><span class="p">,</span> <span class="s1">&#39;29&#39;</span><span class="p">,</span> <span class="s1">&#39;35&#39;</span><span class="p">,</span> <span class="s1">&#39;41&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;41&#39;</span><span class="p">]</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Varying cold&#39;</span><span class="p">,</span> <span class="s1">&#39;Slightly cool&#39;</span><span class="p">,</span> <span class="s1">&#39;Comfortable&#39;</span><span class="p">,</span> <span class="s1">&#39;Slightly warm&#39;</span><span class="p">,</span> <span class="s1">&#39;Warm&#39;</span><span class="p">,</span> <span class="s1">&#39;Hot&#39;</span><span class="p">,</span> <span class="s1">&#39;Very Hot&#39;</span><span class="p">]</span>
+    <span class="n">labels_de</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Kalt&#39;</span><span class="p">,</span> <span class="s1">&#39;Eher kalt​&#39;</span><span class="p">,</span> <span class="s1">&#39;Komfortabel&#39;</span><span class="p">,</span> <span class="s1">&#39;Überwiegend warm​&#39;</span><span class="p">,</span> <span class="s1">&#39;Warm​&#39;</span><span class="p">,</span> <span class="s1">&#39;Heiß&#39;</span><span class="p">,</span> <span class="s1">&#39;Sehr heiß​&#39;</span><span class="p">]</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">mcolors</span><span class="o">.</span><span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="s1">&#39;cmap_pet&#39;</span><span class="p">,</span> <span class="n">custom_colors</span><span class="p">)</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">BoundaryNorm</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">,</span> <span class="n">ncolors</span><span class="o">=</span><span class="n">cmap</span><span class="o">.</span><span class="n">N</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">cmap</span><span class="o">.</span><span class="n">set_bad</span><span class="p">(</span><span class="s1">&#39;#474747&#39;</span><span class="p">)</span> <span class="c1">#474747</span>
+
+<span class="k">elif</span> <span class="n">test_variable</span> <span class="o">==</span> <span class="s1">&#39;bio_utci*_xy&#39;</span><span class="p">:</span>
+    <span class="n">custom_colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#66ffff&#39;</span><span class="p">,</span> <span class="s1">&#39;#93d150&#39;</span><span class="p">,</span> <span class="s1">&#39;#ffc100&#39;</span><span class="p">,</span> <span class="s1">&#39;#ff9932&#39;</span><span class="p">,</span> <span class="s1">&#39;#ff3200&#39;</span><span class="p">,</span> <span class="s1">&#39;#bf0000&#39;</span><span class="p">]</span>
+    <span class="n">bin_edges</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">46</span><span class="p">,</span> <span class="mi">60</span><span class="p">]</span>
+    <span class="n">tick_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&lt;9&#39;</span><span class="p">,</span> <span class="s1">&#39;9&#39;</span><span class="p">,</span> <span class="s1">&#39;26&#39;</span><span class="p">,</span> <span class="s1">&#39;32&#39;</span><span class="p">,</span> <span class="s1">&#39;38&#39;</span><span class="p">,</span> <span class="s1">&#39;46&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;46&#39;</span><span class="p">]</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Varying cold stress&#39;</span><span class="p">,</span> <span class="s1">&#39;No thermal stress&#39;</span><span class="p">,</span> <span class="s1">&#39;Moderate heat stress&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Strong heat stress&#39;</span><span class="p">,</span> <span class="s1">&#39;Very strong heat stress&#39;</span><span class="p">,</span> <span class="s1">&#39;Extremet heat stress&#39;</span><span class="p">]</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">mcolors</span><span class="o">.</span><span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="s1">&#39;cmap_utci&#39;</span><span class="p">,</span> <span class="n">custom_colors</span><span class="p">)</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">BoundaryNorm</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">,</span> <span class="n">ncolors</span><span class="o">=</span><span class="n">cmap</span><span class="o">.</span><span class="n">N</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">cmap</span><span class="o">.</span><span class="n">set_bad</span><span class="p">(</span><span class="s1">&#39;#474747&#39;</span><span class="p">)</span> <span class="c1">#474747</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="useful-functions">
+<h2>Useful Functions<a class="headerlink" href="#useful-functions" title="Link to this heading"></a></h2>
+<p>This section defines several helper functions that will be used throughout the notebook for plotting and data manipulation. These functions promote code reusability and maintain a clean structure.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">center_yticks</span><span class="p">():</span>
+    <span class="c1"># Get the current y-tick positions and labels</span>
+    <span class="n">tick_positions</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_yticks</span><span class="p">()</span>
+    <span class="n">tick_labels</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">pos</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="n">tick_positions</span><span class="p">]</span>
+    <span class="c1"># Set the tick positions explicitly using FixedLocator</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">FixedLocator</span><span class="p">(</span><span class="n">tick_positions</span><span class="p">))</span>
+    <span class="c1"># Set the y-tick labels with the correct alignment</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">tick_labels</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">center_ax_yticks</span><span class="p">(</span><span class="n">ax</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Centers the y-tick labels of a given matplotlib Axes object.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ax (matplotlib.axes.Axes): The Axes object to modify.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Get the current y-tick positions and labels</span>
+    <span class="n">tick_positions</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_yticks</span><span class="p">()</span>
+    <span class="n">tick_labels</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">pos</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="n">tick_positions</span><span class="p">]</span>
+    <span class="c1"># Set the tick positions explicitly using FixedLocator</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">FixedLocator</span><span class="p">(</span><span class="n">tick_positions</span><span class="p">))</span>
+    <span class="c1"># Set the y-tick labels with the correct alignment</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">tick_labels</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_date_day</span><span class="p">(</span><span class="n">time_index</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Determines the date day based on the time index.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        time_index (int): The current time index.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        int: The day of the month (14 or 15) corresponding to the time index.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">time_index</span><span class="o">&lt;=</span><span class="mi">144</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">14</span>
+    <span class="k">elif</span> <span class="n">time_index</span><span class="o">&gt;</span><span class="mi">144</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">15</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_extents</span><span class="p">(</span><span class="n">gdf_combined</span><span class="p">,</span> <span class="n">location_id</span><span class="p">,</span> <span class="n">increased_distance</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates the spatial extents (min/max x/y indices) for a given location</span>
+<span class="sd">    from a combined GeoDataFrame, with an optional increased distance (buffer).</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        gdf_combined (geopandas.GeoDataFrame): Combined GeoDataFrame containing location geometries.</span>
+<span class="sd">        location_id (int): Index of the location in gdf_combined.</span>
+<span class="sd">        increased_distance (int): Buffer distance to apply to the bounding box.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: A tuple (x_low, y_low, x_high, y_high) representing the array indices of the extent.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">polygon_aug</span> <span class="o">=</span> <span class="n">gdf_combined</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">location_id</span><span class="p">]</span>
+    <span class="n">polygon</span> <span class="o">=</span> <span class="n">polygon_aug</span><span class="o">.</span><span class="n">geometry</span>
+    <span class="n">min_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">,</span> <span class="n">max_x</span><span class="p">,</span> <span class="n">max_y</span> <span class="o">=</span> <span class="n">polygon</span><span class="o">.</span><span class="n">bounds</span>
+    <span class="c1"># Convert geographic coordinates to array indices</span>
+    <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">min_x</span><span class="o">-</span><span class="n">origin_x</span><span class="p">)</span><span class="o">/</span><span class="n">dx</span><span class="p">),</span> <span class="nb">int</span><span class="p">((</span><span class="n">min_y</span><span class="o">-</span><span class="n">origin_y</span><span class="p">)</span> <span class="o">/</span>
+                                                   <span class="n">dx</span><span class="p">),</span> <span class="nb">int</span><span class="p">((</span><span class="n">max_x</span><span class="o">-</span><span class="n">origin_x</span><span class="p">)</span><span class="o">/</span><span class="n">dx</span><span class="p">),</span> <span class="nb">int</span><span class="p">((</span><span class="n">max_y</span><span class="o">-</span><span class="n">origin_y</span><span class="p">)</span><span class="o">/</span><span class="n">dx</span><span class="p">)</span>
+
+    <span class="c1"># change extents value based on buffer distance</span>
+    <span class="n">half_window</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">increased_distance</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">x_low</span><span class="p">,</span> <span class="n">x_high</span> <span class="o">=</span> <span class="n">x1</span><span class="o">-</span><span class="n">half_window</span><span class="p">,</span> <span class="n">x2</span><span class="o">+</span><span class="n">half_window</span>
+    <span class="n">y_low</span><span class="p">,</span> <span class="n">y_high</span> <span class="o">=</span> <span class="n">y1</span><span class="o">-</span><span class="n">half_window</span><span class="p">,</span> <span class="n">y2</span><span class="o">+</span><span class="n">half_window</span>
+
+    <span class="c1"># Ensure indices are within valid bounds (0 to 256 for a 256x256 grid)</span>
+    <span class="k">if</span> <span class="n">x_low</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">x_low</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">y_low</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">y_low</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">x_high</span> <span class="o">&gt;=</span> <span class="mi">256</span><span class="p">:</span> <span class="c1"># Assuming 256 as max extent for now</span>
+        <span class="n">x_high</span> <span class="o">=</span> <span class="mi">256</span>
+    <span class="k">if</span> <span class="n">y_high</span> <span class="o">&gt;=</span> <span class="mi">256</span><span class="p">:</span> <span class="c1"># Assuming 256 as max extent for now</span>
+        <span class="n">y_high</span> <span class="o">=</span> <span class="mi">256</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">x_low</span><span class="p">,</span> <span class="n">y_low</span><span class="p">,</span> <span class="n">x_high</span><span class="p">,</span> <span class="n">y_high</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_north_arrow_and_scale_bar</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Adds a north arrow and a scale bar to the current matplotlib Axes.</span>
+<span class="sd">    Assumes `ax` is the current Axes object to which these elements should be added.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Add north arrow (location: top right corner)</span>
+    <span class="n">top_right_x</span> <span class="o">=</span> <span class="mi">513390</span>
+    <span class="n">top_right_y</span> <span class="o">=</span> <span class="mi">5278890</span>
+    <span class="n">arrow</span> <span class="o">=</span> <span class="n">patches</span><span class="o">.</span><span class="n">FancyArrowPatch</span><span class="p">((</span><span class="n">top_right_x</span><span class="p">,</span> <span class="n">top_right_y</span> <span class="o">-</span> <span class="mi">40</span><span class="p">),</span> <span class="p">(</span><span class="n">top_right_x</span><span class="p">,</span> <span class="n">top_right_y</span><span class="p">),</span>
+                                    <span class="n">arrowstyle</span><span class="o">=</span><span class="s1">&#39;simple&#39;</span><span class="p">,</span>  <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">mutation_scale</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">top_right_x</span><span class="p">,</span> <span class="n">top_right_y</span> <span class="o">-</span> <span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">arrow</span><span class="p">)</span>    
+
+    <span class="c1"># Add scale bar (location: bottom right corner)</span>
+    <span class="n">scale_bar_x</span> <span class="o">=</span> <span class="mi">513250</span>
+    <span class="n">scale_bar_y</span> <span class="o">=</span> <span class="mi">5278410</span>
+    <span class="n">scale_bar_length_meters</span> <span class="o">=</span> <span class="mi">150</span>  <span class="c1"># Length of the scale bar in meters</span>
+    <span class="n">scale_bar_segment_length</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># Length of each alternating segment in meters</span>
+    
+    <span class="c1"># Create the scale bar as a collection of alternating segments</span>
+    <span class="n">num_segments</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">scale_bar_length_meters</span> <span class="o">/</span> <span class="n">scale_bar_segment_length</span><span class="p">)</span>
+    <span class="n">num_labels</span> <span class="o">=</span> <span class="n">num_segments</span><span class="o">+</span><span class="mi">1</span>
+    <span class="n">segment_width</span> <span class="o">=</span> <span class="n">scale_bar_length_meters</span> <span class="o">/</span> <span class="n">num_segments</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_segments</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">segment_color</span> <span class="o">=</span> <span class="s1">&#39;k&#39;</span>  <span class="c1"># Black for even segments</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">segment_color</span> <span class="o">=</span> <span class="s1">&#39;w&#39;</span>  <span class="c1"># White for odd segments</span>
+        <span class="n">segment_x</span> <span class="o">=</span> <span class="n">scale_bar_x</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="n">segment_width</span>
+        <span class="n">scale_bar_segment</span> <span class="o">=</span> <span class="n">patches</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="n">segment_x</span><span class="p">,</span> <span class="n">scale_bar_y</span><span class="p">),</span> <span class="n">segment_width</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">segment_color</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">scale_bar_segment</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_labels</span><span class="p">):</span>
+        <span class="c1"># Add a label to the scale bar with a white border</span>
+        <span class="n">scale_bar_label</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="o">*</span><span class="n">scale_bar_segment_length</span><span class="si">}</span><span class="s1">m&#39;</span>
+        <span class="n">text_x</span> <span class="o">=</span> <span class="n">scale_bar_x</span> <span class="o">+</span> <span class="n">scale_bar_segment_length</span> <span class="o">*</span> <span class="n">i</span>
+        <span class="n">text_y</span> <span class="o">=</span> <span class="n">scale_bar_y</span> <span class="o">+</span> <span class="mi">25</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">text_x</span><span class="p">,</span> <span class="n">text_y</span><span class="p">,</span> <span class="n">scale_bar_label</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span>
+            <span class="n">path_effects</span><span class="o">=</span><span class="p">[</span><span class="n">pe</span><span class="o">.</span><span class="n">withStroke</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">foreground</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)],</span>
+            <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">boxstyle</span><span class="o">=</span><span class="s1">&#39;round, pad=0.1&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="extract-variable-data-and-select-domain">
+<h2>Extract Variable Data and Select Domain<a class="headerlink" href="#extract-variable-data-and-select-domain" title="Link to this heading"></a></h2>
+<p>This section extracts the selected biometeorological variable data from the loaded datasets and defines the simulation scenarios. It also loads shapefiles representing different Areas of Interest (AOIs) and combines them into a single GeoDataFrame. Lists of location names and AOI names are provided for reference.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">variable_data_1</span> <span class="o">=</span> <span class="n">dataset_1</span><span class="p">[</span><span class="n">test_variable</span><span class="p">]</span>
+<span class="n">variable_data_2</span> <span class="o">=</span> <span class="n">dataset_2</span><span class="p">[</span><span class="n">test_variable</span><span class="p">]</span>
+<span class="n">variable_datas</span> <span class="o">=</span> <span class="p">[</span><span class="n">variable_data_1</span><span class="p">,</span> <span class="n">variable_data_2</span><span class="p">]</span>
+<span class="n">sim_scenarions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Baseline (BS)&#39;</span><span class="p">,</span> <span class="s1">&#39;Scenario 1 (S1)&#39;</span><span class="p">]</span>
+<span class="n">sim_scene</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;BS&#39;</span><span class="p">,</span> <span class="s1">&#39;S1&#39;</span><span class="p">]</span>
+
+<span class="c1"># Define paths to shapefiles containing AOI definitions.</span>
+<span class="c1"># `shapefile_path_child_ii`: For &quot;Child II&quot; AOIs.</span>
+<span class="n">shapefile_path_child_ii</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;./Data/shapefiles/03_AOI_Child_II.shp&quot;</span>
+<span class="c1"># `shapefile_path_uhi_study`: For Urban Heat Island (UHI) study AOIs.</span>
+<span class="n">shapefile_path_uhi_study</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;./Data/shapefiles/UHI_aoi_study_fitted.shp&quot;</span>
+
+<span class="n">gdf_child</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">shapefile_path_child_ii</span><span class="p">)</span>
+<span class="n">gdf_uhi</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">shapefile_path_uhi_study</span><span class="p">)</span>
+
+<span class="n">gdf_combined</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">gdf_child</span><span class="p">,</span> <span class="n">gdf_uhi</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">location_name_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Overall&#39;</span><span class="p">,</span> <span class="s1">&#39;Stephansplatz&#39;</span><span class="p">,</span> <span class="s1">&#39;Markstaette&#39;</span><span class="p">,</span> <span class="s1">&#39;Augustinerplatz&#39;</span><span class="p">]</span>
+<span class="n">aoi_name_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Overall&#39;</span><span class="p">,</span> <span class="s1">&#39;AOI1&#39;</span><span class="p">,</span> <span class="s1">&#39;AOI2&#39;</span><span class="p">,</span> <span class="s1">&#39;AOI3&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="define-time-steps-to-generate-aggregated-values">
+<h2>Define Time Steps to Generate Aggregated Values<a class="headerlink" href="#define-time-steps-to-generate-aggregated-values" title="Link to this heading"></a></h2>
+<p>The get_aggregate_time_list function generates a list of time step sub-lists for aggregation. If aggregate_time_steps is 1, each sub-list contains a single time step. Otherwise, it creates a sliding window of time steps around each time_index, ensuring that the indices remain within the valid simulation grid boundaries. This function is useful for performing temporal aggregations (e.g., hourly averages) on the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_aggregate_time_list</span><span class="p">(</span><span class="n">total_time_steps</span><span class="p">,</span> <span class="n">aggregate_time_steps</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generates a list of time step lists for aggregation, creating a sliding window</span>
+<span class="sd">    around each time step based on the `aggregate_time_steps`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        total_time_steps (int): The total number of time steps available.</span>
+<span class="sd">        aggregate_time_steps (int): The number of time steps to aggregate (window size).</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: A list of lists, where each inner list contains time steps for a specific aggregation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">time_lists</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_time_steps</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">aggregate_time_steps</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">time_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">half_window</span> <span class="o">=</span> <span class="n">aggregate_time_steps</span> <span class="o">//</span> <span class="mi">2</span>
+            <span class="k">if</span> <span class="n">aggregate_time_steps</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">time_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="p">(</span><span class="n">half_window</span><span class="p">),</span> <span class="n">i</span> <span class="o">+</span> <span class="n">half_window</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">time_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">half_window</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">half_window</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
+        
+        <span class="c1"># Ensure indices are within bounds</span>
+        <span class="n">valid_time_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">time_list</span> <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">total_time_steps</span><span class="p">]</span>
+        <span class="n">time_lists</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">valid_time_list</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">time_lists</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">global</span> <span class="n">value_maximum</span><span class="p">,</span> <span class="n">value_minimum</span>
+<span class="n">value_maximum</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">value_minimum</span> <span class="o">=</span> <span class="mi">999999</span>
+
+<span class="k">for</span> <span class="n">time_index_test</span> <span class="ow">in</span> <span class="n">time_sequence_all</span><span class="p">:</span>
+    <span class="n">value_test_1</span> <span class="o">=</span> <span class="n">variable_data_1</span><span class="p">[</span><span class="n">time_index_test</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
+    <span class="n">value_test_2</span> <span class="o">=</span> <span class="n">variable_data_2</span><span class="p">[</span><span class="n">time_index_test</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
+    
+    <span class="n">max_value_test</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">value_test_1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">value_test_2</span><span class="p">))</span>
+    <span class="n">min_value_test</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">value_test_1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">value_test_2</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">value_maximum</span> <span class="o">&lt;=</span> <span class="n">max_value_test</span><span class="p">:</span>
+        <span class="n">value_maximum</span> <span class="o">=</span> <span class="n">max_value_test</span>
+    <span class="k">if</span> <span class="n">value_minimum</span> <span class="o">&gt;=</span> <span class="n">min_value_test</span><span class="p">:</span>
+        <span class="n">value_minimum</span> <span class="o">=</span> <span class="n">min_value_test</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">value_maximum</span><span class="p">,</span> <span class="n">value_minimum</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>60.174675 12.942082
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-statistics">
+<h2>Plot Statistics<a class="headerlink" href="#plot-statistics" title="Link to this heading"></a></h2>
+<p>This section prepares the time lists for hourly aggregation and defines the location and buffer for extracting data from the simulation domain. The selected extents are then printed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aggregate_time_steps</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">time_lists</span> <span class="o">=</span> <span class="n">get_aggregate_time_list</span><span class="p">(</span><span class="n">total_time_steps</span><span class="p">,</span> <span class="n">aggregate_time_steps</span><span class="p">)</span>
+
+<span class="n">time_lists_hourly</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">time_sequence_hourly</span><span class="p">:</span>
+    <span class="n">time_lists_hourly</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">time_lists</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loc_id</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">inc_dist</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">x_low</span><span class="p">,</span> <span class="n">y_low</span><span class="p">,</span> <span class="n">x_high</span><span class="p">,</span> <span class="n">y_high</span> <span class="o">=</span> <span class="n">get_extents</span><span class="p">(</span><span class="n">gdf_combined</span><span class="p">,</span> <span class="n">loc_id</span><span class="p">,</span> <span class="n">inc_dist</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x_low</span><span class="p">,</span> <span class="n">y_low</span><span class="p">,</span> <span class="n">x_high</span><span class="p">,</span> <span class="n">y_high</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>45 9 81 47
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize empty DataFrames for plot data</span>
+<span class="n">plotdata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span> <span class="c1"># This is used for stacked bar plots in the original notebook</span>
+
+<span class="c1"># Plot stacked bar charts for each scenario</span>
+<span class="k">for</span> <span class="n">variable_data</span> <span class="ow">in</span> <span class="n">variable_datas</span><span class="p">:</span>
+    <span class="c1"># Initialize an empty DataFrame for the current scenario&#39;s plot data</span>
+    <span class="n">plotdata_scenario</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span> 
+
+    <span class="c1"># Plot</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">),</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Set title for the current scenario</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Simulation: </span><span class="si">{</span><span class="n">sim_scenarions</span><span class="p">[</span><span class="n">variable_datas</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">variable_data</span><span class="p">)]</span><span class="si">}</span><span class="s2"> / Location: </span><span class="si">{</span><span class="n">location_name_list</span><span class="p">[</span><span class="n">loc_id</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                 <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">description</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span> <span class="c1"># Main title</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">top</span><span class="o">=</span><span class="mf">0.90</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">time_list</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">time_lists_hourly</span><span class="p">):</span>
+        <span class="c1"># Create list to store values for the current time aggregation</span>
+        <span class="n">values_real</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">time_index</span> <span class="ow">in</span> <span class="n">time_list</span><span class="p">:</span>
+            <span class="c1"># Extract variable data for the current time index and spatial extent</span>
+            <span class="n">values</span> <span class="o">=</span> <span class="n">variable_data</span><span class="p">[</span><span class="n">time_index</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">y_low</span><span class="p">:</span><span class="n">y_high</span><span class="p">,</span><span class="n">x_low</span><span class="p">:</span><span class="n">x_high</span><span class="p">]</span>
+            <span class="n">values_real</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+        
+        <span class="c1"># Calculate histogram of values based on predefined bin edges</span>
+        <span class="n">hist</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">values_real</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bin_edges</span><span class="p">)</span>
+        <span class="c1"># Store histogram in the DataFrame</span>
+        <span class="n">plotdata_scenario</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hist</span>
+
+    <span class="c1"># Convert histogram counts to percentages for stacked bar plot</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plotdata_scenario</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span>
+                                                                        <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                                                        <span class="n">width</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+                                                                        <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+                                                                        <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;#00000005&#39;</span><span class="p">,</span> <span class="c1"># Very subtle edge color</span>
+                                                                        <span class="n">color</span><span class="o">=</span><span class="n">custom_colors</span><span class="p">,</span>
+                                                                        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+    
+    <span class="c1"># Customize grid, ticks, and labels</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#00000050&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">ticker</span><span class="o">.</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">y</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">y</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Zeit (h)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_label_coords</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Prozentsatz (%) der Gesamtfläche&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Set x-tick labels to hourly formatted time</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">time_equivalent_hourly_24hr</span><span class="p">)))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">time_equivalent_hourly_24hr</span><span class="p">)</span>
+    
+    <span class="c1"># Display only every second x-tick label to avoid clutter</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">label</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    
+    <span class="c1"># Add secondary x-axis for dates</span>
+    <span class="n">sec</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">secondary_xaxis</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="mf">0.015</span><span class="p">)</span>
+    <span class="n">sec</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">36</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">(2023-06-14 +01)&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">(2023-06-15 +01)&#39;</span><span class="p">])</span>
+    <span class="n">sec</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">sec</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;bottom&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">48.5</span><span class="p">)</span> <span class="c1"># Set x-axis limits</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span> <span class="c1"># Set major y-ticks</span>
+    
+    <span class="n">minor_locator</span> <span class="o">=</span> <span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># Set minor y-ticks</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">minor_locator</span><span class="p">)</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span> <span class="c1"># Set y-axis limits</span>
+
+    <span class="c1"># Get handles and labels from the plot and reverse their order for legend</span>
+    <span class="n">handles</span><span class="p">,</span> <span class="n">labels_plot</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">labels_de</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="c1"># Use German labels for thermal comfort</span>
+            <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="p">(</span><span class="n">description</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">title_fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+            <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
+            <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.5</span><span class="p">),</span>
+            <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center left&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Show plot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d89fe2835303355d3402a2246e5f102342ca58c5402c3bc416558dbcff9c7e94.png" src="../_images/d89fe2835303355d3402a2246e5f102342ca58c5402c3bc416558dbcff9c7e94.png" />
+<img alt="../_images/8339d377e0530550305be046011634adc84f819ea11001486647b62e32dffc39.png" src="../_images/8339d377e0530550305be046011634adc84f819ea11001486647b62e32dffc39.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize an empty DataFrame</span>
+<span class="n">plotdata_1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">plotdata_2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+
+<span class="c1"># Plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">description</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Simulation: </span><span class="si">{</span><span class="n">sim_scenarions</span><span class="p">[</span><span class="n">variable_datas</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">variable_data</span><span class="p">)]</span><span class="si">}</span><span class="s2"> / Location: </span><span class="si">{</span><span class="n">location_name_list</span><span class="p">[</span><span class="n">loc_id</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">top</span><span class="o">=</span><span class="mf">0.90</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">time_list</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">time_lists_hourly</span><span class="p">):</span>
+    <span class="c1"># Create list</span>
+    <span class="n">values_1_real</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">values_2_real</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">time_index</span> <span class="ow">in</span> <span class="n">time_list</span><span class="p">:</span>
+        <span class="c1"># Extract variable data</span>
+        <span class="n">values_1</span> <span class="o">=</span> <span class="n">variable_data_1</span><span class="p">[</span><span class="n">time_index</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y_low</span><span class="p">:</span><span class="n">y_high</span><span class="p">,</span> <span class="n">x_low</span><span class="p">:</span><span class="n">x_high</span><span class="p">]</span>
+        <span class="n">values_2</span> <span class="o">=</span> <span class="n">variable_data_2</span><span class="p">[</span><span class="n">time_index</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y_low</span><span class="p">:</span><span class="n">y_high</span><span class="p">,</span> <span class="n">x_low</span><span class="p">:</span><span class="n">x_high</span><span class="p">]</span>
+
+        <span class="n">values_1_real</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">values_1</span><span class="p">)</span>
+        <span class="n">values_2_real</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">values_2</span><span class="p">)</span>
+        
+    <span class="c1"># Calculate histogram</span>
+    <span class="n">hist_1</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">values_1_real</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bin_edges</span><span class="p">)</span>
+    <span class="n">hist_2</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">values_2_real</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bin_edges</span><span class="p">)</span>
+    
+    <span class="c1"># Store histogram in the DataFrame</span>
+    <span class="n">plotdata_1</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hist_1</span>
+    <span class="n">plotdata_2</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hist_2</span>
+
+<span class="c1"># Convert to percentage</span>
+<span class="n">plotdata_1_percentage</span> <span class="o">=</span> <span class="n">plotdata_1</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plotdata_2_percentage</span> <span class="o">=</span> <span class="n">plotdata_2</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Replace zeros with NaN to avoid plotting them</span>
+<span class="n">plotdata_1_percentage</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plotdata_2_percentage</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Transpose the DataFrame for plotting</span>
+<span class="n">plotdata_1_transposed</span> <span class="o">=</span> <span class="n">plotdata_1_percentage</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">plotdata_2_transposed</span> <span class="o">=</span> <span class="n">plotdata_2_percentage</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+
+<span class="c1"># Plotting as line graph</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plotdata_1_transposed</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span>
+                                <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">custom_colors</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;plotdata_1&#39;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plotdata_2_transposed</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span>
+                                <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">custom_colors_dark</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;plotdata_2&#39;</span><span class="p">)</span>
+
+<span class="c1"># Grid, ticks, and labels</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">y</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">y</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Time (Hour)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_label_coords</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Percentage (%) of total area&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+
+<span class="c1"># Replace x-tick labels with time_equivalent_24hr</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">time_equivalent_hourly_24hr</span><span class="p">)))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">time_equivalent_hourly_24hr</span><span class="p">)</span>
+<span class="c1"># Display only every second x-tick label</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">label</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1"># Set secondary xtick</span>
+<span class="n">sec</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">secondary_xaxis</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="mf">0.015</span><span class="p">)</span>
+<span class="n">sec</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">36</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">(2023-06-14 +01)&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">(2023-06-15 +01)&#39;</span><span class="p">])</span>
+<span class="n">sec</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">sec</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;bottom&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">48.5</span><span class="p">)</span>
+<span class="n">center_yticks</span><span class="p">()</span>
+
+<span class="c1"># Get handles and labels from the plot and reverse their order</span>
+<span class="n">handles</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+
+<span class="c1"># Add prefixes to the labels</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;(BS) </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">if</span> <span class="s1">&#39;plotdata_1&#39;</span> <span class="ow">in</span> <span class="n">label</span> <span class="k">else</span> <span class="sa">f</span><span class="s1">&#39;(S1) </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">]</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">labels</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+          <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="p">(</span><span class="n">description</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+          <span class="n">title_fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+          <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
+          <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+          <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8b94b9be833670078c8e831b20d3febedb85b2d6956fc7c28f2513d846f22cad.png" src="../_images/8b94b9be833670078c8e831b20d3febedb85b2d6956fc7c28f2513d846f22cad.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ma</span>
+
+<span class="n">plotdata_bs</span> <span class="o">=</span> <span class="n">plotdata_1_transposed</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">plotdata_s1</span> <span class="o">=</span> <span class="n">plotdata_2_transposed</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">plotdata_bs</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plotdata_s1</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">difference_plotdata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Varying Cold&#39;</span> <span class="p">:</span> <span class="n">plotdata_s1</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">plotdata_bs</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span>
+    <span class="s1">&#39;Slightly cool&#39;</span> <span class="p">:</span> <span class="n">plotdata_s1</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">plotdata_bs</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span>
+    <span class="s1">&#39;Comfortable&#39;</span> <span class="p">:</span> <span class="n">plotdata_s1</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">plotdata_bs</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span>
+    <span class="s1">&#39;Slightly warm&#39;</span> <span class="p">:</span> <span class="n">plotdata_s1</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">plotdata_bs</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">3</span><span class="p">],</span>
+    <span class="s1">&#39;Warm&#39;</span> <span class="p">:</span> <span class="n">plotdata_s1</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">4</span><span class="p">]</span> <span class="o">-</span> <span class="n">plotdata_bs</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">4</span><span class="p">],</span>
+    <span class="s1">&#39;Hot&#39;</span> <span class="p">:</span> <span class="n">plotdata_s1</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">5</span><span class="p">]</span> <span class="o">-</span> <span class="n">plotdata_bs</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">5</span><span class="p">],</span>
+    <span class="s1">&#39;Very Hot&#39;</span> <span class="p">:</span> <span class="n">plotdata_s1</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">6</span><span class="p">]</span> <span class="o">-</span> <span class="n">plotdata_bs</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">6</span><span class="p">],</span>
+<span class="p">})</span>
+
+<span class="n">difference_plotdata</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Varying Cold</th>
+      <th>Slightly cool</th>
+      <th>Comfortable</th>
+      <th>Slightly warm</th>
+      <th>Warm</th>
+      <th>Hot</th>
+      <th>Very Hot</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>-1.389461</td>
+      <td>1.389461</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>2.270320</td>
+      <td>-2.270320</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>-0.956239</td>
+      <td>0.956239</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.0</td>
+      <td>-0.864865</td>
+      <td>0.794887</td>
+      <td>0.069978</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.411218</td>
+      <td>-0.411218</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels_temp</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Varying Cold&#39;</span><span class="p">,</span> <span class="s1">&#39;Slightly cool&#39;</span><span class="p">,</span> <span class="s1">&#39;Comfortable&#39;</span><span class="p">,</span> <span class="s1">&#39;Slightly warm&#39;</span><span class="p">,</span> <span class="s1">&#39;Warm&#39;</span><span class="p">,</span> <span class="s1">&#39;Hot&#39;</span><span class="p">,</span> <span class="s1">&#39;Very Hot&#39;</span><span class="p">]</span>
+<span class="n">labels_temp_de</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Kalt&#39;</span><span class="p">,</span> <span class="s1">&#39;Eher kalt​&#39;</span><span class="p">,</span> <span class="s1">&#39;Komfortabel&#39;</span><span class="p">,</span> <span class="s1">&#39;Überwiegend warm​&#39;</span><span class="p">,</span> <span class="s1">&#39;Warm​&#39;</span><span class="p">,</span> <span class="s1">&#39;Heiß&#39;</span><span class="p">,</span> <span class="s1">&#39;Sehr heiß​&#39;</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+
+<span class="n">num_columns</span> <span class="o">=</span> <span class="n">difference_plotdata</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Plot each column</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_columns</span><span class="p">):</span>
+    <span class="n">line</span><span class="p">,</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">difference_plotdata</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+                        <span class="n">difference_plotdata</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span>
+                        <span class="n">label</span><span class="o">=</span><span class="n">difference_plotdata</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                        <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span>
+                        <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.75</span><span class="p">,</span>
+                        <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+                        <span class="c1">#  color=custom_colors[i],</span>
+                        
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># Change x-axis tick label size</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># Change y-axis tick label size</span>
+    
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="n">custom_colors</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span>
+            <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#00000050&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    
+    <span class="n">axs_temp</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+    <span class="n">axs_temp</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">labels_temp_de</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    
+    <span class="c1"># Hide tick labels on the right side</span>
+    <span class="n">axs_temp</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Set label size to 0 and remove tick length</span>
+    
+    <span class="n">temp_max</span> <span class="o">=</span> <span class="n">ma</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">difference_plotdata</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+    <span class="n">temp_min</span> <span class="o">=</span> <span class="n">ma</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">difference_plotdata</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+    
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">margins</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="n">temp_min</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">temp_max</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">temp_min</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">temp_max</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#000000&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>        
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">time_equivalent_hourly_24hr</span><span class="p">)))</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">time_equivalent_hourly_24hr</span><span class="p">)</span>
+    <span class="c1"># Display only every second x-tick label</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()):</span>
+        <span class="k">if</span> <span class="n">j</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">label</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">ticker</span><span class="o">.</span><span class="n">MaxNLocator</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+     
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">num_columns</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">sec</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">secondary_xaxis</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+        <span class="n">sec</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">36</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">(2023-06-14 +01)&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">(2023-06-15 +01)&#39;</span><span class="p">])</span>
+        <span class="n">sec</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+        <span class="n">sec</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;bottom&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Zeit (h)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9bd6eef566d7fac134e4779f72f7e531217f24e7b5f416275759cc6c1b783b77.png" src="../_images/9bd6eef566d7fac134e4779f72f7e531217f24e7b5f416275759cc6c1b783b77.png" />
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="06_Bio_Var_Analysis_BS_vs_S1.html" class="btn btn-neutral float-left" title="2D Biometeorological Variable Analysis: Baseline vs. Scenario" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, str.ucture GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

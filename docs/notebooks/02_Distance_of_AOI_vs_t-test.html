@@ -1,0 +1,970 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Distance of AOI vs t-test &mdash; CoKLIMAx 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=822aaed9" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script type="application/vnd.jupyter.widget-state+json">{"state": {"00661683d4c24025869dd3531427d9c9": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "261e3dfc58eb4f22afc20d09585d6a88": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "a5933644568e4d58b338a5e9c5f46476": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DropdownModel", "_options_labels": ["ta_2m*_xy", "tsurf*_xy", "wspeed_10m*_xy", "bio_pet*_xy", "bio_utci*_xy"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "DropdownView", "description": "Select test variable:", "description_allow_html": false, "disabled": false, "index": 0, "layout": "IPY_MODEL_00661683d4c24025869dd3531427d9c9", "style": "IPY_MODEL_261e3dfc58eb4f22afc20d09585d6a88", "tabbable": null, "tooltip": null}}}, "version_major": 2, "version_minor": 0}</script>
+      <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2D Air Temperature Analysis: Baseline vs. Scenario" href="03_Air_Temp_Analysis_BS_vs_S1.html" />
+    <link rel="prev" title="Comparison of Observed vs Simulation Data" href="01_Obs_vs_Sim.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            CoKLIMAx
+              <img src="../_static/coklimax_logo_new.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Data Preparation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_01_2D_Var_Agg_and_Extract.html">2D Variable Aggregation and Extraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_02_3D_to_2d_Surface_Var_Extract.html">3D Variable Surface Extraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_03_2D_Surface_Var_Agg_and_Extract.html">3D Variable Extraction and Aggregation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Preminimary:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="01_Obs_vs_Sim.html">Comparison of Observed vs Simulation Data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Distance of AOI vs t-test</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#import-dependencies">1. Import dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#import-data">2. Import data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#variable-selection">3. Variable Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#define-time-sequence-and-time-equivalent">4. Define time sequence and time equivalent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#define-codes-useful-for-future">5. Define codes useful for future</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extract-variable-data-and-select-domain">6. Extract variable data and select domain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#define-time-steps-to-generate-aggregated-values">7. Define time steps to generate aggregated values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-dataframe-for-statistics">8. Create dataframe for statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#define-function-to-create-counts-dataframe">9. Define function to create counts dataframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plotting-the-bar-graph">10. Plotting the bar graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plot-line-graph">11. Plot line graph</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Variable: Temperature:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="03_Air_Temp_Analysis_BS_vs_S1.html">2D Air Temperature Analysis: Baseline vs. Scenario</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_Air_Temp_Analysis_Heatmaps.html">2D Air Temperature Analysis: Heatmaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_Air_Temp_with_Agg.html">2D Air Temperature Aggregation Tool</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Variables: Biometeorology:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="06_Bio_Var_Analysis_BS_vs_S1.html">2D Biometeorological Variable Analysis: Baseline vs. Scenario</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_Bio_Var_Analysis_BS_vs_S1.html">Biological Variable Analysis</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CoKLIMAx</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Distance of AOI vs t-test</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks/02_Distance_of_AOI_vs_t-test.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="distance-of-aoi-vs-t-test">
+<h1>Distance of AOI vs t-test<a class="headerlink" href="#distance-of-aoi-vs-t-test" title="Link to this heading"></a></h1>
+<p>This notebook analyzes the relationship between the distance of an Area of Interest (AOI) from a central point and the statistical significance of temperature differences using t-tests. It compares two simulation scenarios (Baseline and Scenario 1) across various AOIs and increasing buffer distances, evaluating whether the observed temperature differences are statistically significant at different spatial scales.</p>
+<section id="import-dependencies">
+<h2>1. Import dependencies<a class="headerlink" href="#import-dependencies" title="Link to this heading"></a></h2>
+<p>This section imports all necessary libraries for data manipulation, netCDF file handling, geographical data processing, statistical analysis, and visualization.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">netCDF4</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nc</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.ticker</span><span class="w"> </span><span class="kn">import</span> <span class="n">MultipleLocator</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">palm_variables</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="import-data">
+<h2>2. Import data<a class="headerlink" href="#import-data" title="Link to this heading"></a></h2>
+<p>This section defines the file paths for the simulation output and static driver files, then reads them into netCDF4 datasets. It also extracts 2D building data for later use in masking.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Absolute URL of simulation output files and static driver</span>
+<span class="n">file_xy_1</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;./Data/_simulation_outputs_3/konstanz_4096x4096_v9_Baseline-48hr/OUTPUT/konstanz_4096x4096_v9_Baseline_av_xy_N03.000.nc&quot;</span>
+<span class="n">file_xy_2</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;./Data/_simulation_outputs_3/konstanz_4096x4096_v9_Scenario_1-48hr/OUTPUT/konstanz_4096x4096_v9_Scenario_1_av_xy_N03.000.nc&quot;</span>
+<span class="n">file_static</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;./Data/_simulation_outputs_3/konstanz_4096x4096_v9_Scenario_1-48hr/INPUT/konstanz_4096x4096_v9_Scenario_1_static_N03&quot;</span>
+
+<span class="c1"># Read netCDF files into dataset objects</span>
+<span class="n">dataset_1</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">file_xy_1</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">dataset_2</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">file_xy_2</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">dataset_3</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">file_static</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
+<span class="c1"># Store datasets in a list for easier iteration</span>
+<span class="n">dataset_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">dataset_1</span><span class="p">,</span> <span class="n">dataset_2</span><span class="p">]</span>
+
+<span class="c1"># Extract 2D building data from the static driver file</span>
+<span class="n">buildings_2d</span> <span class="o">=</span> <span class="n">dataset_3</span><span class="p">[</span><span class="s1">&#39;buildings_2d&#39;</span><span class="p">]</span>
+<span class="n">buildings_2d_data</span> <span class="o">=</span> <span class="n">buildings_2d</span><span class="p">[:,:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="variable-selection">
+<h2>3. Variable Selection<a class="headerlink" href="#variable-selection" title="Link to this heading"></a></h2>
+<p>This section allows the user to select a test variable from the available PALM simulation output. The selected variable’s description and unit are displayed for clarity.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get all variable names from the first dataset</span>
+<span class="n">var_names</span> <span class="o">=</span> <span class="n">dataset_1</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+
+<span class="c1"># Filter for 3D variables (variables with more than 2 dimensions, typically time, height, y, x)</span>
+<span class="n">var_names_palm</span> <span class="o">=</span> <span class="p">[</span><span class="n">var</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">var_names</span> <span class="k">if</span> <span class="n">dataset_1</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="c1"># Initialize test_variable with the first suitable variable</span>
+<span class="n">test_variable</span> <span class="o">=</span> <span class="n">var_names_palm</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Initialize dropdown widget for variable selection</span>
+<span class="n">drop_down</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">var_names_palm</span><span class="p">,</span>
+                             <span class="n">value</span><span class="o">=</span><span class="n">var_names_palm</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                             <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Select test variable:&#39;</span>
+                             <span class="p">)</span>
+
+<span class="c1"># Handler function to update the global test_variable when dropdown value changes</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">dropdown_handler</span><span class="p">(</span><span class="n">change</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">test_variable</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">change</span><span class="o">.</span><span class="n">new</span><span class="p">)</span>
+    <span class="n">test_variable</span> <span class="o">=</span> <span class="n">change</span><span class="o">.</span><span class="n">new</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selected variable: </span><span class="si">{</span><span class="n">test_variable</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Observe changes in the dropdown&#39;s value</span>
+<span class="n">drop_down</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">dropdown_handler</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+
+<span class="c1"># Display the dropdown widget</span>
+<span class="n">display</span><span class="p">(</span><span class="n">drop_down</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "a5933644568e4d58b338a5e9c5f46476"}</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if the test variable contains a wildcard, indicating it might be a generic variable type</span>
+<span class="k">if</span> <span class="s2">&quot;*&quot;</span> <span class="ow">in</span> <span class="n">test_variable</span><span class="p">:</span>
+    <span class="c1"># Extract the base name of the variable (e.g., &#39;T&#39; from &#39;T*&#39;)</span>
+    <span class="n">var_initial</span> <span class="o">=</span> <span class="p">((</span><span class="n">test_variable</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;*&quot;</span>
+    <span class="c1"># Get the unit and description from the palm_variables dictionary</span>
+    <span class="n">unit</span> <span class="o">=</span> <span class="n">palm_variables</span><span class="o">.</span><span class="n">variables_dict</span><span class="p">[</span><span class="n">var_initial</span><span class="p">][</span><span class="s1">&#39;unit&#39;</span><span class="p">]</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">palm_variables</span><span class="o">.</span><span class="n">variables_dict</span><span class="p">[</span><span class="n">var_initial</span><span class="p">][</span><span class="s1">&#39;description&#39;</span><span class="p">]</span>
+    <span class="c1"># Print the capitalized description and unit</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">description</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2-m air temperature, °C
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="define-time-sequence-and-time-equivalent">
+<h2>4. Define time sequence and time equivalent<a class="headerlink" href="#define-time-sequence-and-time-equivalent" title="Link to this heading"></a></h2>
+<p>This section prepares time-related data for the analysis, defining time steps and functions to convert them into human-readable hourly equivalents.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract data for the selected test variable from the first dataset</span>
+<span class="n">variable_data_1</span> <span class="o">=</span> <span class="n">dataset_1</span><span class="p">[</span><span class="n">test_variable</span><span class="p">]</span>
+
+<span class="c1"># Get the shape of the variable data, specifically the number of time steps</span>
+<span class="n">variable_data_shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">variable_data_1</span><span class="p">)</span>
+<span class="n">total_time_steps</span> <span class="o">=</span> <span class="n">variable_data_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Display the total number of time steps</span>
+<span class="n">total_time_steps</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>288
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define parameters for time step intervals and the starting second step</span>
+<span class="n">time_step_interval</span> <span class="o">=</span> <span class="mi">6</span>  <span class="c1"># Represents 1 hour (6 * 10 minutes = 60 minutes)</span>
+<span class="n">second_step</span> <span class="o">=</span> <span class="mi">5</span>         <span class="c1"># Corresponds to 1:00 hour mark in the 6-step interval (0:00, 0:10, ..., 0:50, 1:00)</span>
+
+<span class="c1"># Create a time sequence for hourly intervals</span>
+<span class="n">time_sequence_hourly</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">time_sequence_hourly</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">second_step</span><span class="p">,</span> <span class="n">total_time_steps</span><span class="p">,</span> <span class="n">time_step_interval</span><span class="p">))</span>
+
+<span class="c1"># Create a time sequence for all time steps</span>
+<span class="n">time_sequence_all</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_time_steps</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_time_equivalent</span><span class="p">(</span><span class="n">time_sequence</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a sequence of time steps (each representing 10 minutes) into</span>
+<span class="sd">    human-readable HH:MM format.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        time_sequence (list or array): A list of time step indices.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: A tuple containing:</span>
+<span class="sd">            - time_equivalent (list): List of time strings in HH:MM format (can exceed 24 hours).</span>
+<span class="sd">            - time_equivalent_24hr (list): List of time strings in 24-hour HH:MM format (resets after 23:50).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">time_equivalent</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">time_equivalent_24hr</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">time_step</span> <span class="ow">in</span> <span class="n">time_sequence</span><span class="p">:</span>
+        <span class="n">total_minutes</span> <span class="o">=</span> <span class="p">(</span><span class="n">time_step</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span>
+        <span class="n">hours</span><span class="p">,</span> <span class="n">minutes</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">total_minutes</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+        
+        <span class="c1"># Append time equivalent in hours:minutes format</span>
+        <span class="n">time_equivalent</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">hours</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">minutes</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="c1"># Handle overflow of hours for 24-hour format (e.g., 25:00 becomes 01:00)</span>
+        <span class="n">hours_24hr</span> <span class="o">=</span> <span class="n">hours</span> <span class="o">%</span> <span class="mi">24</span>
+        <span class="n">time_equivalent_24hr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">hours_24hr</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">minutes</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">time_equivalent</span><span class="p">,</span> <span class="n">time_equivalent_24hr</span>
+
+<span class="c1"># Generate time equivalents for hourly and all time steps</span>
+<span class="n">time_equivalent_hourly</span><span class="p">,</span> <span class="n">time_equivalent_hourly_24hr</span> <span class="o">=</span> <span class="n">get_time_equivalent</span><span class="p">(</span><span class="n">time_sequence_hourly</span><span class="p">)</span>
+<span class="n">time_equivalent_all</span><span class="p">,</span> <span class="n">time_equivalent_all_24hr</span> <span class="o">=</span> <span class="n">get_time_equivalent</span><span class="p">(</span><span class="n">time_sequence_all</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="define-codes-useful-for-future">
+<h2>5. Define codes useful for future<a class="headerlink" href="#define-codes-useful-for-future" title="Link to this heading"></a></h2>
+<p>This section defines essential grid and coordinate system parameters from the dataset, which are crucial for spatial operations and data extraction in subsequent steps.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define grid spacing (dx, dy)</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="n">dataset_1</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">dataset_1</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">dy</span> <span class="o">=</span> <span class="n">dataset_1</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">dataset_1</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Define number of cells in x and y dimensions</span>
+<span class="n">nx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">dataset_1</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ny</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">dataset_1</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Coordinates of the origin in PALM (x, y, z)</span>
+<span class="n">origin_x</span><span class="p">,</span> <span class="n">origin_y</span><span class="p">,</span> <span class="n">origin_z</span> <span class="o">=</span> <span class="n">dataset_1</span><span class="o">.</span><span class="n">origin_x</span><span class="p">,</span> <span class="n">dataset_1</span><span class="o">.</span><span class="n">origin_y</span><span class="p">,</span> <span class="n">dataset_1</span><span class="o">.</span><span class="n">origin_z</span>
+
+<span class="c1"># Vectors for coordinate at cell edges (x, y)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">dx</span> <span class="o">+</span> <span class="n">origin_x</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ny</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">dy</span> <span class="o">+</span> <span class="n">origin_y</span>  <span class="c1"># Corrected to use ny for y-axis</span>
+
+<span class="c1"># Vectors for coordinates at cell centers (xc, yc)</span>
+<span class="n">xc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nx</span><span class="p">)</span> <span class="o">*</span> <span class="n">dx</span> <span class="o">+</span> <span class="n">origin_x</span> <span class="o">+</span> <span class="n">dx</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="n">yc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ny</span><span class="p">)</span> <span class="o">*</span> <span class="n">dy</span> <span class="o">+</span> <span class="n">origin_y</span> <span class="o">+</span> <span class="n">dy</span> <span class="o">/</span> <span class="mi">2</span>  <span class="c1"># Corrected to use ny for y-axis</span>
+
+<span class="c1"># Time-related information</span>
+<span class="n">origin_time</span> <span class="o">=</span> <span class="n">dataset_1</span><span class="o">.</span><span class="n">origin_time</span> 
+<span class="n">time_step</span> <span class="o">=</span> <span class="mi">600</span>  <span class="c1"># Default time step in seconds (from dataset_1.time_step, if available)</span>
+<span class="n">nt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">dataset_1</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Total number of time steps</span>
+
+<span class="c1"># Print key grid and time parameters</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of cells (nx, ny): </span><span class="si">{</span><span class="n">nx</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">ny</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Origin coordinates (x, y, z): </span><span class="si">{</span><span class="n">origin_x</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">origin_y</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">origin_z</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Origin time: </span><span class="si">{</span><span class="n">origin_time</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total number of time steps (nt): </span><span class="si">{</span><span class="n">nt</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of cells (nx, ny): 256, 256
+Origin coordinates (x, y, z): 512902.0, 5278402.0, 392.87999725341797
+Origin time: 2023-06-13 23:00:00 +00
+Total number of time steps (nt): 288
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_extents</span><span class="p">(</span><span class="n">gdf_combined</span><span class="p">,</span> <span class="n">location_id</span><span class="p">,</span> <span class="n">increased_distance</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates the array indices (extents) for a given geographical polygon (AOI)</span>
+<span class="sd">    with an optional buffer distance.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        gdf_combined (geopandas.GeoDataFrame): GeoDataFrame containing all AOI polygons.</span>
+<span class="sd">        location_id (int): Index of the specific AOI in gdf_combined.</span>
+<span class="sd">        increased_distance (int): The buffer distance in grid cells to expand the AOI.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: A tuple (x_low, y_low, x_high, y_high) representing the array indices</span>
+<span class="sd">               of the bounding box for the buffered AOI, clamped to the simulation domain boundaries.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Extract the polygon geometry for the given location ID</span>
+    <span class="n">polygon_aug</span> <span class="o">=</span> <span class="n">gdf_combined</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">location_id</span><span class="p">]</span>
+    <span class="n">polygon</span> <span class="o">=</span> <span class="n">polygon_aug</span><span class="o">.</span><span class="n">geometry</span>
+    <span class="n">min_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">,</span> <span class="n">max_x</span><span class="p">,</span> <span class="n">max_y</span> <span class="o">=</span> <span class="n">polygon</span><span class="o">.</span><span class="n">bounds</span>
+
+    <span class="c1"># Convert geographic coordinates to array indices (assuming dx = dy)</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">min_x</span> <span class="o">-</span> <span class="n">origin_x</span><span class="p">)</span> <span class="o">/</span> <span class="n">dx</span><span class="p">)</span>
+    <span class="n">y1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">min_y</span> <span class="o">-</span> <span class="n">origin_y</span><span class="p">)</span> <span class="o">/</span> <span class="n">dx</span><span class="p">)</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">max_x</span> <span class="o">-</span> <span class="n">origin_x</span><span class="p">)</span> <span class="o">/</span> <span class="n">dx</span><span class="p">)</span>
+    <span class="n">y2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">max_y</span> <span class="o">-</span> <span class="n">origin_y</span><span class="p">)</span> <span class="o">/</span> <span class="n">dx</span><span class="p">)</span>
+
+    <span class="c1"># Calculate half-window for the increased distance</span>
+    <span class="n">half_window</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">increased_distance</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># Apply the buffer to the extents</span>
+    <span class="n">x_low</span><span class="p">,</span> <span class="n">x_high</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">-</span> <span class="n">half_window</span><span class="p">,</span> <span class="n">x2</span> <span class="o">+</span> <span class="n">half_window</span>
+    <span class="n">y_low</span><span class="p">,</span> <span class="n">y_high</span> <span class="o">=</span> <span class="n">y1</span> <span class="o">-</span> <span class="n">half_window</span><span class="p">,</span> <span class="n">y2</span> <span class="o">+</span> <span class="n">half_window</span>
+
+    <span class="c1"># Clamp the extents to the simulation domain boundaries (0 to nx/ny)</span>
+    <span class="n">x_low</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x_low</span><span class="p">)</span>
+    <span class="n">y_low</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y_low</span><span class="p">)</span>
+    <span class="n">x_high</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">x_high</span><span class="p">)</span>  <span class="c1"># Use nx for x_high boundary</span>
+    <span class="n">y_high</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">ny</span><span class="p">,</span> <span class="n">y_high</span><span class="p">)</span>  <span class="c1"># Use ny for y_high boundary</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">x_low</span><span class="p">,</span> <span class="n">y_low</span><span class="p">,</span> <span class="n">x_high</span><span class="p">,</span> <span class="n">y_high</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="extract-variable-data-and-select-domain">
+<h2>6. Extract variable data and select domain<a class="headerlink" href="#extract-variable-data-and-select-domain" title="Link to this heading"></a></h2>
+<p>This section loads variable data from both simulation scenarios and reads shapefiles defining Areas of Interest (AOIs). These AOIs will be used to extract relevant data subsets for statistical analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load variable data for the selected test variable from both datasets</span>
+<span class="n">variable_data_1</span> <span class="o">=</span> <span class="n">dataset_1</span><span class="p">[</span><span class="n">test_variable</span><span class="p">]</span>
+<span class="n">variable_data_2</span> <span class="o">=</span> <span class="n">dataset_2</span><span class="p">[</span><span class="n">test_variable</span><span class="p">]</span>
+<span class="n">variable_datas</span> <span class="o">=</span> <span class="p">[</span><span class="n">variable_data_1</span><span class="p">,</span> <span class="n">variable_data_2</span><span class="p">]</span>
+
+<span class="c1"># Define scenario names for labeling</span>
+<span class="n">sim_scenarions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Baseline (BS)&#39;</span><span class="p">,</span> <span class="s1">&#39;Scenario 1 (S1)&#39;</span><span class="p">]</span>
+<span class="n">sim_scene</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;BS&#39;</span><span class="p">,</span> <span class="s1">&#39;S1&#39;</span><span class="p">]</span>
+
+<span class="c1"># Define paths to shapefiles for different AOI definitions</span>
+<span class="n">shapefile_path_child_ii</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;./Data/shapefiles/03_AOI_Child_II.shp&quot;</span>
+<span class="n">shapefile_path_uhi_study</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;./Data/shapefiles/UHI_aoi_study_fitted.shp&quot;</span>
+
+<span class="c1"># Read shapefiles into GeoDataFrames</span>
+<span class="n">gdf_child</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">shapefile_path_child_ii</span><span class="p">)</span>
+<span class="n">gdf_uhi</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">shapefile_path_uhi_study</span><span class="p">)</span>
+
+<span class="c1"># Combine the GeoDataFrames for easier indexing of all AOIs</span>
+<span class="n">gdf_combined</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">gdf_child</span><span class="p">,</span> <span class="n">gdf_uhi</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Define a list of location names corresponding to the combined AOIs</span>
+<span class="n">location_name_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Overall&#39;</span><span class="p">,</span> <span class="s1">&#39;Stephansplatz&#39;</span><span class="p">,</span> <span class="s1">&#39;Markstaette&#39;</span><span class="p">,</span> <span class="s1">&#39;Augustinerplatz&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="define-time-steps-to-generate-aggregated-values">
+<h2>7. Define time steps to generate aggregated values<a class="headerlink" href="#define-time-steps-to-generate-aggregated-values" title="Link to this heading"></a></h2>
+<p>The get_aggregate_time_list function creates lists of time steps for aggregation. This allows for calculating statistics over a moving window of time, providing a smoothed perspective on the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_aggregate_time_list</span><span class="p">(</span><span class="n">total_time_steps</span><span class="p">,</span> <span class="n">aggregate_time_steps</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generates a list of time step ranges for aggregation, creating a moving window.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        total_time_steps (int): Total number of time steps in the simulation.</span>
+<span class="sd">        aggregate_time_steps (int): The size of the aggregation window (number of time steps).</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: A list where each element is a sub-list of time step indices</span>
+<span class="sd">              representing an aggregation window.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">time_lists</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_time_steps</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">aggregate_time_steps</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">time_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Calculate half-window for even and odd aggregation sizes</span>
+            <span class="n">half_window</span> <span class="o">=</span> <span class="n">aggregate_time_steps</span> <span class="o">//</span> <span class="mi">2</span>
+            <span class="k">if</span> <span class="n">aggregate_time_steps</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c1"># For even window, window is centered around current step &#39;i&#39;</span>
+                <span class="n">time_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">half_window</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">half_window</span><span class="p">)]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># For odd window, window is centered around current step &#39;i&#39;</span>
+                <span class="n">time_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">half_window</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">half_window</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
+        
+        <span class="c1"># Ensure indices are within bounds (0 to total_time_steps - 1)</span>
+        <span class="n">valid_time_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">time_list</span> <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">total_time_steps</span><span class="p">]</span>
+        <span class="n">time_lists</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">valid_time_list</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">time_lists</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the number of time steps to aggregate for the moving average (e.g., 6 steps = 1 hour)</span>
+<span class="n">aggregate_time_steps</span> <span class="o">=</span> <span class="mi">6</span>
+
+<span class="c1"># Generate the list of aggregated time step windows</span>
+<span class="n">time_lists</span> <span class="o">=</span> <span class="n">get_aggregate_time_list</span><span class="p">(</span><span class="n">total_time_steps</span><span class="p">,</span> <span class="n">aggregate_time_steps</span><span class="p">)</span>
+
+<span class="c1"># Optional: Uncomment to view the generated time lists</span>
+<span class="c1"># time_lists</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-dataframe-for-statistics">
+<h2>8. Create dataframe for statistics<a class="headerlink" href="#create-dataframe-for-statistics" title="Link to this heading"></a></h2>
+<p>This section defines a function create_aggregated_dataframe that performs t-tests between the two simulation scenarios (Baseline and Scenario 1) for a specified AOI and varying buffer distances. It returns a DataFrame containing p-values for each time step and buffer distance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">create_aggregated_dataframe</span><span class="p">(</span><span class="n">location_id</span><span class="p">,</span> <span class="n">increased_distances</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Performs t-tests between two simulation datasets for a given AOI</span>
+<span class="sd">    at various increased buffer distances.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        location_id (int): The index of the AOI in `gdf_combined`.</span>
+<span class="sd">        increased_distances (list): A list of buffer distances (in grid cells) to apply around the AOI.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pandas.DataFrame: A DataFrame containing time steps, time equivalents,</span>
+<span class="sd">                          alpha value, and p-values for each increased distance.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Read polygon extends from the shapefile based on location id</span>
+    <span class="n">polygon_aug</span> <span class="o">=</span> <span class="n">gdf_combined</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">location_id</span><span class="p">]</span>
+    <span class="n">polygon</span> <span class="o">=</span> <span class="n">polygon_aug</span><span class="o">.</span><span class="n">geometry</span>
+    <span class="n">min_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">,</span> <span class="n">max_x</span><span class="p">,</span> <span class="n">max_y</span> <span class="o">=</span> <span class="n">polygon</span><span class="o">.</span><span class="n">bounds</span>
+
+    <span class="c1"># Convert geographic coordinates to array indices</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">min_x</span> <span class="o">-</span> <span class="n">origin_x</span><span class="p">)</span> <span class="o">/</span> <span class="n">dx</span><span class="p">)</span>
+    <span class="n">y1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">min_y</span> <span class="o">-</span> <span class="n">origin_y</span><span class="p">)</span> <span class="o">/</span> <span class="n">dy</span><span class="p">)</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">max_x</span> <span class="o">-</span> <span class="n">origin_x</span><span class="p">)</span> <span class="o">/</span> <span class="n">dx</span><span class="p">)</span>
+    <span class="n">y2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">max_y</span> <span class="o">-</span> <span class="n">origin_y</span><span class="p">)</span> <span class="o">/</span> <span class="n">dy</span><span class="p">)</span>
+    
+    <span class="c1"># Define significance level (alpha)</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
+    
+    <span class="c1"># Dictionaries to store t-statistics and p-values</span>
+    <span class="n">t_statistics_dict</span><span class="p">,</span> <span class="n">p_values_dict</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{}</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">increased_distances</span><span class="p">:</span>
+        <span class="n">half_window</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">x_low</span><span class="p">,</span> <span class="n">x_high</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">-</span> <span class="n">half_window</span><span class="p">,</span> <span class="n">x2</span> <span class="o">+</span> <span class="n">half_window</span>
+        <span class="n">y_low</span><span class="p">,</span> <span class="n">y_high</span> <span class="o">=</span> <span class="n">y1</span> <span class="o">-</span> <span class="n">half_window</span><span class="p">,</span> <span class="n">y2</span> <span class="o">+</span> <span class="n">half_window</span>
+        
+        <span class="c1"># Clamp coordinates to simulation domain boundaries</span>
+        <span class="n">x_low</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x_low</span><span class="p">)</span>
+        <span class="n">y_low</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y_low</span><span class="p">)</span>
+        <span class="n">x_high</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">x_high</span><span class="p">)</span>
+        <span class="n">y_high</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">ny</span><span class="p">,</span> <span class="n">y_high</span><span class="p">)</span>
+
+        <span class="n">t_statistics</span><span class="p">,</span> <span class="n">p_values_ttest</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">time_list</span> <span class="ow">in</span> <span class="n">time_lists</span><span class="p">:</span>
+            <span class="n">values_real_1</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">values_real_2</span> <span class="o">=</span> <span class="p">[]</span>
+            
+            <span class="k">for</span> <span class="n">time_index</span> <span class="ow">in</span> <span class="n">time_list</span><span class="p">:</span>
+                <span class="c1"># Extract values for each time_index and remove masked values (e.g., buildings)</span>
+                <span class="n">values_time_index_1</span> <span class="o">=</span> <span class="n">variable_data_1</span><span class="p">[</span><span class="n">time_index</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y_low</span><span class="p">:</span><span class="n">y_high</span><span class="p">,</span> <span class="n">x_low</span><span class="p">:</span><span class="n">x_high</span><span class="p">]</span>
+                <span class="n">values_time_index_2</span> <span class="o">=</span> <span class="n">variable_data_2</span><span class="p">[</span><span class="n">time_index</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y_low</span><span class="p">:</span><span class="n">y_high</span><span class="p">,</span> <span class="n">x_low</span><span class="p">:</span><span class="n">x_high</span><span class="p">]</span>
+                
+                <span class="c1"># Apply building mask (assuming ~buildings_2d_data.mask inverts the mask correctly)</span>
+                <span class="n">values_time_index_1</span><span class="o">.</span><span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">buildings_2d_data</span><span class="o">.</span><span class="n">mask</span>
+                <span class="n">values_time_index_2</span><span class="o">.</span><span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">buildings_2d_data</span><span class="o">.</span><span class="n">mask</span>
+                
+                <span class="c1"># Get compressed (unmasked) values</span>
+                <span class="n">values_time_index_real_1</span> <span class="o">=</span> <span class="n">values_time_index_1</span><span class="o">.</span><span class="n">compressed</span><span class="p">()</span>
+                <span class="n">values_time_index_real_2</span> <span class="o">=</span> <span class="n">values_time_index_2</span><span class="o">.</span><span class="n">compressed</span><span class="p">()</span>
+                
+                <span class="c1"># Extend real values to lists</span>
+                <span class="n">values_real_1</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">values_time_index_real_1</span><span class="p">)</span>
+                <span class="n">values_real_2</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">values_time_index_real_2</span><span class="p">)</span>
+
+            <span class="c1"># Perform independent t-test</span>
+            <span class="n">t_statistic</span><span class="p">,</span> <span class="n">p_value_ttest</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">values_real_1</span><span class="p">,</span> <span class="n">values_real_2</span><span class="p">)</span>
+            
+            <span class="c1"># Append t-statistic and p-value to lists, formatted to scientific notation</span>
+            <span class="n">t_statistics</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t_statistic</span><span class="p">)</span>
+            <span class="n">p_values_ttest</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p_value_ttest</span><span class="p">)</span>
+        
+        <span class="c1"># Add results to dictionaries with formatted string values</span>
+        <span class="n">t_statistics_dict</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;t-statistics_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">t</span><span class="si">:</span><span class="s2">.3e</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">t_statistics</span><span class="p">]</span>
+        <span class="n">p_values_dict</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;p-value_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="si">:</span><span class="s2">.3e</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">p_values_ttest</span><span class="p">]</span>
+
+    <span class="c1"># Create the base DataFrame data</span>
+    <span class="n">df_data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;Time step&#39;</span><span class="p">:</span> <span class="n">time_sequence_all</span><span class="p">,</span>
+        <span class="s1">&#39;Time (hr)&#39;</span><span class="p">:</span> <span class="n">time_equivalent_all</span><span class="p">,</span>
+        <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">alpha</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="p">}</span>
+    
+    <span class="c1"># Add p-values to DataFrame data</span>
+    <span class="n">df_data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">p_values_dict</span><span class="p">)</span>
+
+    <span class="c1"># Create the final DataFrame</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df_data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the list of increased distances (buffer sizes in grid cells)</span>
+<span class="n">increased_distances</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Increased distances (in grid cells): </span><span class="si">{</span><span class="n">increased_distances</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Define the number of time steps to aggregate (e.g., 6 steps = 1 hour)</span>
+<span class="n">aggregate_time_steps</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">time_lists</span> <span class="o">=</span> <span class="n">get_aggregate_time_list</span><span class="p">(</span><span class="n">total_time_steps</span><span class="p">,</span> <span class="n">aggregate_time_steps</span><span class="p">)</span>
+
+<span class="c1"># Output folder and base file name</span>
+<span class="n">output_dir</span> <span class="o">=</span> <span class="s2">&quot;./output/02_csv&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">base_filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;02_agg_</span><span class="si">{</span><span class="n">aggregate_time_steps</span><span class="si">}</span><span class="s2">steps_df_&quot;</span>
+
+<span class="c1"># Function to load or create and save DataFrame</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_or_create_df</span><span class="p">(</span><span class="n">location_id</span><span class="p">):</span>
+    <span class="n">csv_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_filename</span><span class="si">}{</span><span class="n">location_id</span><span class="si">}</span><span class="s2">.csv&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">csv_path</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loading existing DataFrame for location_id=</span><span class="si">{</span><span class="n">location_id</span><span class="si">}</span><span class="s2"> from </span><span class="si">{</span><span class="n">csv_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">csv_path</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Creating new DataFrame for location_id=</span><span class="si">{</span><span class="n">location_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">create_aggregated_dataframe</span><span class="p">(</span><span class="n">location_id</span><span class="o">=</span><span class="n">location_id</span><span class="p">,</span> <span class="n">increased_distances</span><span class="o">=</span><span class="n">increased_distances</span><span class="p">)</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">csv_path</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saved DataFrame to </span><span class="si">{</span><span class="n">csv_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="c1"># Get or create DataFrames for each location ID</span>
+<span class="n">df_0</span> <span class="o">=</span> <span class="n">get_or_create_df</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">df_1</span> <span class="o">=</span> <span class="n">get_or_create_df</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df_2</span> <span class="o">=</span> <span class="n">get_or_create_df</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">df_3</span> <span class="o">=</span> <span class="n">get_or_create_df</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Increased distances (in grid cells): [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30]
+Loading existing DataFrame for location_id=0 from ./output/02_csv\02_agg_6steps_df_0.csv
+Loading existing DataFrame for location_id=1 from ./output/02_csv\02_agg_6steps_df_1.csv
+Loading existing DataFrame for location_id=2 from ./output/02_csv\02_agg_6steps_df_2.csv
+Loading existing DataFrame for location_id=3 from ./output/02_csv\02_agg_6steps_df_3.csv
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="define-function-to-create-counts-dataframe">
+<h2>9. Define function to create counts dataframe<a class="headerlink" href="#define-function-to-create-counts-dataframe" title="Link to this heading"></a></h2>
+<p>The counts_df function processes the p-value DataFrames to count instances where the null hypothesis (no significant difference) is either rejected or failed to be rejected, based on the specified alpha level.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">counts_df</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Processes a DataFrame containing p-values and calculates the counts</span>
+<span class="sd">    of rejected and failed-to-reject null hypotheses for each distance.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df (pandas.DataFrame): The input DataFrame with &#39;p-value_X&#39; columns</span>
+<span class="sd">                               and an &#39;alpha&#39; column.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pandas.DataFrame: A DataFrame summarizing the counts for each distance.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">increased_distances</span><span class="p">:</span>
+        <span class="n">col_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;p-value_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span>
+
+        <span class="c1"># Count instances where p-value is less than alpha (Reject Null Hypothesis)</span>
+        <span class="n">count_less_than_alpha</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        
+        <span class="c1"># Count instances where p-value is greater than alpha (Fail to Reject Null Hypothesis)</span>
+        <span class="n">count_greater_than_alpha</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+        <span class="n">counts</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;distance&#39;</span><span class="p">:</span> <span class="n">i</span><span class="p">,</span>
+                       <span class="s1">&#39;count_less_than_alpha&#39;</span><span class="p">:</span> <span class="n">count_less_than_alpha</span><span class="p">,</span>
+                       <span class="s1">&#39;count_greater_than_alpha&#39;</span><span class="p">:</span> <span class="n">count_greater_than_alpha</span><span class="p">,</span>
+                       <span class="s1">&#39;Reject Null&#39;</span><span class="p">:</span> <span class="n">count_less_than_alpha</span><span class="p">,</span>
+                       <span class="s1">&#39;Fail to reject null&#39;</span><span class="p">:</span> <span class="n">count_greater_than_alpha</span><span class="p">})</span>
+
+    <span class="c1"># Create a DataFrame from the collected counts</span>
+    <span class="n">counts_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">counts_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the end step for slicing the counts DataFrames</span>
+<span class="n">end_step</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="c1"># Calculate counts for each AOI and slice them up to the &#39;end_step&#39;</span>
+<span class="n">counts_df_0</span> <span class="o">=</span> <span class="n">counts_df</span><span class="p">(</span><span class="n">df_0</span><span class="p">)[:</span><span class="n">end_step</span><span class="p">]</span>
+<span class="n">counts_df_1</span> <span class="o">=</span> <span class="n">counts_df</span><span class="p">(</span><span class="n">df_1</span><span class="p">)[:</span><span class="n">end_step</span><span class="p">]</span>
+<span class="n">counts_df_2</span> <span class="o">=</span> <span class="n">counts_df</span><span class="p">(</span><span class="n">df_2</span><span class="p">)[:</span><span class="n">end_step</span><span class="p">]</span>
+<span class="n">counts_df_3</span> <span class="o">=</span> <span class="n">counts_df</span><span class="p">(</span><span class="n">df_3</span><span class="p">)[:</span><span class="n">end_step</span><span class="p">]</span>
+
+<span class="c1"># Extract the row corresponding to the 5th increased_distance (index 5) for each counts DataFrame</span>
+<span class="n">row_0</span> <span class="o">=</span> <span class="n">counts_df_0</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">row_1</span> <span class="o">=</span> <span class="n">counts_df_1</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">row_2</span> <span class="o">=</span> <span class="n">counts_df_2</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">row_3</span> <span class="o">=</span> <span class="n">counts_df_3</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+
+<span class="c1"># Create a new DataFrame by concatenating the extracted rows</span>
+<span class="n">new_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;counts_df_0&#39;</span><span class="p">:</span> <span class="n">row_0</span><span class="p">,</span> <span class="s1">&#39;counts_df_1&#39;</span><span class="p">:</span> <span class="n">row_1</span><span class="p">,</span> <span class="s1">&#39;counts_df_2&#39;</span><span class="p">:</span> <span class="n">row_2</span><span class="p">,</span> <span class="s1">&#39;counts_df_3&#39;</span><span class="p">:</span> <span class="n">row_3</span><span class="p">})</span>
+
+<span class="c1"># Transpose the DataFrame and add a &#39;location&#39; column for clarity</span>
+<span class="n">ttest_counts_df</span> <span class="o">=</span> <span class="n">new_df</span><span class="o">.</span><span class="n">T</span>
+<span class="n">ttest_counts_df</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Overall&#39;</span><span class="p">,</span> <span class="s1">&#39;Stephansplatz&#39;</span><span class="p">,</span> <span class="s1">&#39;Markstaette&#39;</span><span class="p">,</span> <span class="s1">&#39;Augustinerplatz&#39;</span><span class="p">]</span>
+
+<span class="c1"># Display the resulting DataFrame</span>
+<span class="n">ttest_counts_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>distance</th>
+      <th>count_less_than_alpha</th>
+      <th>count_greater_than_alpha</th>
+      <th>Reject Null</th>
+      <th>Fail to reject null</th>
+      <th>location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>counts_df_0</th>
+      <td>10</td>
+      <td>275</td>
+      <td>13</td>
+      <td>275</td>
+      <td>13</td>
+      <td>Overall</td>
+    </tr>
+    <tr>
+      <th>counts_df_1</th>
+      <td>10</td>
+      <td>260</td>
+      <td>28</td>
+      <td>260</td>
+      <td>28</td>
+      <td>Stephansplatz</td>
+    </tr>
+    <tr>
+      <th>counts_df_2</th>
+      <td>10</td>
+      <td>254</td>
+      <td>34</td>
+      <td>254</td>
+      <td>34</td>
+      <td>Markstaette</td>
+    </tr>
+    <tr>
+      <th>counts_df_3</th>
+      <td>10</td>
+      <td>269</td>
+      <td>19</td>
+      <td>269</td>
+      <td>19</td>
+      <td>Augustinerplatz</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="plotting-the-bar-graph">
+<h2>10. Plotting the bar graph<a class="headerlink" href="#plotting-the-bar-graph" title="Link to this heading"></a></h2>
+<p>This section generates a bar graph to visualize the number of time instances where the null hypothesis was either rejected or failed to be rejected for different AOIs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a figure and an axes object for the plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+
+<span class="c1"># Set the main title of the plot, including the variable description and unit</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">description</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+
+<span class="c1"># Set the subplot title for the specific time instance (2023-06-14 +01)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;2023-06-14 +01&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="c1"># Adjust subplot parameters for a tight layout</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">top</span><span class="o">=</span><span class="mf">0.90</span><span class="p">)</span>
+
+<span class="c1"># Plot the &#39;Reject Null&#39; and &#39;Fail to reject null&#39; counts as a bar graph</span>
+<span class="n">ttest_counts_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;location&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Reject Null&#39;</span><span class="p">,</span> <span class="s1">&#39;Fail to reject null&#39;</span><span class="p">],</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="c1"># Set labels for the x and y axes</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Location&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Time instances counts for t-test&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="c1"># Add value labels on top of the bars for easy interpretation</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">patches</span><span class="p">:</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">height</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> 
+                <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span> <span class="n">height</span> <span class="o">*</span> <span class="mf">1.01</span><span class="p">),</span> 
+                <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+
+<span class="c1"># Configure grid lines, ticks, and tick labels for the y-axis</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># Rotate x-axis labels horizontally</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span> <span class="c1"># Rotate y-axis labels vertically</span>
+
+<span class="c1"># Set major and minor ticks for the y-axis</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">301</span><span class="p">,</span> <span class="mi">25</span><span class="p">))</span>
+<span class="n">minor_locator</span> <span class="o">=</span> <span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># Minor ticks every 5 units</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">minor_locator</span><span class="p">)</span>
+
+<span class="c1"># Add a legend to the plot, positioned outside the plot area</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;LEGEND (t-test count)&quot;</span><span class="p">,</span>
+          <span class="n">title_fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+          <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
+          <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+          <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center left&#39;</span><span class="p">)</span>
+
+<span class="c1"># Display the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a5d9475774add7924220a5b604b2c8d29da3489f71c6a5b0f0a7cd2a83d8f9f6.png" src="../_images/a5d9475774add7924220a5b604b2c8d29da3489f71c6a5b0f0a7cd2a83d8f9f6.png" />
+</div>
+</div>
+</section>
+<section id="plot-line-graph">
+<h2>11. Plot line graph<a class="headerlink" href="#plot-line-graph" title="Link to this heading"></a></h2>
+<p>This section generates a line graph to visualize the number of times the null hypothesis was rejected (indicating a significant difference) across various buffer distances for each AOI. Trend lines are added for better interpretation of the spatial patterns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a figure and an axes object for the plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+
+<span class="c1"># Set the main title of the plot based on aggregation time steps</span>
+<span class="k">if</span> <span class="n">aggregate_time_steps</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Zählungen für T-Test (Anzahl der N≠H0)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Zählungen für T-Test Anzahl der N≠H0): </span><span class="si">{</span><span class="mi">10</span><span class="o">*</span><span class="n">aggregate_time_steps</span><span class="si">}</span><span class="s2">min gleitender Durchschnitt&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+
+<span class="c1"># Set the subplot title with the variable unit</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;2-m-Lufttemperatur in </span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="c1"># Adjust subplot parameters for a tight layout</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">top</span><span class="o">=</span><span class="mf">0.90</span><span class="p">)</span>
+
+<span class="c1"># Configure grid lines and tick parameter styles for both axes</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#00000050&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+
+<span class="c1"># Set x and y axis labels</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Abstand (m)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_label_coords</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">)</span> <span class="c1"># Adjust x-axis label position</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Zeitinstanzen zählen für t-Test&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+
+<span class="c1"># Set x-axis ticks and limits</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">counts_df_1</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">30.5</span><span class="p">)</span> 
+
+<span class="c1"># Adjust x-tick labels to represent actual distances in meters (assuming multiplier of 2 for grid cells to meters)</span>
+<span class="n">current_xticks</span> <span class="o">=</span> <span class="n">counts_df_1</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">]</span>
+<span class="n">multiplier</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Assuming 1 grid cell = 2 meters based on typical PALM dx/dy</span>
+<span class="n">new_xticks</span> <span class="o">=</span> <span class="n">current_xticks</span> <span class="o">*</span> <span class="n">multiplier</span>
+<span class="n">new_xtick_labels</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">new_xticks</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">current_xticks</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">new_xtick_labels</span><span class="p">)</span>
+
+<span class="c1"># Draw vertical lines and spans to visually represent distance intervals</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">colormaps</span><span class="p">[</span><span class="s1">&#39;turbo&#39;</span><span class="p">]</span> <span class="c1"># Colormap for visual differentiation</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span> <span class="c1"># Values to sample the colormap</span>
+<span class="n">rgba_colors</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="c1"># RGBA colors from the colormap</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">counts_df_0</span><span class="p">)):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">i</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">rgba_colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.85</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">((</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">rgba_colors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="c1"># Set y-axis ticks and limits</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">245</span><span class="p">,</span> <span class="mi">276</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">245</span><span class="p">,</span> <span class="mi">275</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Enable and configure minor ticks for the y-axis</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">minorticks_on</span><span class="p">()</span>
+<span class="n">minor_locator</span> <span class="o">=</span> <span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Minor ticks every 1 unit</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">minor_locator</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>  <span class="c1"># Customizing minor ticks&#39; appearance</span>
+
+<span class="c1"># Plot the &#39;count_less_than_alpha&#39; for each AOI</span>
+<span class="n">line1</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">counts_df_1</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">],</span>
+                 <span class="n">counts_df_1</span><span class="p">[</span><span class="s1">&#39;count_less_than_alpha&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span>
+                 <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#ff0000&#39;</span><span class="p">,</span>
+                 <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">,</span>
+                 <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span>
+                 <span class="n">label</span><span class="o">=</span><span class="s1">&#39;AOI1 (Stephansplatz)&#39;</span><span class="p">,</span>
+                 <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
+<span class="n">line2</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">counts_df_2</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">],</span>
+                 <span class="n">counts_df_2</span><span class="p">[</span><span class="s1">&#39;count_less_than_alpha&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span>
+                 <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#00bb00&#39;</span><span class="p">,</span>
+                 <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">,</span>
+                 <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span>
+                 <span class="n">label</span><span class="o">=</span><span class="s1">&#39;AOI2 (Marktstätte)&#39;</span><span class="p">,</span>
+                 <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
+<span class="n">line3</span><span class="p">,</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">counts_df_3</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">],</span>
+                  <span class="n">counts_df_3</span><span class="p">[</span><span class="s1">&#39;count_less_than_alpha&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span>
+                  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#0000ff&#39;</span><span class="p">,</span>
+                  <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">,</span>
+                  <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span>
+                  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;AOI3 (Augustinerplatz)&#39;</span><span class="p">,</span>
+                  <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
+
+<span class="c1"># Add curved trend lines using polynomial fitting</span>
+<span class="k">for</span> <span class="n">df</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="n">counts_df_1</span><span class="p">,</span> <span class="n">counts_df_2</span><span class="p">,</span> <span class="n">counts_df_3</span><span class="p">],</span>
+                     <span class="p">[</span><span class="s1">&#39;#ff0000&#39;</span><span class="p">,</span> <span class="s1">&#39;#00bb00&#39;</span><span class="p">,</span> <span class="s1">&#39;#0000ff&#39;</span><span class="p">]):</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;count_less_than_alpha&#39;</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># Fit a quadratic polynomial</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="c1"># Create a polynomial function</span>
+    <span class="n">x_smooth</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">]),</span> <span class="nb">max</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">]),</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1"># Generate points for a smooth curve</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_smooth</span><span class="p">,</span> <span class="n">p</span><span class="p">(</span><span class="n">x_smooth</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.25</span><span class="p">)</span> <span class="c1"># Plot the smooth curve</span>
+
+<span class="c1"># Add a legend to the plot</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="p">[</span><span class="n">line1</span><span class="p">,</span> <span class="n">line2</span><span class="p">,</span> <span class="n">line3</span><span class="p">],</span>
+          <span class="n">title</span><span class="o">=</span><span class="s2">&quot;LEGENDE&quot;</span><span class="p">,</span>
+          <span class="n">title_fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+          <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
+          <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">),</span>
+          <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+<span class="c1"># Display the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Print the null hypothesis statement for context</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Null Hypothesis: No significant difference&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3a06c3adfce514203d31b5ea8f29ff13b8ea96800ee2f91c7aa815e3144596c3.png" src="../_images/3a06c3adfce514203d31b5ea8f29ff13b8ea96800ee2f91c7aa815e3144596c3.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Null Hypothesis: No significant difference
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="01_Obs_vs_Sim.html" class="btn btn-neutral float-left" title="Comparison of Observed vs Simulation Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="03_Air_Temp_Analysis_BS_vs_S1.html" class="btn btn-neutral float-right" title="2D Air Temperature Analysis: Baseline vs. Scenario" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, str.ucture GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
