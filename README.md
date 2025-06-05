@@ -13,6 +13,8 @@ Our focus is on extracting valuable insights from detailed microclimate simulati
 
 The output from these simulations, in netCDF4 format, is efficiently handled and explored through the documented resources within this repository. PALM-4U is an open-source model continuously developed by a consortium of institutions, notably under the German Federal Ministry of Education and Research (BMBF)'s "[UC²] - Urban Climate Under Change" program.
 
+---
+
 ## Awesome Germany - Geospatial Data 🚀
 
 A curated list of awesome resources for geospatial data related to Germany. This list aims to categorize data by common types, focusing on official and open sources.
