@@ -10,7 +10,7 @@
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
       <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=822aaed9" />
 
   
@@ -24,7 +24,8 @@
       <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Biological Variable Analysis" href="07_Bio_Var_Analysis_BS_vs_S1.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -68,6 +69,29 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="06_Bio_Var_Analysis_BS_vs_S1.html">2D Biometeorological Variable Analysis: Baseline vs. Scenario</a></li>
 <li class="toctree-l1"><a class="reference internal" href="07_Bio_Var_Analysis_BS_vs_S1.html">Biological Variable Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Variables: Wind:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2D Windspeed Visualization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#import-dependencies">1. Import dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#import-data">2. Import data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#variable-selection">3. Variable Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#define-time-sequences-and-equivalents">4. Define Time Sequences and Equivalents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#useful-other">5. Useful Other</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#extract-variable-data-and-select-domain">Extract variable data and select domain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#perform-ttest-at-individual-pixel">Perform ttest at individual pixel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compute-mean-values">Compute mean values</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#prepare-for-plot">Prepare for plot</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#plot-day-2">Plot day 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plot-night1">Plot night1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mean-difference">Mean difference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ttest">Ttest</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -181,7 +205,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "8537b13a25f74ac7b256be8f7ad021ef"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "d456ac61e2a2479790db58e74623cc9f"}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1197,12 +1221,12 @@
 <span class="g g-Whitespace">    </span><span class="mi">534</span> <span class="k">def</span><span class="w"> </span><span class="nf">sf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">535</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dist</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwds</span><span class="p">)</span>
 
-<span class="nn">File ~\anaconda3\envs\cds_env\lib\site-packages\scipy\stats\_distn_infrastructure.py:2219,</span> in <span class="ni">rv_continuous.sf</span><span class="nt">(self, x, *args, **kwds)</span>
+<span class="nn">File ~\anaconda3\envs\cds_env\lib\site-packages\scipy\stats\_distn_infrastructure.py:2218,</span> in <span class="ni">rv_continuous.sf</span><span class="nt">(self, x, *args, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2216</span> <span class="n">cond</span> <span class="o">=</span> <span class="n">cond0</span> <span class="o">&amp;</span> <span class="n">cond1</span>
 <span class="g g-Whitespace">   </span><span class="mi">2217</span> <span class="n">output</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="p">(</span><span class="n">cond</span><span class="p">),</span> <span class="n">dtyp</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2218</span> <span class="n">place</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">cond0</span><span class="p">)</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">badvalue</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">2219</span> <span class="n">place</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">cond2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">2218</span> <span class="n">place</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">cond0</span><span class="p">)</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">badvalue</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2219</span> <span class="n">place</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">cond2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">2220</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">cond</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">2221</span>     <span class="n">goodargs</span> <span class="o">=</span> <span class="n">argsreduce</span><span class="p">(</span><span class="n">cond</span><span class="p">,</span> <span class="o">*</span><span class="p">((</span><span class="n">x</span><span class="p">,)</span><span class="o">+</span><span class="n">args</span><span class="p">))</span>
 
 <span class="nn">File ~\anaconda3\envs\cds_env\lib\site-packages\numpy\lib\_function_base_impl.py:2085,</span> in <span class="ni">place</span><span class="nt">(arr, mask, vals)</span>
 <span class="g g-Whitespace">   </span><span class="mi">2047</span> <span class="nd">@array_function_dispatch</span><span class="p">(</span><span class="n">_place_dispatcher</span><span class="p">)</span>
@@ -1371,7 +1395,9 @@
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="07_Bio_Var_Analysis_BS_vs_S1.html" class="btn btn-neutral float-left" title="Biological Variable Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
 
   <hr/>
 

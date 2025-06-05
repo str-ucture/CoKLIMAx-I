@@ -6,6 +6,8 @@ Welcome to the CoKLIMAx I microclimate analysis and visualization toolkit. This 
 
 PALM-4U (PALM Model System for Urban Applications) is a cutting-edge, three-dimensional, non-hydrostatic atmospheric model. It is specifically engineered to simulate urban microclimates with exceptional detail, accounting for the intricate interplay of complex surface structures, building geometries, diverse vegetation, and dynamic atmospheric processes. This advanced model is widely utilized in urban climate research and planning to rigorously assess the impacts of urbanization, such as urban heat island effects and altered wind patterns, and to effectively evaluate and inform climate adaptation strategies for creating more resilient and comfortable urban environments. PALM-4U is an open-source solution that continues to be developed by a consortium of institutions, notably within the framework of the "[UC²] - Urban Climate Under Change" program, funded by the German Federal Ministry of Education and Research (BMBF).
 
+The full collection of resources, workflows, and analysis notebooks is available in the project's GitHub repository: `CoKLIMAx-I (on GitHub) <https://github.com/str-ucture/CoKLIMAx-I>`_
+
 .. toctree::
   :maxdepth: 1
   :caption: Data Preparation:
